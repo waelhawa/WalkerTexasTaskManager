@@ -5280,19 +5280,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Wael\\.nuget\\packages\\": {}
+    "C:\\Users\\Anthony Blocton\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Final Project\\ChuckAPI\\ChuckAPI\\ChuckAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Anthony Blocton\\Desktop\\GrandCircusFinalProject\\WalkerTexasTaskManager\\ChuckAPI\\ChuckAPI\\ChuckAPI.csproj",
       "projectName": "ChuckAPI",
-      "projectPath": "F:\\Final Project\\ChuckAPI\\ChuckAPI\\ChuckAPI.csproj",
-      "packagesPath": "C:\\Users\\Wael\\.nuget\\packages\\",
-      "outputPath": "F:\\Final Project\\ChuckAPI\\ChuckAPI\\obj\\",
+      "projectPath": "C:\\Users\\Anthony Blocton\\Desktop\\GrandCircusFinalProject\\WalkerTexasTaskManager\\ChuckAPI\\ChuckAPI\\ChuckAPI.csproj",
+      "packagesPath": "C:\\Users\\Anthony Blocton\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Anthony Blocton\\Desktop\\GrandCircusFinalProject\\WalkerTexasTaskManager\\ChuckAPI\\ChuckAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Wael\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Anthony Blocton\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5341,7 +5341,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
