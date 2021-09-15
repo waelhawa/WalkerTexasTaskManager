@@ -1,0 +1,8 @@
+.banditSquare{
+  height: 100px;
+  width: 100px;
+}
+
+#banditBtn{
+  box-sizing: border-box;
+}

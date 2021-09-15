@@ -12,6 +12,12 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { BanditComponent } from './bandit/bandit.component';
+import { NewTaskPageComponent } from './new-task-page/new-task-page.component';
+import { TaskPageComponent } from './task-page/task-page.component';
+import { BacklogComponent } from './backlog/backlog.component';
+import { TaskComponent } from './task/task.component';
+import { SprintComponent } from './sprint/sprint.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    BanditComponent,
+    NewTaskPageComponent,
+    TaskPageComponent,
+    BacklogComponent,
+    TaskComponent,
+    SprintComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
