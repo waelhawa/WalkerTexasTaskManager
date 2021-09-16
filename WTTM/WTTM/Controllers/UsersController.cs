@@ -16,7 +16,13 @@ namespace WTTM.Controllers
         WTTM_DBContext _context = new WTTM_DBContext();
 
         #region Create
-        //Created by FrontEnd User Identity Framework
+        [HttpPost("createuser")]
+        public async Task<ActionResult<Tasks>> CreateUser(AspNetUsers user)
+        {
+            _context.AspNetUsers.Add(user);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetUsersById), new { id = user.Id }, user);
+        }
         #endregion
 
         #region Read
