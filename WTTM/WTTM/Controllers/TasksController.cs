@@ -25,6 +25,7 @@ namespace WTTM.Controllers
         }
         #endregion
 
+<<<<<<< HEAD
         #region Read
         [HttpGet("gettasks")]
         public async Task<ActionResult<List<Tasks>>> GetTasks()
@@ -123,6 +124,8 @@ namespace WTTM.Controllers
             }
         }
         #endregion
+=======
+>>>>>>> 3bad44fded9a6047f48a3afdff552f734c9111bb
 
         #region Update
         [HttpPut("updatetask/{id}")]
