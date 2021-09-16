@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using WTTM.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WTTM.Controllers
 {
@@ -13,46 +14,93 @@ namespace WTTM.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
-        //private readonly WTTM_DBContext _context;
-        private readonly ChuckDAL chuck = new ChuckDAL();
-       
-        private HttpClient GetHttpClient()
+        private readonly WTTM_DBContext _context;
+
+        #region Create
+        [HttpPost("createnewteam")]
+        public async Task<ActionResult<Teams>> CreateTeams(Teams teams)
         {
-            var client = new HttpClient();
-            return client;
+            _context.Teams.Add(teams);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetTeamsById), new { id = teams.TeamId }, teams);
         }
+        #endregion
+        
 
-        [HttpGet("getteams")]
-
-        public async Task<ActionResult<List<Teams>>> GetTeams()
+        #region Update
+        [HttpPut("updateteam/{id}")]
+        public async Task<ActionResult> UpdateTeam(int id, Teams teams)
         {
-
-            var client = GetHttpClient();
-            var request = await client.GetAsync($"/get/teams");
-            var response = await request.Content.ReadAsAsync<List<Teams>>();
-            return response;
-        }
-
-        //TO DO: Make new team?
-
-        //TO DO: Update team name
-        [HttpPut("{id}")] //api endpoint
-        public async Task<ActionResult> UpDateTeamName(int id, Teams teams) 
-        {
-            if(ModelState.IsValid || id != teams.TeamId) 
+            if (id != teams.TeamId || !ModelState.IsValid)
             {
                 return BadRequest();
             }
+            else
+            {
+                Teams updatedTeam = _context.Teams.Find(id);
+
+                updatedTeam.TeamId = teams.TeamId;
+                updatedTeam.TeamName = teams.TeamName;
+                updatedTeam.TeamPoints = teams.TeamPoints;
+                updatedTeam.Sprints = teams.Sprints;
+
+
+                _context.Entry(updatedTeam).State = EntityState.Modified;
+                _context.Update(updatedTeam);
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+        }
+        #endregion
+
+        #region Delete
+        [HttpDelete("deleteteam/{id}")]
+        public async Task<ActionResult> DeleteTeams(int id) 
+        {
+            var teams = await _context.Teams.FindAsync(id);
+            if (teams == null)
+            {
+                return NotFound();
+            }
             else 
             {
-                Teams dbTeams =
-                //replace the values of the field here
-
-                    await
+                teams.TeamName = null;
+                _context.Teams.Remove(teams);
+                await _context.SaveChangesAsync();
+                return NoContent();
             }
+        }
+        #endregion
 
+        #region Read
+
+        [HttpGet("getteams")]
+        public async Task<ActionResult<List<Teams>>> GetTeams()
+        {
+            var teams = await _context.Teams.ToListAsync();
+            return teams;
         }
 
-        //TO DO: Update team points
+        [HttpGet("getteamsbyid/{id}")]
+        public async Task<ActionResult<Teams>> GetTeamsById(int id)
+        {
+            var teams = await _context.Teams.FindAsync(id);
+            if (teams == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return teams;
+            }
+        }
+        #endregion
+
+
+
+
+
+
+
     }
 }
