@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NewTaskPageComponent } from './new-task-page.component';
 
 describe('NewTaskPageComponent', () => {
