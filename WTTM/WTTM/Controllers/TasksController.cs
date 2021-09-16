@@ -14,6 +14,7 @@ namespace WTTM.Controllers
     public class TasksController : ControllerBase
     {
         WTTM_DBContext _context = new WTTM_DBContext();
+
         #region Create
         [HttpPost("createtask")]
         public async Task<ActionResult<Tasks>> CreateTask(Tasks task)
@@ -29,7 +30,15 @@ namespace WTTM.Controllers
         public async Task<ActionResult<List<Tasks>>> GetTasks()
         {
             var tasks = await _context.Tasks.ToListAsync();
-            return tasks;
+            if (tasks == null)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return tasks;
+
+            }
         }
         [HttpGet("gettasksbyid/{id}")]
         public async Task<ActionResult<Tasks>> GetTasksById(int id)
@@ -56,7 +65,7 @@ namespace WTTM.Controllers
                     tasksBySprint.Add(item);
                 }
             }
-            
+
             if (tasksBySprint == null)
             {
                 return NotFound();
@@ -132,6 +141,7 @@ namespace WTTM.Controllers
                 updatedTask.FullDesc = task.FullDesc;
                 updatedTask.StoryPoint = task.StoryPoint;
                 updatedTask.TaskStatus = task.TaskStatus;
+                updatedTask.IsCompleted = task.IsCompleted;
 
                 _context.Entry(updatedTask).State = EntityState.Modified;
                 _context.Update(updatedTask);
@@ -144,7 +154,7 @@ namespace WTTM.Controllers
 
         #region Delete
         [HttpDelete("deletetask/{id}")]
-        public async Task<ActionResult> DeleteTask (int id)
+        public async Task<ActionResult> DeleteTask(int id)
         {
             var task = await _context.Tasks.FindAsync(id);
             if (task == null)
@@ -162,5 +172,6 @@ namespace WTTM.Controllers
             }
         }
         #endregion
+
     }
 }
