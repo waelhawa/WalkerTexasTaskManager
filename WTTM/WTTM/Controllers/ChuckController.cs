@@ -12,7 +12,7 @@ namespace WTTM.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class Chuck : ControllerBase
+    public class ChuckController : ControllerBase
 
     {
         private readonly ChuckDAL chuck = new ChuckDAL();

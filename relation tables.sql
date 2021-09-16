@@ -1,6 +1,6 @@
-Create database TaskManager;
+--Create database TaskManager;
 
-use TaskManager;
+use WTTM_DB;
 
 create table teams
 (

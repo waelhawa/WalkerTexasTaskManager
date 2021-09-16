@@ -138,7 +138,7 @@ namespace WTTM.Controllers
             else
             {
                 sprint.TeamId = null;
-                _context.Tasks.Remove(sprint);
+                _context.Sprints.Remove(sprint);
                 await _context.SaveChangesAsync();
                 return NoContent();
 
