@@ -17,7 +17,7 @@ namespace WTTM.Controllers
 
         #region Create
         [HttpPost("createuser")]
-        public async Task<ActionResult<Tasks>> CreateUser(AspNetUsers user)
+        public async Task<ActionResult<AspNetUsers>> CreateUser(AspNetUsers user)
         {
             _context.AspNetUsers.Add(user);
             await _context.SaveChangesAsync();
