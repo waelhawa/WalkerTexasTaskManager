@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 
-//import { HomeComponent } from "./home";
+import { HomeComponent } from "./home/home.component";
 import { NewTaskPageComponent } from "./new-task-page/new-task-page.component";
 
 const routes: Routes = [
