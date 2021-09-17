@@ -11,25 +11,51 @@ export class TaskService {
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUri: string) {
     this.apiUri = `${baseUri}api/task`
   }
-  /////figure this whole thing out, "BASE_URL", "baseUri", "apiUri"
 
-
-  addTask(task: Task){
-    return this.http.post<Task>(`${this.apiUri}`, {"DateCreated": task.DateCreated, "DateCompleted": task.DateCompleted,
-    "ShortDesc": task.ShortDesc, "FullDesc": task.FullDesc, "StoryPoint": task.StoryPoint, "IsCompleted": task.IsCompleted,
-    "TaskStatus": task.TaskStatus})
+  // TaskId: number;
+  // SprintId: number;
+  // UserId: number;
+  // DateCreated: number;
+  // DateCompleted: number;
+  // ShortDesc: string;
+  // FullDesc: string;
+  // StoryPoint: number;
+  // IsCompleted: boolean;
+  // TaskStatus: string;
+  
+  
+  
+  
+  //Read getTasks
+  getTasks()
+  {
+    return this.http.get<Task[]>(`${this.apiUri}/gettasks`);
   }
+  
+  gettasksbyid(id:number)
+  {
+    return this.http.get<Task>(`${this.apiUri}/gettasksbyid/${id}`);
+  }
+  
+  //Create createTasks
+  createTask(task: Task)
+  {
+    return this.http.post<Task>(`${this.apiUri}/createtask`, task);
+  }
+
+  //Detele deletetask/{id}
+  deleteTasks(id:number)
+  {
+    return this.http.delete(`${this.apiUri}/deletetask/${id}`);
+  }
+
+  //Update updatetask/{id}
+  upDateTask(id:number, task:Task)
+  {
+    return this.http.put<Task>(`${this.apiUri}/updatetask/${id}}`, task);
+  }
+
 }
 
-// TaskId: number;
-// SprintId: number;
-// UserId: number;
-// DateCreated: number;
-// DateCompleted: number;
-// ShortDesc: string;
-// FullDesc: string;
-// StoryPoint: number;
-// IsCompleted: boolean;
-// TaskStatus: string;
 
 
