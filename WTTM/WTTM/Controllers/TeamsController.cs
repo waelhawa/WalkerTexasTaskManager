@@ -14,7 +14,7 @@ namespace WTTM.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
-        private readonly WTTM_DBContext _context;
+        WTTM_DBContext _context = new WTTM_DBContext();
 
         #region Create
         [HttpPost("createnewteam")]

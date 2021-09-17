@@ -97,17 +97,27 @@ namespace WTTM.Controllers
         }
 
         [HttpGet("getusersbyteamid/{id}")]
-        public async Task<ActionResult<AspNetUsers>> GetUsersByTeamId(int id)
+        public async Task<ActionResult<List<AspNetUsers>>> GetUsersByTeamId(int id)
         {
-            var users = await _context.AspNetUsers.ToListAsync();
-            foreach (var item in users)
+            var allUsers = await _context.AspNetUsers.ToListAsync();
+            List<AspNetUsers> users = new List<AspNetUsers>();
+            foreach (var item in allUsers)
             {
                 if (item.TeamId == id)
                 {
-                    return item;
+                    users.Add(item);
                 }
             }
+            
+            if (users == null)
+            {
             return NotFound();
+
+            }
+            else
+            {
+                return users;
+            }
         }
         #endregion
 

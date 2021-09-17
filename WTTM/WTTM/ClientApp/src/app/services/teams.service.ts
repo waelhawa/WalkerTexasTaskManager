@@ -7,18 +7,42 @@ import { Teams } from '../models/Teams';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TeamsService {
   apiUri:string = "";
 
-  constructor(private http: HttpClient, @Inject('BASE_URL')baseUri:string) 
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUri:string) 
   { 
-    this.apiUri = '${baseUri}api/chuck'
-    console.log(this.apiUri)
+    this.apiUri = `${baseUri}/api/teams`;
+
+    
   }
 
-  getAllTeams(){
-    return this.http.get<Teams[]>(this.apiUri);
+  //Read
+  getTeams(){
+    return this.http.get<Teams[]>(`${this.apiUri}/getteams`);
   }
 
+  getTeamById(id:number)
+  {
+    return this.http.get<Teams>(`${this.apiUri}/getteamsbyid/${id}`);
+  }
+
+  //Create
+  createNewTeam(teams: Teams)
+  {
+    return this.http.post<Teams>(`${this.apiUri}/createnewteam`,teams);
+  }
+  
+  //Delete
+  deleteTeam(id:number)
+  {
+    return this.http.delete(`${this.apiUri}/deleteteam/${id}`);
+  }
+  //Update
+  upDateTeams(id:number, teams:Teams)
+  {
+    return this.http.put<Teams>(`${this.apiUri}/updateteam/${id}`, teams)
+  }
   
 }
