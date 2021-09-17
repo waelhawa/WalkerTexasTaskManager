@@ -20,5 +20,25 @@ export class TeamsService {
     return this.http.get<Teams[]>(this.apiUri);
   }
 
+  upDateTeams(id:number, teams:Teams)
+  {
+    return this.http.put<Teams>('${this.apiUri}/${id}', {"TeamName":teams.TeamName, "TeamPoints":teams.TeamPoints})
+  }
+
+  createNewTeam(teams: Teams)
+  {
+    return this.http.post<Teams>('${this.apiUri}',{"TeamName":teams.TeamName, "TeamPoints":teams.TeamPoints});
+  }
+
+  getTeamById(id:number)
+  {
+    return this.http.get<Teams>('${this.apiUri}/${id}');
+  }
+
+  deleteTeam(id:number)
+  {
+    return this.http.delete('${this.apiUri}/${id}');
+  }
+
 
 }
