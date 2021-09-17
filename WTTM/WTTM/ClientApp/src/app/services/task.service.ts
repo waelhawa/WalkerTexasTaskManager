@@ -9,7 +9,7 @@ export class TaskService {
   apiUri: string = "";
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUri: string) {
-    this.apiUri = `${baseUri}api/task`
+    this.apiUri = `${baseUri}api/tasks`
   }
   /////figure this whole thing out, "BASE_URL", "baseUri", "apiUri"
 
@@ -24,8 +24,8 @@ export class TaskService {
 // TaskId: number;
 // SprintId: number;
 // UserId: number;
-// DateCreated: number;
-// DateCompleted: number;
+// DateCreated: date;
+// DateCompleted: date;
 // ShortDesc: string;
 // FullDesc: string;
 // StoryPoint: number;

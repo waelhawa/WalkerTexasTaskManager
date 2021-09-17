@@ -2,8 +2,6 @@
 
 
 <form #newTaskForm="ngForm" (ngSubmit)="onSubmit(newTaskForm)">
-  <input type="select" name="User" ngModel>
-  <input type="select" name="SprintId" ngModel>
   <select [(ngModel)]="task.TaskStatus">
     <option value="new">New</option>
     <option value="in progress">In Progess</option>
