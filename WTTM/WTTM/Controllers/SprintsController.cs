@@ -17,7 +17,7 @@ namespace WTTM.Controllers
 
         #region Create
         [HttpPost("createsprint")]
-        public async Task<ActionResult<Sprints>> CreateTask(Sprints sprint)
+        public async Task<ActionResult<Sprints>> CreateSprint(Sprints sprint)
         {
             _context.Sprints.Add(sprint);
             await _context.SaveChangesAsync();
