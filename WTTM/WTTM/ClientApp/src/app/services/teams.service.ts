@@ -18,6 +18,7 @@ export class TeamsService {
     
   }
 
+  //Read
   getTeams(){
     return this.http.get<Teams[]>(`${this.apiUri}/getteams`);
   }
@@ -26,18 +27,19 @@ export class TeamsService {
   {
     return this.http.get<Teams>(`${this.apiUri}/getteamsbyid/${id}`);
   }
-  
+
+  //Create
   createNewTeam(teams: Teams)
   {
     return this.http.post<Teams>(`${this.apiUri}/createnewteam`,teams);
   }
   
-  
+  //Delete
   deleteTeam(id:number)
   {
     return this.http.delete(`${this.apiUri}/deleteteam/${id}`);
   }
-  
+  //Update
   upDateTeams(id:number, teams:Teams)
   {
     return this.http.put<Teams>(`${this.apiUri}/updateteam/${id}`, teams)
