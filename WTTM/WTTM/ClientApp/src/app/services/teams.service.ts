@@ -20,5 +20,5 @@ export class TeamsService {
     return this.http.get<Teams[]>(this.apiUri);
   }
 
-  
+
 }
