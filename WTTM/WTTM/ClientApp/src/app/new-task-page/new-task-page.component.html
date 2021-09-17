@@ -1,44 +1,62 @@
 <h1>Create New Task</h1>
 
+<div class="form">
+  <form #newTaskForm="ngForm" (ngSubmit)="onSubmit(newTaskForm)">
+    <div class="topForm">
+      <div class="shDesc">
+        <label>Short Description</label>
+        <input id="shortDesc" type="text" name="ShortDesc" ngModel>
+      </div>
+      <div class="selects">
+        <div class="innerSelects">
+          <label>Points</label>
+          <select [(ngModel)]="task.StoryPoint">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>3</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14</option>
+            <option value=15>15</option>
+            <option value=16>16</option>
+            <option value=17>17</option>
+            <option value=18>18</option>
+            <option value=19>19</option>
+            <option value=20>20</option>
+            <option value=21>21</option>
+            <option value=22>22</option>
+            <option value=23>23</option>
+            <option value=24>24</option>
+            <option value=25>25</option>
+            <option value=26>26</option>
+            <option value=27>27</option>
+            <option value=28>28</option>
+            <option value=29>29</option>
+            <option value=30>30</option>
 
-<form #newTaskForm="ngForm" (ngSubmit)="onSubmit(newTaskForm)">
-  <select [(ngModel)]="task.TaskStatus">
-    <option value="new">New</option>
-    <option value="in progress">In Progess</option>
-    <option value="pending">Pending</option>
-  </select>
-  <select [(ngModel)]="task.StoryPoint">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    <option value=5>5</option>
-    <option value=6>6</option>
-    <option value=7>7</option>
-    <option value=8>3</option>
-    <option value=9>9</option>
-    <option value=10>10</option>
-    <option value=11>11</option>
-    <option value=12>12</option>
-    <option value=13>13</option>
-    <option value=14>14</option>
-    <option value=15>15</option>
-    <option value=16>16</option>
-    <option value=17>17</option>
-    <option value=18>18</option>
-    <option value=19>19</option>
-    <option value=20>20</option>
-    <option value=21>21</option>
-    <option value=22>22</option>
-    <option value=23>23</option>
-    <option value=24>24</option>
-    <option value=25>25</option>
-    <option value=26>26</option>
-    <option value=27>27</option>
-    <option value=28>28</option>
-    <option value=29>29</option>
-    <option value=30>30</option>
-  </select>
-  <input id="shortDesc" type="text" name="ShortDesc" ngModel>
-  <input id="fullDesc" type="text" name="FullDesc" ngModel>
-</form>
+          </select>
+      </div>
+        <div class="innerSelects">
+          <label>Status</label>
+          <select [(ngModel)]="task.TaskStatus">
+            <option value="new">New</option>
+            <option value="in progress">In Progess</option>
+            <option value="pending">Pending</option>
+          </select>
+       </div>
+      </div>
+    </div>
+    <div class="fDesc">
+      <label>Full Description</label>
+      <textarea id="fullDesc" clrTextarea [(ngModel)]="task.FullDesc" name="FullDesc"></textarea>
+    </div>
+  </form>
+</div>

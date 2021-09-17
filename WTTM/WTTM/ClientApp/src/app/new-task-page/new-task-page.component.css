@@ -1,0 +1,70 @@
+*{
+  box-sizing: border-box;
+}
+
+.form{
+  width: 95%;
+  margin-top: 42px;
+
+}
+
+input{
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  padding: 12px;
+  height: 42px;
+}
+
+select{
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  padding: 8px;
+  height: 42px;
+}
+
+input[type=text]:focus {
+  border: 2px solid rgb(151, 151, 151);
+}
+
+.shDesc{
+  width: 33vw;
+}
+
+#shortDesc{
+  width: 100%;
+}
+
+.fDesc{
+  margin-top: 32px;
+}
+
+#fullDesc{
+  vertical-align: top;
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  padding: 12px;
+}
+
+textarea{
+  vertical-align: text-top;
+}
+
+.topForm{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+
+}
+
+.selects{
+  margin-left: 12px;
+  display: inline-flex;
+}
+
+.innerSelects{
+  display: block;
+}
+
+
