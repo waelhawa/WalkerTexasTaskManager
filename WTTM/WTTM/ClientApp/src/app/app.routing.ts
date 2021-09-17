@@ -1,11 +1,14 @@
 import { Routes, RouterModule } from "@angular/router";
+import { BacklogComponent } from "./backlog/backlog.component";
 
 import { HomeComponent } from "./home/home.component";
 import { NewTaskPageComponent } from "./new-task-page/new-task-page.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'NewTaskPage', component: NewTaskPageComponent},
+  {path: '/new-task-page', component: NewTaskPageComponent},
+  {path: '/backlog', component: BacklogComponent},
+
 
 
   {path: '**', redirectTo: ''}
