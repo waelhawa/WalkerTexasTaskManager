@@ -8,10 +8,11 @@ import { Task } from '../models/Task';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-
+  task: Task;
   constructor(private taskServ: TaskService) { }
 
   ngOnInit() {
+
   }
 
 }

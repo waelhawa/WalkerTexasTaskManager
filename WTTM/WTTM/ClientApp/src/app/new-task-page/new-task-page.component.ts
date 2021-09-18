@@ -22,21 +22,12 @@ export class NewTaskPageComponent implements OnInit {
 
   onSubmit(form: NgForm){
     this.task = form.form.value;
-    console.log(this.task);
-    this.addTask(this.task);
+    this.taskServ.createTask(this.task);
   }
 
 
 ///////TODO add user assignment
 
-  addTask(task: Task):void{
-    this.taskServ.addTask(task).subscribe(
-      result =>{
-        console.log(result);
-      },
-      error => console.log(error)
-    )
-  }
 
 }
 

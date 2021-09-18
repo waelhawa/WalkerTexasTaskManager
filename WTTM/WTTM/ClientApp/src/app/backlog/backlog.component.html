@@ -2,7 +2,7 @@
 
 <div *ngIf="empty; else present" class="empty">
   <div class="emptyMessage">
-    <h4>Mighty fine workpartner!</h4>
+    <h4>Mighty fine work partner!</h4>
     <h4>You don't have any tasks in your backlog.</h4>
     <p>You ought to have another look at your goals for the year.
       However small they may be, you add some tasks to track your progess and visualize your
@@ -17,7 +17,7 @@
 
 <ng-template #present>
   <div *ngFor="let task of allUATasks">
-
+    <app-task></app-task>
   </div>
 </ng-template>
 

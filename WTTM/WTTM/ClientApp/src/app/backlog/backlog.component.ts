@@ -13,6 +13,8 @@ export class BacklogComponent implements OnInit {
   empty: boolean = true;
   chuckGif: string ="/assets/images/Chuck Gif.gif"
   allUATasks: Task[] = [];
+  allTasks: Task[]=[];
+
 
 
 
@@ -23,7 +25,8 @@ export class BacklogComponent implements OnInit {
   }
 
   getAllUnassignedTasks(){
-    this.taskServ
+
+
   }
 
 }

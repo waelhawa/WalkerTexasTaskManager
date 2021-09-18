@@ -1,0 +1,17 @@
+.taskWrapper{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content:space-between;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  padding: 8px;
+  height: 42px;
+}
+
+p{
+  font-size: 20px;
+}
+
+a{
+  color: darkcyan;
+}
