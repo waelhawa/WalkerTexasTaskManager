@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./new-task-page.component.css']
 })
 export class NewTaskPageComponent implements OnInit {
-
+  bandit: string = "/assets/images/64 bit bandit.png"
   task: Task = {TaskId: 0, SprintId: 0, UserId: 0, ShortDesc: "", FullDesc: "", StoryPoint: 0, IsCompleted: false, TaskStatus: "new",
   DateCompleted: null, DateCreated: null}
 

@@ -1,5 +1,35 @@
 <h1>Create New Task</h1>
 
+<div class="topArticle">
+  <div class="articleTxt">
+    <p>With a task you can track your productivity and progress toward a specific goal.
+      Write a description of the work and preparation you need to complete the task.
+      Designate the task status, consider whether this task will need to wait on outside information or
+      if its already been started. Assign a number of points the task will need. Read below to see
+      how points work.
+    </p>
+    <ul>
+      <li>The task's points should represent the amount of time it will take to complete this task.
+        the rough conversion is about 1 hour for every 2 points.
+      </li>
+      <li>The amount of points you enter will give you a corresponding number of "bandits" (see right) for
+        you and Chuck to take down.
+      </li>
+      <li>
+        Click / Punch / Roundhouse Kick a bandit everytime you spend 25 straight minutes on the project.
+        Then Chuck will encourage you to take a 5 minute break.
+      </li>
+      <li>
+        This will not only opimize your productivity using a 25 minute block work-model, but will also
+        help you plan for the time needed to complete a similar task in the future.
+      </li>
+    </ul>
+  </div>
+  <div class="banditPic">
+    <img [src]="bandit">
+  </div>
+</div>
+
 <div class="form">
   <form #newTaskForm="ngForm" (ngSubmit)="onSubmit(newTaskForm)">
     <div class="topForm">
