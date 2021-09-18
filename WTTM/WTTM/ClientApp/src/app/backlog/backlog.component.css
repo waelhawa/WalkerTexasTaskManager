@@ -1,0 +1,25 @@
+.empty{
+  display: inline-flex;
+  margin-top: 30px;
+}
+
+.emptyMessage{
+  margin-top: 40px;
+
+}
+
+p{
+  margin-top: 12px;
+  font-size: 20px;
+  padding: 30px
+}
+
+
+.chuckNone{
+  width: 30%;
+  height: auto;
+
+}
+
+
+

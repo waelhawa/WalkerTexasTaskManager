@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../models/Task';
+import { TaskService } from '../services/task.service';
+import { TaskComponent } from '../task/task.component';
 
 @Component({
   selector: 'app-backlog',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./backlog.component.css']
 })
 export class BacklogComponent implements OnInit {
+  messageNone: string = "Mighty fine work partner! You don't have any tasks in your backlog.";
+  empty: boolean = true;
+  chuckGif: string ="/assets/images/Chuck Gif.gif"
+  allUATasks: Task[] = [];
 
-  constructor() { }
 
-  ngOnInit() {
+
+  constructor(private taskServ: TaskService) { }
+
+  ngOnInit(): void {
+    this.getAllUnassignedTasks();
+  }
+
+  getAllUnassignedTasks(){
+    this.taskServ
   }
 
 }
