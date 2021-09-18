@@ -42,7 +42,7 @@ export class TeamsService {
   //Update
   upDateTeams(id:number, teams:Teams)
   {
-    return this.http.put<Teams>(`${this.apiUri}/updateteam/${id}`, teams)
+    return this.http.put<Teams>(`${this.apiUri}/updateteam/${id}`, teams);
   }
   
 }
