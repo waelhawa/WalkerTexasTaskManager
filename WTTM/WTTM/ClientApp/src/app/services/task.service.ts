@@ -37,7 +37,7 @@ export class TaskService {
     return this.http.get<Task>(`${this.apiUri}/gettasksbyid/${id}`);
   }
 
-  getunassignedtasks()
+  getUnassignedTasks()
   {
     return this.http.get<Task[]>(`${this.apiUri}/getunassignedtasks`);
   }

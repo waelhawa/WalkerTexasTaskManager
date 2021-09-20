@@ -6,7 +6,8 @@ import { TaskComponent } from '../task/task.component';
 @Component({
   selector: 'app-backlog',
   templateUrl: './backlog.component.html',
-  styleUrls: ['./backlog.component.css']
+  styleUrls: ['./backlog.component.css'],
+  providers: [TaskService]
 })
 export class BacklogComponent implements OnInit {
   messageNone: string = "Mighty fine work partner! You don't have any tasks in your backlog.";
@@ -25,7 +26,9 @@ export class BacklogComponent implements OnInit {
   }
 
   getAllUnassignedTasks(){
-    this.taskServ.getunassignedtasks();
+    this.taskServ.getUnassignedTasks().subscribe(
+      result => this.allUATasks = result
+    )
   }
 
 }
