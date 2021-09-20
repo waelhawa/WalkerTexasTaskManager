@@ -35,12 +35,12 @@
     <div class="topForm">
       <div class="shDesc">
         <label>Short Description</label>
-        <input id="shortDesc" type="text" name="ShortDesc" ngModel>
+        <input id="shortDesc" [(ngModel)]="task.ShortDesc" type="text" name="ShortDesc">
       </div>
       <div class="selects">
         <div class="innerSelects">
           <label>Points</label>
-          <select [(ngModel)]="task.StoryPoint">
+          <select [(ngModel)]="task.StoryPoint" name="StoryPoint">
             <option value=1>1</option>
             <option value=2>2</option>
             <option value=3>3</option>
@@ -76,7 +76,7 @@
       </div>
         <div class="innerSelects">
           <label>Status</label>
-          <select [(ngModel)]="task.TaskStatus">
+          <select [(ngModel)]="task.TaskStatus" name="TaskStatus">
             <option value="new">New</option>
             <option value="in progress">In Progess</option>
             <option value="pending">Pending</option>

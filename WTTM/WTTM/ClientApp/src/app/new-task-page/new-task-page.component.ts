@@ -23,6 +23,7 @@ export class NewTaskPageComponent implements OnInit {
   onSubmit(form: NgForm){
     this.task = form.form.value;
     this.taskServ.createTask(this.task);
+    console.log(this.task);
   }
 
 
