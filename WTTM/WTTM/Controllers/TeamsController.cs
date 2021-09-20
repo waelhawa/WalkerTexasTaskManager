@@ -43,6 +43,7 @@ namespace WTTM.Controllers
                 updatedTeam.TeamName = teams.TeamName;
                 updatedTeam.TeamPoints = teams.TeamPoints;
                 updatedTeam.Sprints = teams.Sprints;
+                updatedTeam.AspNetUsers = teams.AspNetUsers;
 
 
                 _context.Entry(updatedTeam).State = EntityState.Modified;
