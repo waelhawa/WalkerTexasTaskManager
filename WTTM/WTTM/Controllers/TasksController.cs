@@ -122,6 +122,29 @@ namespace WTTM.Controllers
                 return incompletedTasks;
             }
         }
+
+        [HttpGet("getunassignedtasks")]
+        public async Task<ActionResult<List<Tasks>>> GetUnassignedTasks()
+        {
+            var tasks = await _context.Tasks.ToListAsync();
+            var unassignedTasks = new List<Tasks>();
+            foreach (var item in tasks)
+            {
+                if (item.SprintId == null)
+                {
+                    unassignedTasks.Add(item);
+                }
+            }
+
+            if (unassignedTasks == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return unassignedTasks;
+            }
+        }
         #endregion
 
         #region Update
