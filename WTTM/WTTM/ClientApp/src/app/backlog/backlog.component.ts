@@ -25,8 +25,7 @@ export class BacklogComponent implements OnInit {
   }
 
   getAllUnassignedTasks(){
-
-
+    this.taskServ.getunassignedtasks();
   }
 
 }
