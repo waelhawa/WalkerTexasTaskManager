@@ -4,6 +4,14 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/* header{
+  background-color: rgb(112, 102, 95);;
+}
+
+a{
+  color:rgb(255, 187, 0);
+} */
+
 html {
   font-size: 14px;
 }

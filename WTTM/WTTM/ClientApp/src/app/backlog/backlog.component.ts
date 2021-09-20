@@ -12,7 +12,7 @@ import { TaskComponent } from '../task/task.component';
 export class BacklogComponent implements OnInit {
   messageNone: string = "Mighty fine work partner! You don't have any tasks in your backlog.";
   empty: boolean = true;
-  chuckGif: string ="/assets/images/Chuck Gif.gif"
+  chuckGif: string ="/assets/images/Chuck Gif.gif";
   allUATasks: Task[] = [];
   allTasks: Task[]=[];
 

@@ -90,11 +90,16 @@ textarea{
 }
 
 .selects{
-  margin-left: 12px;
+
   display: inline-flex;
 }
 
+.selects label{
+  display: block;
+}
+
 .innerSelects{
+  margin-left: 15px;
   display: block;
 }
 

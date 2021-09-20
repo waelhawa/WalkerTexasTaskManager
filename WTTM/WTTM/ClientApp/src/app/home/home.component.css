@@ -1,0 +1,41 @@
+h1{
+  margin-bottom: 30px;
+}
+
+
+
+.articleWrapper{
+  display: inline-flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: space-evenly;
+
+}
+
+p{
+  margin-top: 12px;
+  font-size: 20px;
+  padding: 50px;
+  max-width: 55%;
+
+}
+
+a{
+  color:rgb(255, 187, 0);
+  font-size: 20px;
+}
+.chuckNone img{
+  height: 350px;
+}
+
+.taskListWrapper{
+  padding: 18px;
+  border-radius: 10px;
+  border: 4px solid rgb(255, 187, 0);
+  background-color:rgb(112, 102, 95);
+  color:snow;
+  margin-top:15px;
+  margin-bottom: 30px;
+}
+
+
