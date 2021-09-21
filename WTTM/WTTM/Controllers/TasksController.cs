@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WTTM.Models;
 
@@ -19,6 +17,16 @@ namespace WTTM.Controllers
         [HttpPost("createtask")]
         public async Task<ActionResult<Tasks>> CreateTask(Tasks task)
         {
+            //Tasks newTask = new Tasks();
+            //newTask.SprintId = task.SprintId;
+            //newTask.UserId = task.UserId;
+            //newTask.DateCreated = task.DateCreated;
+            //newTask.ShortDesc = task.ShortDesc;
+            //newTask.FullDesc = task.FullDesc;
+            //newTask.StoryPoint = task.StoryPoint;
+            //newTask.IsCompleted = task.IsCompleted;
+            //newTask.TaskStatus = task.TaskStatus;
+            //newTask.DateCompleted = task.DateCompleted;
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetTasksById), new { id = task.TaskId }, task);

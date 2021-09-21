@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./task.component.css'],
 })
 export class TaskComponent implements OnInit {
-  @Input() task: Task = {TaskId: 0, SprintId: 0, UserId: 0, ShortDesc: "", FullDesc: "", StoryPoint: 0, IsCompleted: false, TaskStatus: "new",
+  @Input() task: Task = {TaskId: 0, SprintId: 0, UserId: "", ShortDesc: "", FullDesc: "", StoryPoint: 0, IsCompleted: false, TaskStatus: "new",
   DateCompleted: null, DateCreated: null}
   constructor() { }
 
