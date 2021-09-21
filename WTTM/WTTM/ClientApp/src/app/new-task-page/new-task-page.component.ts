@@ -8,7 +8,8 @@ import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-new-task-page',
   templateUrl: './new-task-page.component.html',
-  styleUrls: ['./new-task-page.component.css']
+  styleUrls: ['./new-task-page.component.css'],
+  providers: [TaskService]
 })
 export class NewTaskPageComponent implements OnInit {
   bandit: string = "/assets/images/64 bit bandit.png"
