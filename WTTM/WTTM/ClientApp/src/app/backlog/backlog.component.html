@@ -1,4 +1,7 @@
 <h1>Backlog</h1>
+
+  <app-task *ngFor="let task of allUATasks" [task] = "task"></app-task>
+
 <div class="backlogWrapper">
   <div *ngIf="empty; else present" class="empty">
     <div class="emptyMessage">

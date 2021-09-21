@@ -29,6 +29,7 @@ export class NewTaskPageComponent implements OnInit {
     this.task.DateCreated = new Date();
     this.task.DateCompleted = new Date();
     this.taskServ.createTask(this.task);
+    console.log(this.task);
   }
 
 

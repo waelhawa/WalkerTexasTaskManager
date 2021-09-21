@@ -1,15 +1,17 @@
 .taskWrapper{
   display: inline-flex;
-  flex-direction: row;
-  justify-content:space-between;
+
+
   border-radius: 8px;
   border: 2px solid #ccc;
   padding: 8px;
-  height: 42px;
+  height: 60px;
+  width: 100%;
 }
 
-p{
-  font-size: 20px;
+.taskWrapper p{
+  font-size: 8px;
+  color: yellow;
 }
 
 a{
