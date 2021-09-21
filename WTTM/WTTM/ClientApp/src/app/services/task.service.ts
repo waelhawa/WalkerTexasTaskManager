@@ -9,7 +9,7 @@ export class TaskService {
   apiUri: string = "";
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUri: string) {
-    this.apiUri = `${baseUri}api/task`
+    this.apiUri = `${baseUri}api/tasks`
   }
 
   // TaskId: number;
@@ -39,12 +39,14 @@ export class TaskService {
 
   getUnassignedTasks()
   {
+
     return this.http.get<Task[]>(`${this.apiUri}/getunassignedtasks`);
   }
   
   //Create createTasks
   createTask(task: Task)
   {
+    console.log(task);
     return this.http.post<Task>(`${this.apiUri}/createtask`, task);
   }
 

@@ -13,12 +13,12 @@ namespace WTTM.Models
         public int? SprintId { get; set; }
         public string UserId { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime DateCompleted { get; set; }
         public string ShortDesc { get; set; }
         public string FullDesc { get; set; }
         public int StoryPoint { get; set; }
         public bool IsCompleted { get; set; }
         public string TaskStatus { get; set; }
+        public DateTime? DateCompleted { get; set; }
 
         public virtual Sprints Sprint { get; set; }
         public virtual AspNetUsers User { get; set; }

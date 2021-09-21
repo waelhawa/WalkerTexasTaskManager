@@ -65,7 +65,7 @@ namespace WTTM.Controllers
                     return item;
                 }
             }
-                return NotFound();
+            return NotFound();
         }
 
         [HttpGet("getusersbyemail/{email}")]
@@ -108,10 +108,10 @@ namespace WTTM.Controllers
                     users.Add(item);
                 }
             }
-            
+
             if (users == null)
             {
-            return NotFound();
+                return NotFound();
 
             }
             else

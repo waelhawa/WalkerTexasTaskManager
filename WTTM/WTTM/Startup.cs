@@ -30,6 +30,10 @@ namespace WTTM
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+    //        services.AddDbContext<WTTM_DBContext>(options =>
+    //options.UseSqlServer(
+    //    Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
