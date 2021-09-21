@@ -17,7 +17,16 @@ namespace WTTM.Controllers
         [HttpPost("createtask")]
         public async Task<ActionResult<Tasks>> CreateTask(Tasks task)
         {
-            //task.DateCreated = DateTime.Now;
+            //Tasks newTask = new Tasks();
+            //newTask.SprintId = task.SprintId;
+            //newTask.UserId = task.UserId;
+            //newTask.DateCreated = task.DateCreated;
+            //newTask.ShortDesc = task.ShortDesc;
+            //newTask.FullDesc = task.FullDesc;
+            //newTask.StoryPoint = task.StoryPoint;
+            //newTask.IsCompleted = task.IsCompleted;
+            //newTask.TaskStatus = task.TaskStatus;
+            //newTask.DateCompleted = task.DateCompleted;
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetTasksById), new { id = task.TaskId }, task);

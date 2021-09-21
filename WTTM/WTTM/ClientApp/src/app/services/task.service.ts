@@ -46,9 +46,7 @@ export class TaskService {
   //Create createTasks
   createTask(task: Task)
   {
-    console.log(task);
-    return this.http.post<Task>(`${this.apiUri}/createtask`, {"SprintId": null, "UserId": null, "DateCreated": '', "ShortDesc": task.ShortDesc, "FullDesc": task.FullDesc, "StoryPoint": task.StoryPoint, "IsCompleted": false, "TaskStatus": task.TaskStatus, "DateCompleted": null});
-    //return this.http.post<Task>(`${this.apiUri}/createtask`, {"ShortDesc": task.ShortDesc, "FullDesc": task.FullDesc, "StoryPoint": task.StoryPoint, "TaskStatus": task.TaskStatus});
+    return this.http.post<Task>(`${this.apiUri}/createtask`, {"DateCreated": task.DateCreated, "ShortDesc": task.ShortDesc, "FullDesc": task.FullDesc, "StoryPoint": task.StoryPoint, "IsCompleted": false, "TaskStatus": task.TaskStatus, "DateCompleted": task.DateCompleted});
   }
 
   //Detele deletetask/{id}

@@ -9,5 +9,5 @@ export interface Task
   StoryPoint: number;
   IsCompleted: boolean;
   TaskStatus: string;
-  DateCompleted: number;
+  DateCompleted: Date;
 }
