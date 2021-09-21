@@ -22,7 +22,6 @@ export class BacklogComponent implements OnInit {
   constructor(private taskServ: TaskService) { }
 
   ngOnInit(): void {
-    console.log(this.getAllUnassignedTasks());
     this.getAllUnassignedTasks();
   }
 

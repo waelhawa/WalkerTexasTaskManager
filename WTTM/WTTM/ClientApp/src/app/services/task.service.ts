@@ -46,7 +46,6 @@ export class TaskService {
   //Create createTasks
   createTask(task: Task)
   {
-    console.log(task);
     return this.http.post<Task>(`${this.apiUri}/createtask`, task);
   }
 
