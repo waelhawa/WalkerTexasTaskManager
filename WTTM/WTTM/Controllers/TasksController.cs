@@ -17,7 +17,7 @@ namespace WTTM.Controllers
         [HttpPost("createtask")]
         public async Task<ActionResult<Tasks>> CreateTask(Tasks task)
         {
-            task.DateCreated = DateTime.Now;
+            //task.DateCreated = DateTime.Now;
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetTasksById), new { id = task.TaskId }, task);
