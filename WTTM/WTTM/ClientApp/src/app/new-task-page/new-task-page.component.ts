@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Task } from '../models/Task';
 import { TaskService } from '../services/task.service';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class NewTaskPageComponent implements OnInit {
   bandit: string = "/assets/images/64 bit bandit.png"
   task: Task = {TaskId: 0, SprintId: 0, UserId: 0, ShortDesc: "", FullDesc: "", StoryPoint: 0, IsCompleted: false, TaskStatus: "new",
   DateCompleted: null, DateCreated: null}
+  pipe: DatePipe = new DatePipe('en-US');
 
   constructor(private taskServ: TaskService) { }
 
@@ -23,8 +25,10 @@ export class NewTaskPageComponent implements OnInit {
 
   onSubmit(form: NgForm){
     this.task = form.form.value;
+    this.task.IsCompleted = false;
+    this.task.DateCreated = new Date();
+    this.task.DateCompleted = new Date();
     this.taskServ.createTask(this.task);
-    console.log(this.task);
   }
 
 

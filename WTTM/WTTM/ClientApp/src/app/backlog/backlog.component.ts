@@ -11,7 +11,7 @@ import { TaskComponent } from '../task/task.component';
 })
 export class BacklogComponent implements OnInit {
   messageNone: string = "Mighty fine work partner! You don't have any tasks in your backlog.";
-  empty: boolean = true;
+  empty: boolean = false;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
   allUATasks: Task[] = [];
   allTasks: Task[]=[];
@@ -22,6 +22,7 @@ export class BacklogComponent implements OnInit {
   constructor(private taskServ: TaskService) { }
 
   ngOnInit(): void {
+    console.log(this.getAllUnassignedTasks());
     this.getAllUnassignedTasks();
   }
 

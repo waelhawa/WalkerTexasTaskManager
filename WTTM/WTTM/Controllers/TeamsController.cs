@@ -25,7 +25,7 @@ namespace WTTM.Controllers
             return CreatedAtAction(nameof(GetTeamsById), new { id = teams.TeamId }, teams);
         }
         #endregion
-        
+
 
         #region Update
         [HttpPut("updateteam/{id}")]
@@ -56,14 +56,14 @@ namespace WTTM.Controllers
 
         #region Delete
         [HttpDelete("deleteteam/{id}")]
-        public async Task<ActionResult> DeleteTeams(int id) 
+        public async Task<ActionResult> DeleteTeams(int id)
         {
             var teams = await _context.Teams.FindAsync(id);
             if (teams == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 teams.TeamName = null;
                 _context.Teams.Remove(teams);
