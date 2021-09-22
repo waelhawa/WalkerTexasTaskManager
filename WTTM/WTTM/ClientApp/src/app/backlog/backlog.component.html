@@ -1,7 +1,5 @@
 <h1>Backlog</h1>
 
-  <app-task *ngFor="let task of allUATasks" [task] = "task"></app-task>
-
 <div class="backlogWrapper">
   <div *ngIf="empty; else present" class="empty">
     <div class="emptyMessage">
@@ -17,12 +15,9 @@
       <img [src]="chuckGif">
     </div>
   </div>
-
-
   <ng-template #present>
-    <div *ngFor="let task of allUATasks">
-      <app-task [task] = "task"></app-task>
+    <div *ngFor="let uTask of allUATasks">
+      <app-task [task]='uTask'></app-task>
     </div>
   </ng-template>
-
 </div>

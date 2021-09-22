@@ -1,1 +1,11 @@
-<p>task-page works!</p>
+<div *ngIf="task">
+  <h1>Task{{task.TaskId}}</h1>
+
+  <div class="description">
+    <p>{{task.FullDesc}}</p>
+    <p>{{task.StoryPoint}}</p>
+  </div>
+  <div class="workWrapper">
+
+  </div>
+</div>

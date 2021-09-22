@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/Task';
 import { TaskComponent } from '../task/task.component';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-task-page',
@@ -10,15 +12,34 @@ import { TaskComponent } from '../task/task.component';
   providers: [TaskService]
 })
 export class TaskPageComponent implements OnInit {
-  @Input() task: TaskComponent;
+  task: Task | undefined;
 
 
-  constructor(private taskServ: TaskService) { }
+  constructor(
+    private taskServ: TaskService,
+    private route: ActivatedRoute,
+    private location: Location
+    ) { }
 
-  ngOnInit() {
-
+  ngOnInit(): void {
+    this.getTask();
   }
 
+  getTask():void{
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.taskServ.gettasksbyid(id).subscribe(task => this.task = task);
+  }
+
+  goBack(): void{
+    this.location.back();
+  }
+
+  save(): void{
+    if(this.task){
+      this.taskServ.upDateTask(this.task.TaskId, this.task)
+      .subscribe(() => this.goBack());
+    }
+  }
 
 
 
