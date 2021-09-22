@@ -6,6 +6,8 @@
     <p>{{task.StoryPoint}}</p>
   </div>
   <div class="workWrapper">
-
+    <div *ngFor="let ban of bandits">
+      <app-bandit></app-bandit>
+    </div>
   </div>
 </div>

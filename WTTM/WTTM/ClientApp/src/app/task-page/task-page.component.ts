@@ -4,6 +4,7 @@ import { Task } from '../models/Task';
 import { TaskComponent } from '../task/task.component';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { BanditComponent } from '../bandit/bandit.component';
 
 @Component({
   selector: 'app-task-page',
@@ -13,7 +14,8 @@ import { Location } from '@angular/common';
 })
 export class TaskPageComponent implements OnInit {
   task: Task | undefined;
-
+  num: number = 0;
+  bandits: number[] = Array(this.num).fill(0, 20);
 
   constructor(
     private taskServ: TaskService,
@@ -23,12 +25,19 @@ export class TaskPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTask();
+    this.bringBandits();
   }
 
   getTask():void{
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.taskServ.gettasksbyid(id).subscribe(task => this.task = task);
+
   }
+
+  bringBandits(){
+    this.num = this.task.StoryPoint;
+  }
+
 
   goBack(): void{
     this.location.back();
