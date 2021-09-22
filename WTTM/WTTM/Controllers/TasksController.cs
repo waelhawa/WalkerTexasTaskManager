@@ -88,9 +88,9 @@ namespace WTTM.Controllers
         [HttpGet("getunassignedtasksinsprint/{id}")]
         public async Task<ActionResult<List<Tasks>>> GetUnassignedTasksIsSprint(int id)
         {
-            var sprintTasks = GetTasksBySprintId(id);
+            var sprintTasks = await GetTasksBySprintId(id);
             var userTasks = new List<Tasks>();
-            foreach (Tasks task in sprintTasks.Result.Value)
+            foreach (Tasks task in sprintTasks.Value)
             {
                 if (task.UserId == null)
                 {
