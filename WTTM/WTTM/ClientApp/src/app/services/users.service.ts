@@ -39,9 +39,9 @@ export class UsersService {
    }
 
    //Create
-   createUser(user: Users){
-    return this.http.post<Users>(`${this.apiUri}/createuser`, user);
-   }
+  //  createUser(user: Users){
+  //   return this.http.post<Users>(`${this.apiUri}/createuser`, user);
+  //  }
 
    //Delete
    deleteUser(id: string){
