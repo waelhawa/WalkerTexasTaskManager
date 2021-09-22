@@ -6,6 +6,7 @@ import { ChuckJokeService } from '../services/chuck-joke.service';
 import { SigninResponse, User, UserManager } from 'oidc-client';
 import { AuthorizeService } from 'src/api-authorization/authorize.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { geteuid } from 'process';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +23,7 @@ export class HomeComponent implements OnInit {
   constructor(private taskServ: TaskService, private authorizeService: AuthorizeService, private activatedRoute: ActivatedRoute, private router: Router)  { }
 
   ngOnInit(): void {
-    // // this.id = this.user.id_token;
-    // // this.getUserTasks(this.id);
-    // this.id = this.authorizeService.getAccessToken()
-    // console.log(this.id)
+
   }
 
   getUserTasks(id: string){
