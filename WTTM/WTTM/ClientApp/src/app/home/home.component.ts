@@ -3,6 +3,9 @@ import { TaskComponent } from '../task/task.component';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/Task';
 import { ChuckJokeService } from '../services/chuck-joke.service';
+import { SigninResponse, User, UserManager } from 'oidc-client';
+import { AuthorizeService } from 'src/api-authorization/authorize.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +17,17 @@ export class HomeComponent implements OnInit {
   yourTasks: Task[] = [];
   empty: boolean = true;
   joke: string = ""
-  @Input() id: string;    //send user Id here.
+  id: string;
   
-  constructor(private taskServ: TaskService) { }
+  constructor(private taskServ: TaskService, private authorizeService: AuthorizeService, private activatedRoute: ActivatedRoute, private router: Router)  { }
 
   ngOnInit(): void {
-    this.getUserTasks(this.id);
+    // this.id = this.user.id_token;
+    // this.getUserTasks(this.id);
+    this.authorizeService.getAccessToken().subscribe(
+      result => this.id = result.toString()
+    )
+    console.log(this.id);
   }
 
   getUserTasks(id: string){
