@@ -12,7 +12,7 @@ import { DatePipe, formatDate } from '@angular/common';
 })
 export class NewTaskPageComponent implements OnInit {
   bandit: string = "/assets/images/64 bit bandit.png"
-  task: Task = {TaskId: 0, SprintId: 0, UserId: '', DateCreated: null, ShortDesc: 'shorty', FullDesc: 'longy', StoryPoint: 10, IsCompleted: false, TaskStatus: 'new', DateCompleted: null}
+  task: Task = {taskId: 0, sprintId: 0, userId: '', dateCreated: null, shortDesc: 'shorty', fullDesc: 'longy', storyPoint: 10, isCompleted: false, taskStatus: 'new', dateCompleted: null}
   pipe: DatePipe = new DatePipe('en-US');
 
   constructor(private taskServ: TaskService) { }
