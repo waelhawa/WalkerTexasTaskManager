@@ -1,9 +1,9 @@
 export interface Sprints {
-    SprintId: number;
-    TeamId: number;
-    DateCreated: Date;
-    DateCompleted: Date;
-    TotalStoryPoint: number;
-    IsCompleted: boolean;
-    SprintStatus: string;
+    sprintId: number;
+    teamId: number;
+    dateCreated: Date;
+    dateCompleted: Date;
+    totalStoryPoint: number;
+    isCompleted: boolean;
+    sprintStatus: string;
 }

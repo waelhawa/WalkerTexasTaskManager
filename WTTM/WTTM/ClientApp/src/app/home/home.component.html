@@ -30,7 +30,7 @@
   <ng-template #present>
     <div class="taskWrapper">
       <div *ngFor="let task of yourTasks">
-        <app-task></app-task>
+        <app-task [task] = "task"></app-task>
       </div>
     </div>
   </ng-template>
