@@ -1,16 +1,17 @@
 
 <div class="taskWrapper">
+  <a routerLink="/task-page/{{task.taskId}}">open</a>
   <div class ="taskAttribute">
-    <p>{{task.taskId}}</p>
+    <p>TASK-{{task.taskId}}</p>
   </div>
   <div class ="taskAttribute">
-    <p>{{task.shortDesc}}</p>
+    <p>Description: {{task.shortDesc}}</p>
   </div>
  <div class ="taskAttribute">
     <p>{{task.userId}}</p>
   </div>
   <div class ="taskAttribute">
-    <p>{{task.storyPoint}}</p>
+    <p>Points: {{task.storyPoint}}</p>
   </div>
 </div>
 

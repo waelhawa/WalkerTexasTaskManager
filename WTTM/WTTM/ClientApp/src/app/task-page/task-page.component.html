@@ -1,9 +1,11 @@
-<div *ngIf="task">
-  <h1>Task{{task.TaskId}}</h1>
-
+<div>
+  <div class="topDisplay">
+    <h1>TASK-{{task.taskId}}</h1>
+    <p>{{task.shortDesc}}</p>
+</div>
   <div class="description">
-    <p>{{task.FullDesc}}</p>
-    <p>{{task.StoryPoint}}</p>
+    <p>{{task.fullDesc}}</p>
+    <p>{{task.storyPoint}}</p>
   </div>
   <div class="workWrapper">
     <div *ngFor="let ban of bandits">

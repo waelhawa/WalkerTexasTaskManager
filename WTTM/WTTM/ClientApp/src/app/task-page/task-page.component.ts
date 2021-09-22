@@ -29,13 +29,15 @@ export class TaskPageComponent implements OnInit {
   }
 
   getTask():void{
-    const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.taskServ.gettasksbyid(id).subscribe(task => this.task = task);
-
+     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+     this.taskServ.gettasksbyid(id).subscribe(task => this.task = task);
+    // const routeParams = this.route.snapshot.paramMap;
+    // let id: number = Number(routeParams.get(id));
+    // this.task = this.taskServ.gettasksbyid(id);
   }
 
   bringBandits(){
-    this.num = this.task.StoryPoint;
+    this.num = this.task.storyPoint;
   }
 
 

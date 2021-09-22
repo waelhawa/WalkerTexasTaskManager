@@ -43,6 +43,8 @@ import { SprintComponent } from './sprint/sprint.component';
        { path: '', component: HomeComponent, pathMatch: 'full' },
        { path: 'backlog', component: BacklogComponent },
        { path: 'new-task-page', component: NewTaskPageComponent },
+       { path: 'task-page/:id', component: TaskPageComponent},
+
        //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
      ])
   ],

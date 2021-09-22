@@ -35,12 +35,12 @@
     <div class="topForm">
       <div class="shDesc">
         <label>Short Description</label>
-        <input id="shortDesc" type="text" [(ngModel)] = "task.ShortDesc" name="ShortDesc">
+        <input id="shortDesc" type="text" [(ngModel)]="task.shortDesc" name="shortDesc">
       </div>
       <div class="selects">
         <div class="innerSelects">
           <label>Points</label>
-          <select [(ngModel)] = "task.StoryPoint" name="StoryPoint">
+          <select [(ngModel)]="task.storyPoint" name="storyPoint">
             <option value=1>1</option>
             <option value=2>2</option>
             <option value=3>3</option>
@@ -57,7 +57,7 @@
       </div>
         <div class="innerSelects">
           <label>Status</label>
-          <select [(ngModel)]="task.TaskStatus" name="TaskStatus">
+          <select [(ngModel)]="task.taskStatus" name="taskStatus">
             <option value="new">New</option>
             <option value="in progress">In Progess</option>
             <option value="pending">Pending</option>
@@ -67,7 +67,7 @@
     </div>
     <div class="fDesc">
       <label>Full Description</label>
-      <textarea id="fullDesc" clrTextarea [(ngModel)] = "task.FullDesc" name="FullDesc"></textarea>
+      <textarea id="fullDesc" clrTextarea [(ngModel)]="task.fullDesc" name="fullDesc"></textarea>
     </div>
     <button type="submit">submit</button>
   </form>
