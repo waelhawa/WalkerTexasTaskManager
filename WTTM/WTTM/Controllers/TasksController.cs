@@ -85,6 +85,29 @@ namespace WTTM.Controllers
 
         }
 
+        [HttpGet("getunassignedtasksinsprint/{id}")]
+        public async Task<ActionResult<List<Tasks>>> GetUnassignedTasksIsSprint(int id)
+        {
+            var sprintTasks = await GetTasksBySprintId(id);
+            var userTasks = new List<Tasks>();
+            foreach (Tasks task in sprintTasks.Value)
+            {
+                if (task.UserId == null)
+                {
+                    userTasks.Add(task);
+                }
+            }
+
+            if (userTasks == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return userTasks;
+            }
+        }
+
         [HttpGet("gettasksbyuserid/{id}")]
         public async Task<ActionResult<List<Tasks>>> GetTasksBySprintId(string id)
         {

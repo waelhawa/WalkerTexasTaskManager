@@ -37,10 +37,20 @@ export class TaskService {
     return this.http.get<Task>(`${this.apiUri}/gettasksbyid/${id}`);
   }
 
+  getTasksByUserId(id: string)
+  {
+    return this.http.get<Task[]>(`${this.apiUri}/gettasksbyuserid/${id}`)
+  }
+
   getUnassignedTasks()
   {
 
     return this.http.get<Task[]>(`${this.apiUri}/getunassignedtasks`);
+  }
+
+  getUnassignedTasksInSprint(id: number)
+  {
+    return this.http.get<Task[]>(`${this.apiUri}/getunassignedtasksinsprint/${id}`);
   }
   
   //Create createTasks

@@ -45,7 +45,7 @@ export class TaskPageComponent implements OnInit {
 
   save(): void{
     if(this.task){
-      this.taskServ.upDateTask(this.task.TaskId, this.task)
+      this.taskServ.upDateTask(this.task.taskId, this.task)
       .subscribe(() => this.goBack());
     }
   }
