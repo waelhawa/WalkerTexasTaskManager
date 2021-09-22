@@ -1,13 +1,13 @@
 export interface Task
 {
-  TaskId: number;
-  SprintId: number;
-  UserId: string;
-  DateCreated: Date;
-  ShortDesc: string;
-  FullDesc: string;
-  StoryPoint: number;
-  IsCompleted: boolean;
-  TaskStatus: string;
-  DateCompleted: Date;
+  taskId: number;
+  sprintId: number;
+  userId: string;
+  dateCreated: Date;
+  shortDesc: string;
+  fullDesc: string;
+  storyPoint: number;
+  isCompleted: boolean;
+  taskStatus: string;
+  dateCompleted: Date;
 }

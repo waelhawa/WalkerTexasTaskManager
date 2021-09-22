@@ -21,14 +21,6 @@ export class NewTaskPageComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    //this.task = form.form.value;
-    // this.task.FullDesc = form.form.value.FullDesc;
-    // this.task.ShortDesc = form.form.value.ShortDesc;
-    // this.task.StoryPoint = form.form.value.StoryPoint;
-    // this.task.SprintId = 100;
-    // this.task.DateCreated = formatDate(this.pipe.transform(Date.now(), 'short'), 'MM/dd/yyyy', 'en-US');
-    this.task.DateCreated = new Date();
-    this.task.DateCompleted = new Date();
     this.addTask(this.task);
   }
 

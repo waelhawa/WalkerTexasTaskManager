@@ -46,7 +46,7 @@ export class TaskService {
   //Create createTasks
   createTask(task: Task)
   {
-    return this.http.post<Task>(`${this.apiUri}/createtask`, {"DateCreated": task.DateCreated, "ShortDesc": task.ShortDesc, "FullDesc": task.FullDesc, "StoryPoint": task.StoryPoint, "IsCompleted": false, "TaskStatus": task.TaskStatus, "DateCompleted": task.DateCompleted});
+    return this.http.post<Task>(`${this.apiUri}/createtask`, {"dateCreated": new Date(), "shortDesc": task.shortDesc, "fullDesc": task.fullDesc, "storyPoint": task.storyPoint, "isCompleted": false, "taskStatus": task.taskStatus, "dateCompleted": new Date()});
   }
 
   //Detele deletetask/{id}

@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TaskService } from '../services/task.service';
 import { Task } from '../models/Task';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task',
@@ -9,14 +7,24 @@ import { Observable } from 'rxjs';
   styleUrls: ['./task.component.css'],
 })
 export class TaskComponent implements OnInit {
-  @Input() task: Task
-    = {TaskId: 100, SprintId: 0, UserId: "", ShortDesc: "", FullDesc: "", StoryPoint: 0, IsCompleted: false, TaskStatus: "new",
-    DateCompleted: null, DateCreated: null}
+  @Input() task: Task; 
+  // {
+  //   TaskId: 1000, 
+  //   SprintId: 1000, 
+  //   UserId: 'MainUser', 
+  //   DateCreated: new Date(),
+  //   ShortDesc: 'Short Description', 
+  //   FullDesc: 'Long Description', 
+  //   StoryPoint: 1000, 
+  //   IsCompleted: false, 
+  //   TaskStatus: 'new',
+  //   DateCompleted: new Date() 
+  // };
 
   constructor() { }
 
   ngOnInit(): void {
-      console.log(this.task)
+      console.log(this.task.fullDesc)
   }
 
 }
