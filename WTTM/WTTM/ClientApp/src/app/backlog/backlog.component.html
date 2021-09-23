@@ -17,7 +17,7 @@
   </div>
   <ng-template #present>
     <div *ngFor="let uTask of allUATasks; index as i">
-      <app-task [task] = "uTask"><button [routerLink]="['/task-page', i]">open</button></app-task>
+      <app-task [task] = "uTask"></app-task>
 
     </div>
   </ng-template>

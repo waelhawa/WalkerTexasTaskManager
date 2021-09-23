@@ -15,7 +15,8 @@ import { BanditComponent } from '../bandit/bandit.component';
 export class TaskPageComponent implements OnInit {
   task: Task | undefined;
   num: number = 0;
-  bandits: number[] = Array(this.num).fill(0, 20);
+  chuckGif: string ="/assets/images/Chuck Gif.gif";
+  scoreKeep: number = 0;
 
   constructor(
     private taskServ: TaskService,
@@ -50,6 +51,11 @@ export class TaskPageComponent implements OnInit {
       this.taskServ.upDateTask(this.task.taskId, this.task)
       .subscribe(() => this.goBack());
     }
+  }
+
+  kickBandit(){
+    this.scoreKeep += 1;
+    return this.scoreKeep;
   }
 
 

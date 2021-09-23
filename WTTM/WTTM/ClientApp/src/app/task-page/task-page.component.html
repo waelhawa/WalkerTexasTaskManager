@@ -8,8 +8,17 @@
     <p>{{task.storyPoint}}</p>
   </div>
   <div class="workWrapper">
-    <div *ngFor="let ban of bandits">
-      <app-bandit></app-bandit>
-    </div>
+      <div class="banditSqaure">
+        <button onclick="kickBandit()" id="banditBtn"><img src="/assets/images/64 bit bandit.png"></button>
+      </div>
+      <div class="kickSquare">
+        <div class="scoreKeep">
+          <h4>Score</h4>
+          <p>{{scoreKeep}}/{{task.storyPoint}}</p>
+        </div>
+        <div class="workChuck">
+          <img [src]="chuckGif">
+        </div>
+      </div>
   </div>
 </div>

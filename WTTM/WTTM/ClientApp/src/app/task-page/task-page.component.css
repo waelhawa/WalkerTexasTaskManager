@@ -2,3 +2,17 @@
   display: inline-flex;
   align-items: baseline;
 }
+
+
+
+
+
+
+#banditBtn{
+  border: none;
+  background: none;
+}
+
+#banditBtn:hover{
+  transform: scale(1.05);
+}
