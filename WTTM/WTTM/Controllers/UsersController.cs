@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using IdentityServer4.Events;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,14 @@ using WTTM.Models;
 
 namespace WTTM.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         WTTM_DBContext _context = new WTTM_DBContext();
+        //private readonly UserLoginSuccessEvent data;
+        private UserManager<AspNetUsers> userManager;
 
         #region Create
         [HttpPost("createuser")]
@@ -43,21 +47,18 @@ namespace WTTM.Controllers
             }
         }
 
-        [Authorize]
+        
         [HttpGet("getcurrentuser")]
-        public async Task<ActionResult<string>> GetCurrentUser()
+        public async Task<ActionResult<AspNetUsers>> GetCurrentUser()
         {
-            String userId = User.getUID();
-            if (userId == "")
-            {
-                return BadRequest();
-            }
-            else
-            {
-                return new JsonResult(new { id = userId });
-            }
+            string something = HttpContext.TraceIdentifier;
+            //string something = "3475ae69-eede-42b1-841e-53dfe3cac633";
+            //var something = data.SubjectId;
+            var user = await GetUsersByUserName(something);
+            Console.WriteLine(something);
+            return user;
         }
-
+        [Authorize]
         [HttpGet("getusersbyid/{id}")]
         public async Task<ActionResult<AspNetUsers>> GetUsersById(string id)
         {

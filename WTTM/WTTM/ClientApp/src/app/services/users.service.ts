@@ -12,7 +12,7 @@ export class UsersService {
   apiUri: string = "";
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUri: string) {
-    this.apiUri = `${baseUri}/api/Users`;
+    this.apiUri = `${baseUri}api/Users`;
    }
 
    //Read
@@ -20,8 +20,8 @@ export class UsersService {
       return this.http.get<Users[]>(`${this.apiUri}/getusers`);
    }
 
-   getCurrentUser(): Observable<string>{
-    return this.http.get<{id}>(`${this.apiUri}/getcurrentuser`).pipe(map(({id})=>{return id}))
+   getCurrentUser(){
+    return this.http.get<Users>(`${this.apiUri}/getcurrentuser`);
    }
 
    getUsersById(id: string){
