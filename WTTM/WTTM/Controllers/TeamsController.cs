@@ -95,6 +95,20 @@ namespace WTTM.Controllers
                 return teams;
             }
         }
+
+        //[HttpGet("getteamsbyuserid/{id}")]
+        //public async Task<ActionResult<Teams>> GetTeamsByUserId(string id)
+        //{
+        //    var teams = await _context.AspNetUsers.ToListAsync();
+        //    var team = new Teams();
+        //    foreach (AspNetUsers item in teams)
+        //    {
+        //        if (item.Id == id)
+        //        {
+        //            team? = GetTeamsById(item.TeamId);
+        //        }
+        //    }
+        //}
         #endregion
 
 

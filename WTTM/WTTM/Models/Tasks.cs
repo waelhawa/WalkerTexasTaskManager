@@ -19,6 +19,7 @@ namespace WTTM.Models
         public bool IsCompleted { get; set; }
         public string TaskStatus { get; set; }
         public DateTime? DateCompleted { get; set; }
+        public int? ScoreKeep { get; set; }
 
         public virtual Sprints Sprint { get; set; }
         public virtual AspNetUsers User { get; set; }

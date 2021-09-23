@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Sprints } from '../models/Sprints';
+import { Task } from '../models/Task';
+import { Teams } from '../models/Teams';
+import { Users } from '../models/Users';
 import { SprintService } from '../services/sprint.service';
+import { TaskService } from '../services/task.service';
+import { TeamsService } from '../services/teams.service';
+import { UsersService } from '../services/users.service';
 
 
 @Component({
@@ -12,12 +18,16 @@ import { SprintService } from '../services/sprint.service';
 })
 export class SprintComponent implements OnInit {
 
-  getAllSprints: Sprints[] = [];
+  tasksNotAssigned: Task[] = [];
   allSprints: Sprints[] = [];
+  currentSprint: Sprints;
+  currentTeam: Teams;
+  currentUser: Users;
 
-  constructor( private sprintServe: SprintService) { }
+  constructor( private sprintServe: SprintService, private taskserv: TaskService, private teamServ:TeamsService, private userServ: UsersService) { }
 
   ngOnInit(): void {
+
 
    this.getSprints();
    
@@ -25,8 +35,24 @@ export class SprintComponent implements OnInit {
 
   getSprints(){
     this.sprintServe.getSprints().subscribe(
-      result => this.getAllSprints = result
+      result => this.allSprints = result
     )
   }
+
+  // getUnassignedTasksInSprint(){
+  //   this.taskserv.getUnassignedTasksInSprint(this.currentSprint.sprintId).subscribe(
+  //     result => this.tasksNotAssigned = result
+  //   )
+  // }
+
+  // getSprintByTeamId(){
+  //   this.sprintServe.getSprintsByTeamId(this.currentTeam.teamId).subscribe(
+  //     result => this.currentSprint = result
+  //   )
+  // }
+
+  // getTeamByUserId(){
+
+  // }
 
 }

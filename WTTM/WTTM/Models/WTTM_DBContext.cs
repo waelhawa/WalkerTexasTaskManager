@@ -252,6 +252,8 @@ namespace WTTM.Models
 
                 entity.Property(e => e.IsCompleted).HasColumnName("isCompleted");
 
+                entity.Property(e => e.ScoreKeep).HasColumnName("scoreKeep");
+
                 entity.Property(e => e.ShortDesc)
                     .IsRequired()
                     .HasColumnName("shortDesc")

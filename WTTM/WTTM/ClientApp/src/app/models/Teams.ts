@@ -1,6 +1,6 @@
 export interface Teams
 {
-    teamId:string;
+    teamId:number;
     teamName:string;
     teamPoints:number;
 }
