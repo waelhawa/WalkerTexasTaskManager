@@ -11,8 +11,8 @@ import { DatePipe, formatDate } from '@angular/common';
   styleUrls: ['./new-task-page.component.css'],
 })
 export class NewTaskPageComponent implements OnInit {
-  bandit: string = "/assets/images/64 bit bandit.png"
-  task: Task = {taskId: 0, sprintId: 0, userId: '', dateCreated: null, shortDesc: 'shorty', fullDesc: 'longy', storyPoint: 10, isCompleted: false, taskStatus: 'new', dateCompleted: null, scoreKeep: 0}
+  bandit: string = "/assets/images/64 bit bandit.png";
+  task: Task = {taskId: 0, sprintId: 0, userId: '', dateCreated: null, shortDesc: 'shorty', fullDesc: 'longy', storyPoint: 10, isCompleted: false, taskStatus: 'new', dateCompleted: null, scoreKeep: 0};
   pipe: DatePipe = new DatePipe('en-US');
 
   constructor(private taskServ: TaskService) { }
@@ -21,6 +21,7 @@ export class NewTaskPageComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    this.taskServ.createTask(this.task);
+    this.task = form.form.value;
+    this.taskServ.createTask(this.task).subscribe();
   }
 }

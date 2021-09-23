@@ -32,9 +32,7 @@ export class TaskPageComponent implements OnInit {
   getTask():void{
      const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
      this.taskServ.gettasksbyid(id).subscribe(task => {
-      task.scoreKeep = 0;
       this.task = task;
-
      });
     // const routeParams = this.route.snapshot.paramMap;
     // let id: number = Number(routeParams.get(id));
@@ -42,10 +40,9 @@ export class TaskPageComponent implements OnInit {
   }
 
   bringBandits(){
-    if(this.task.scoreKeep === null){
-      this.task.scoreKeep == 0;
-    }
+
     this.num = this.task.storyPoint;
+
   }
 
 
@@ -53,16 +50,25 @@ export class TaskPageComponent implements OnInit {
     this.location.back();
   }
 
-  save(): void{
-    if(this.task){
-      this.taskServ.upDateTask(this.task.taskId, this.task)
-      .subscribe(() => this.goBack());
-    }
+  save(){
+      this.taskServ.upDateTask(this.task.taskId, this.task).subscribe()
+      //this.goBack();
+  }
+
+  completeTask(): void{
+    this.task.isCompleted = true;
+    this.save();
   }
 
   kickBandit(): number{
+    if (this.task.scoreKeep < this.task.storyPoint) {
     this.task.scoreKeep += 1;
     return this.task.scoreKeep;
+    }
+    else {
+      this.completeTask();
+      return this.task.scoreKeep;
+    }
   }
 
   undoKick(){

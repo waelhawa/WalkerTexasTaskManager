@@ -11,20 +11,6 @@ export class TaskService {
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUri: string) {
     this.apiUri = `${baseUri}api/tasks`
   }
-
-  // TaskId: number;
-  // SprintId: number;
-  // UserId: number;
-  // DateCreated: number;
-  // DateCompleted: number;
-  // ShortDesc: string;
-  // FullDesc: string;
-  // StoryPoint: number;
-  // IsCompleted: boolean;
-  // TaskStatus: string;
-  
-  
-  
   
   //Read getTasks
   getTasks()
@@ -56,7 +42,8 @@ export class TaskService {
   //Create createTasks
   createTask(task: Task)
   { 
-    return this.http.post<Task>(`${this.apiUri}/createtask`, {"dateCreated": new Date(), "shortDesc": task.shortDesc, "fullDesc": task.fullDesc, "storyPoint": task.storyPoint, "isCompleted": false, "taskStatus": task.taskStatus, "dateCompleted": new Date(), "scoreKeep": 0 }); //this is a comment
+    console.log(task);
+    return this.http.post<Task>(`${this.apiUri}/createtask`, {"dateCreated": new Date(), "shortDesc": task.shortDesc, "fullDesc": task.fullDesc, "storyPoint": task.storyPoint, "isCompleted": false, "taskStatus": task.taskStatus, "dateCompleted": new Date(), "scoreKeep": task.scoreKeep});
   }
 
   //Detele deletetask/{id}
@@ -68,7 +55,8 @@ export class TaskService {
   //Update updatetask/{id}
   upDateTask(id:number, task:Task)
   {
-    return this.http.put<Task>(`${this.apiUri}/updatetask/${id}}`, task);
+    console.log(task);
+    return this.http.put<Task>(`${this.apiUri}/updatetask/${id}`, task);
   }
 
 }
