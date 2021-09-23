@@ -21,30 +21,6 @@ export class NewTaskPageComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    //this.task = form.form.value;
-    // this.task.FullDesc = form.form.value.FullDesc;
-    // this.task.ShortDesc = form.form.value.ShortDesc;
-    // this.task.StoryPoint = form.form.value.StoryPoint;
-    // this.task.SprintId = 100;
-    // this.task.DateCreated = formatDate(this.pipe.transform(Date.now(), 'short'), 'MM/dd/yyyy', 'en-US');
-    this.task.dateCreated = new Date();
-    this.task.dateCompleted = new Date();
     this.taskServ.createTask(this.task);
   }
-
-
-///////TODO add user assignment
-
-
 }
-
-// TaskId: number;
-// SprintId: number;
-// UserId: number;
-// DateCreated: Date;
-// DateCompleted: Date;
-// ShortDesc: string;
-// FullDesc: string;
-// StoryPoint: number;
-// IsCompleted: boolean;
-// TaskStatus: string;
