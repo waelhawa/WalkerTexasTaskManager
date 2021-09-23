@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WTTM.Models;
 
@@ -39,6 +42,21 @@ namespace WTTM.Controllers
                 return users;
             }
         }
+
+        //[Authorize]
+        //[HttpGet("getcurrentuser")]
+        //public async Task<ActionResult<string>> GetCurrentUser()
+        //{
+        //    String userId = User.getUID();
+        //    if (userId == "")
+        //    {
+        //        return BadRequest();
+        //    }
+        //    else
+        //    {
+        //        return new JsonResult(new { id = userId });
+        //    }
+        //}
 
         [HttpGet("getusersbyid/{id}")]
         public async Task<ActionResult<AspNetUsers>> GetUsersById(string id)

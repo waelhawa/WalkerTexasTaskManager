@@ -11,34 +11,16 @@ import { TaskService } from '../services/task.service';
   
 })
 export class TaskComponent implements OnInit {
-
-  allUATasksInSprint: Task[] = [];
-  allTasksInSprint: Task[] = [];
-
-  taskId: number;
-  sprintId: number;
-  userId: string;
-  dateCreated: Date;
-  shortDesc: string;
-  fullDesc: string;
-  storyPoint: number;
-  isCompleted: boolean;
-  taskStatus: string;
-  dateCompleted: Date;
+  @Input() task: Task;
 
 
 
-  constructor(private taskServ: TaskService) { }
+  constructor() { }
   
 
   ngOnInit(): void {
-    this.getUassignedTasksInSprint();
         
     }
-
-  getUassignedTasksInSprint(){
-    this.taskServ.getUnassignedTasksInSprint(this.sprintId).subscribe(result => this.allUATasksInSprint = result)
-  }
 
   //get a list of unassigned tasks withing the sprint
 

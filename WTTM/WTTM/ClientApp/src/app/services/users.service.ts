@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Users } from '../models/Users';
 
 @Injectable({
@@ -16,6 +17,10 @@ export class UsersService {
    //Read
    getUsers() {
       return this.http.get<Users[]>(`${this.apiUri}/getusers`);
+   }
+
+   getCurrentUser(): any{
+    return this.http.get<{id}>(`${this.apiUri}/getcurrentuser`).pipe(map(({id})=>{return id}))
    }
 
    getUsersById(id: string){
