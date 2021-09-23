@@ -16,7 +16,7 @@ export class TaskPageComponent implements OnInit {
   task: Task | undefined;
   num: number = 0;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
-  scoreKeep: number = 0;
+
 
   constructor(
     private taskServ: TaskService,
@@ -53,14 +53,14 @@ export class TaskPageComponent implements OnInit {
     }
   }
 
-  kickBandit(): number{
-    this.scoreKeep += 1;
-    return this.scoreKeep;
+  kickBandit(){
+    this.task.scoreKeep += 1;
+    //return this.scoreKeep;
   }
 
-  undoKick(): number{
-    this.scoreKeep -= 1;
-    return this.scoreKeep;
+  undoKick(){
+    this.task.scoreKeep -= 1;
+    //return this.scoreKeep;
   }
 
 
