@@ -13,7 +13,7 @@ import { BanditComponent } from '../bandit/bandit.component';
   providers: [TaskService]
 })
 export class TaskPageComponent implements OnInit {
-  task: Task | undefined;
+  task: Task;
   num: number = 0;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
 
@@ -31,13 +31,20 @@ export class TaskPageComponent implements OnInit {
 
   getTask():void{
      const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-     this.taskServ.gettasksbyid(id).subscribe(task => this.task = task);
+     this.taskServ.gettasksbyid(id).subscribe(task => {
+      task.scoreKeep = 0;
+      this.task = task;
+
+     });
     // const routeParams = this.route.snapshot.paramMap;
     // let id: number = Number(routeParams.get(id));
     // this.task = this.taskServ.gettasksbyid(id);
   }
 
   bringBandits(){
+    if(this.task.scoreKeep === null){
+      this.task.scoreKeep == 0;
+    }
     this.num = this.task.storyPoint;
   }
 
@@ -53,9 +60,9 @@ export class TaskPageComponent implements OnInit {
     }
   }
 
-  kickBandit(){
+  kickBandit(): number{
     this.task.scoreKeep += 1;
-    //return this.scoreKeep;
+    return this.task.scoreKeep;
   }
 
   undoKick(){
