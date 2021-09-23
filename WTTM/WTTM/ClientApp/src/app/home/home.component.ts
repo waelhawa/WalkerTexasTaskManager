@@ -43,10 +43,22 @@ export class HomeComponent implements OnInit {
     
   }
 
-  getCurrentUser(): any{
+  getCurrentUser() {
     // this.userServ.getCurrentUser().subscribe(
     //   result => this.userId = result
     //)
+
+    this.userServ.getCurrentUser().subscribe(
+      result => {
+        this.userId = result;
+        // if (this.article.userid == this.userId){
+        //   this.isOwner = true;
+        // }
+        // else {
+        //   this.isOwner = false;
+        // }
+      }
+    );
   }
 
 }

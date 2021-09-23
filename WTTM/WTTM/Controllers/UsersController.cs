@@ -43,20 +43,20 @@ namespace WTTM.Controllers
             }
         }
 
-        //[Authorize]
-        //[HttpGet("getcurrentuser")]
-        //public async Task<ActionResult<string>> GetCurrentUser()
-        //{
-        //    String userId = User.getUID();
-        //    if (userId == "")
-        //    {
-        //        return BadRequest();
-        //    }
-        //    else
-        //    {
-        //        return new JsonResult(new { id = userId });
-        //    }
-        //}
+        [Authorize]
+        [HttpGet("getcurrentuser")]
+        public async Task<ActionResult<string>> GetCurrentUser()
+        {
+            String userId = User.getUID();
+            if (userId == "")
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return new JsonResult(new { id = userId });
+            }
+        }
 
         [HttpGet("getusersbyid/{id}")]
         public async Task<ActionResult<AspNetUsers>> GetUsersById(string id)

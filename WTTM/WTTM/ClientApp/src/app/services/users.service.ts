@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Users } from '../models/Users';
 
@@ -19,7 +20,7 @@ export class UsersService {
       return this.http.get<Users[]>(`${this.apiUri}/getusers`);
    }
 
-   getCurrentUser(): any{
+   getCurrentUser(): Observable<string>{
     return this.http.get<{id}>(`${this.apiUri}/getcurrentuser`).pipe(map(({id})=>{return id}))
    }
 
