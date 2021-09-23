@@ -10,4 +10,5 @@ export interface Task
   isCompleted: boolean;
   taskStatus: string;
   dateCompleted: Date;
+  scoreKeep: number;
 }
