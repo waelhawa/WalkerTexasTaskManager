@@ -2,6 +2,10 @@
   <div class="topDisplay">
     <h1>TASK-{{task.taskId}}</h1>
     <p>{{task.shortDesc}}</p>
+    <div class="saveButtons">
+      <button (click)="save()">Save</button>
+      <button (click)="goBack()">Go Back</button>
+    </div>
 </div>
   <div class="description">
     <p>{{task.fullDesc}}</p>
@@ -9,7 +13,7 @@
   </div>
   <div class="workWrapper">
       <div class="banditSqaure">
-        <button onclick="kickBandit()" id="banditBtn"><img src="/assets/images/64 bit bandit.png"></button>
+        <button (click)="kickBandit()" id="banditBtn"><img src="/assets/images/64 bit bandit.png"></button>
       </div>
       <div class="kickSquare">
         <div class="scoreKeep">

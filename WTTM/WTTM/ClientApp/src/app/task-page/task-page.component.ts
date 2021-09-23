@@ -53,8 +53,13 @@ export class TaskPageComponent implements OnInit {
     }
   }
 
-  kickBandit(){
+  kickBandit(): number{
     this.scoreKeep += 1;
+    return this.scoreKeep;
+  }
+
+  undoKick(): number{
+    this.scoreKeep -= 1;
     return this.scoreKeep;
   }
 
