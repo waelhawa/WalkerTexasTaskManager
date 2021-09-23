@@ -219,6 +219,7 @@ namespace WTTM.Controllers
                 updatedTask.StoryPoint = task.StoryPoint;
                 updatedTask.TaskStatus = task.TaskStatus;
                 updatedTask.IsCompleted = task.IsCompleted;
+                updatedTask.ScoreKeep = task.ScoreKeep;
 
                 _context.Entry(updatedTask).State = EntityState.Modified;
                 _context.Update(updatedTask);
