@@ -5,6 +5,9 @@ import { TaskComponent } from '../task/task.component';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { BanditComponent } from '../bandit/bandit.component';
+import { ChuckJoke } from '../models/ChuckJoke';
+import { Observable } from 'rxjs';
+import { ChuckJokeService } from '../services/chuck-joke.service';
 
 @Component({
   selector: 'app-task-page',
@@ -16,10 +19,11 @@ export class TaskPageComponent implements OnInit {
   task: Task;
   num: number = 0;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
-
+  randomChuckJoke: Observable<ChuckJoke>;
 
   constructor(
     private taskServ: TaskService,
+    private chuckServ: ChuckJokeService,
     private route: ActivatedRoute,
     private location: Location
     ) { }
@@ -60,6 +64,10 @@ export class TaskPageComponent implements OnInit {
     this.save();
   }
 
+  getChuckJoke(){
+    this.randomChuckJoke = this.chuckServ.getRandomJoke();
+   }
+
   kickBandit(): number{
     if (this.task.scoreKeep < this.task.storyPoint) {
     this.task.scoreKeep += 1;
@@ -69,6 +77,7 @@ export class TaskPageComponent implements OnInit {
       this.completeTask();
       return this.task.scoreKeep;
     }
+    alert(this.randomChuckJoke);
   }
 
   undoKick(){
