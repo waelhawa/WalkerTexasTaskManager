@@ -19,18 +19,6 @@ namespace WTTM.Controllers
     public class UsersController : ControllerBase
     {
         WTTM_DBContext _context = new WTTM_DBContext();
-        //private readonly UserLoginSuccessEvent data;
-        //private UserManager<AspNetUsers> userManager;
-
-        //public UsersController(UserLoginSuccessEvent ulse)
-        //{
-        //    data = ulse;
-        //}
-
-        //public UsersController(UserManager<AspNetUsers> um)
-        //{
-        //    userManager = um;
-        //}
 
         #region Create
         [HttpPost("createuser")]

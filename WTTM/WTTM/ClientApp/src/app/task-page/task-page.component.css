@@ -1,5 +1,5 @@
 .topDisplay{
-  display: inline-flex;
+  display: inline-block;
   align-items: baseline;
 }
 

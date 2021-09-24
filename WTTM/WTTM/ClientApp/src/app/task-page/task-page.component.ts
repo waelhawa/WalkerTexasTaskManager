@@ -16,10 +16,10 @@ import { ChuckJokeService } from '../services/chuck-joke.service';
   providers: [TaskService]
 })
 export class TaskPageComponent implements OnInit {
-  task: Task;
+  @Input() task: Task;
   num: number = 0;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
-  joke: ChuckJoke;
+  joke: ChuckJoke = {categories: [], created_at: "", icon_url: "", id: "", updated_at: "", url: "", value: ""};
   // = {categories: "", created_at: "", icon_url: "", id: "",
  // updated_at: "", url: "", value: ""}
   jokeUp: boolean = false;
@@ -39,8 +39,9 @@ export class TaskPageComponent implements OnInit {
 
   getTask():void{
      const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-     this.taskServ.gettasksbyid(id).subscribe(task => {
-    this.task = task;
+     this.taskServ.gettasksbyid(id).subscribe(result => {
+     this.task = result;
+     console.log(this.task);
      });
     // const routeParams = this.route.snapshot.paramMap;
     // let id: number = Number(routeParams.get(id));
@@ -69,7 +70,16 @@ export class TaskPageComponent implements OnInit {
   }
 
   getChuckJoke(){
-    this.chuckServ.getRandomJoke().subscribe(joke => this.joke = joke);
+    this.chuckServ.getRandomJoke().subscribe(result => {
+      console.log(result);
+      this.joke.categories = result.categories;
+      this.joke.created_at = result.created_at;
+      this.joke.icon_url = result.icon_url;
+      this.joke.id = result.id;
+      this.joke.updated_at = result.updated_at;
+      this.joke.url = result.url;
+      this.joke.value = result.value;
+    });
     console.log(this.joke);
    }
 

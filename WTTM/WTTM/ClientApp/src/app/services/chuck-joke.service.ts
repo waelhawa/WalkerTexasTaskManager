@@ -10,7 +10,7 @@ export class ChuckJokeService {
   apiUri: string = "";
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUri: string) {
-    this.apiUri = `${baseUri}/api/chuck`;
+    this.apiUri = `${baseUri}api/chuck`;
    }
 
    getRandomJoke(){

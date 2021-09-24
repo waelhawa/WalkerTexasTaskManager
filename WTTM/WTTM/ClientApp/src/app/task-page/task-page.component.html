@@ -1,8 +1,8 @@
 
 <ng-template #jokeDown>
   <div class="topDisplay">
-    <h1>TASK-{{task.taskId}}</h1>
-    <p>{{task.shortDesc}}</p>
+    <h1>TASK - {{ task.taskId }}: </h1>
+    <p>{{task.shortDesc }}</p>
     <div class="saveButtons">
       <button (click)="save()">Save</button>
       <button (click)="goBack()">Go Back</button>
@@ -10,8 +10,8 @@
     </div>
 </div>
   <div class="description">
-    <p>{{task.fullDesc}}</p>
-    <p>{{task.storyPoint}}</p>
+    <p>{{ task.fullDesc }}</p>
+    <p>{{ task.storyPoint }}</p>
   </div>
   <div class="workWrapper">
       <div class="banditSqaure">
@@ -20,7 +20,7 @@
       <div class="kickSquare">
         <div class="scoreKeep">
           <h4>Score</h4>
-          <p>{{task.scoreKeep}}/{{task.storyPoint}}</p>
+          <p>{{ task.scoreKeep }}/{{ task.storyPoint }}</p>
         </div>
         <div class="workChuck">
           <img [src]="chuckGif">
@@ -33,6 +33,6 @@
 <div *ngIf="jokeUp; else jokeDown">
   <p>Great work partner! Take a 5 minute break, then get back to it.</p>
   <h4>Your well earned Chuck Norris Joke...</h4>
-  <!--<p>{{joke.value}}</p>-->
+  <p>{{ joke.value }}</p>
   <button (click)="closeJoke()">Go Back</button>
 </div>
