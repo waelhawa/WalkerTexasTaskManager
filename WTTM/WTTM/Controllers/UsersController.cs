@@ -20,7 +20,17 @@ namespace WTTM.Controllers
     {
         WTTM_DBContext _context = new WTTM_DBContext();
         //private readonly UserLoginSuccessEvent data;
-        private UserManager<AspNetUsers> userManager;
+        //private UserManager<AspNetUsers> userManager;
+
+        //public UsersController(UserLoginSuccessEvent ulse)
+        //{
+        //    data = ulse;
+        //}
+
+        //public UsersController(UserManager<AspNetUsers> um)
+        //{
+        //    userManager = um;
+        //}
 
         #region Create
         [HttpPost("createuser")]
@@ -34,12 +44,12 @@ namespace WTTM.Controllers
 
         #region Read
         [HttpGet("getusers")]
-        public async Task<ActionResult<List<AspNetUsers>>> GetUsers()
+        public async Task<List<AspNetUsers>> GetUsers()
         {
             var users = await _context.AspNetUsers.ToListAsync();
             if (users == null)
             {
-                return NoContent();
+                return null;
             }
             else
             {
@@ -47,25 +57,30 @@ namespace WTTM.Controllers
             }
         }
 
-        
+
         [HttpGet("getcurrentuser")]
-        public async Task<ActionResult<AspNetUsers>> GetCurrentUser()
+        //public async Task<AspNetUsers> GetCurrentUser()
+        public async Task<IActionResult> GetCurrentUser()
         {
-            string something = HttpContext.TraceIdentifier;
+            string currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //string something = HttpContext.TraceIdentifier;
             //string something = "3475ae69-eede-42b1-841e-53dfe3cac633";
             //var something = data.SubjectId;
-            var user = await GetUsersByUserName(something);
-            Console.WriteLine(something);
-            return user;
+            //var user = await userManager.GetUserAsync(HttpContext.User);
+            var user = await GetUsersById(currentUser);
+            Console.WriteLine(currentUser);
+            return Ok(user);
         }
+
         [Authorize]
         [HttpGet("getusersbyid/{id}")]
-        public async Task<ActionResult<AspNetUsers>> GetUsersById(string id)
+        //public async Task<ActionResult<AspNetUsers>> GetUsersById(string id)
+        public async Task<AspNetUsers> GetUsersById(string id) 
         {
             var user = await _context.AspNetUsers.FindAsync(id);
             if (user == null)
             {
-                return NotFound();
+                return null;
             }
             else
             {
