@@ -19,7 +19,10 @@ export class TaskPageComponent implements OnInit {
   task: Task;
   num: number = 0;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
-  randomChuckJoke: Observable<ChuckJoke>;
+  joke: ChuckJoke;
+  // = {categories: "", created_at: "", icon_url: "", id: "",
+ // updated_at: "", url: "", value: ""}
+  jokeUp: boolean = false;
 
   constructor(
     private taskServ: TaskService,
@@ -30,13 +33,14 @@ export class TaskPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTask();
-    this.bringBandits();
+    //this.bringBandits();
+    this.getChuckJoke();
   }
 
   getTask():void{
      const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
      this.taskServ.gettasksbyid(id).subscribe(task => {
-      this.task = task;
+    this.task = task;
      });
     // const routeParams = this.route.snapshot.paramMap;
     // let id: number = Number(routeParams.get(id));
@@ -65,10 +69,12 @@ export class TaskPageComponent implements OnInit {
   }
 
   getChuckJoke(){
-    this.randomChuckJoke = this.chuckServ.getRandomJoke();
+    this.chuckServ.getRandomJoke().subscribe(joke => this.joke = joke);
+    console.log(this.joke);
    }
 
   kickBandit(): number{
+    this.jokeUp = true;
     if (this.task.scoreKeep < this.task.storyPoint) {
     this.task.scoreKeep += 1;
     return this.task.scoreKeep;
@@ -77,12 +83,17 @@ export class TaskPageComponent implements OnInit {
       this.completeTask();
       return this.task.scoreKeep;
     }
-    alert(this.randomChuckJoke);
+
   }
 
   undoKick(){
     this.task.scoreKeep -= 1;
     //return this.scoreKeep;
+  }
+
+  closeJoke():boolean{
+    this.jokeUp == false;
+    return this.jokeUp;
   }
 
 
