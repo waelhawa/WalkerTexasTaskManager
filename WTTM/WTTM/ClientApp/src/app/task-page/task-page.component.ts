@@ -73,6 +73,7 @@ export class TaskPageComponent implements OnInit {
 
   completeTask(): void {
     this.task.isCompleted = true;
+    this.task.dateCompleted = new Date();
     this.save();
   }
 
