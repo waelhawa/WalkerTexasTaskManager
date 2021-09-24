@@ -16,7 +16,7 @@ namespace WTTM.Models
             return client;
         }
 
-        public async Task<ActionResult<ChuckJokes>> GetRandomJoke()
+        public async Task<ChuckJokes> GetRandomJoke()
         {
             var client = GetHttpClient();
             var request = await client.GetAsync("/jokes/random");
@@ -24,7 +24,7 @@ namespace WTTM.Models
             return response;
         }
 
-        public async Task<ActionResult<ChuckJokes>> GetJoke(string category)
+        public async Task<ChuckJokes> GetJoke(string category)
         {
             var client = GetHttpClient();
             var request = await client.GetAsync($"/jokes/random?category={category}");

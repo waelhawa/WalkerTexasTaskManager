@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   constructor(private taskServ: TaskService, private userServ: UsersService, private authorizeService: AuthorizeService) { }
 
   ngOnInit(): void {
-
+    this.getCurrentUser();
   }
 
 

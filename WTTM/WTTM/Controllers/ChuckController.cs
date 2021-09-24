@@ -17,13 +17,13 @@ namespace WTTM.Controllers
     {
         private readonly ChuckDAL chuck = new ChuckDAL();
         [HttpGet("getrandomjoke")]
-        public Task<ActionResult<ChuckJokes>> GetRandomJoke()
+        public Task<ChuckJokes> GetRandomJoke()
         {
             return chuck.GetRandomJoke();
         }
 
         [HttpGet("getjoke/{category}")]
-        public Task<ActionResult<ChuckJokes>> GetJoke(string category)
+        public Task<ChuckJokes> GetJoke(string category)
         {
             return chuck.GetJoke(category);
         }

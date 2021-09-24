@@ -20,16 +20,16 @@ export class TaskPageComponent implements OnInit {
   num: number = 0;
   chuckGif: string = "/assets/images/Chuck Gif.gif";
   jokeUp: boolean = false;
-  joke: ChuckJoke =
-    {
-      categories: [],
-      created_at: "",
-      icon_url: "",
-      id: "",
-      updated_at: "",
-      url: "",
-      value: ""
-    };
+  joke: ChuckJoke
+    // = {
+    //   categories: [],
+    //   created_at: "",
+    //   icon_url: "",
+    //   id: "",
+    //   updated_at: "",
+    //   url: "",
+    //   value: ""
+    // };
 
   constructor(
     private taskServ: TaskService,
@@ -80,13 +80,7 @@ export class TaskPageComponent implements OnInit {
   getChuckJoke() {
     this.chuckServ.getRandomJoke().subscribe(result => {
       console.log(result);
-      this.joke.categories = result.categories;
-      this.joke.created_at = result.created_at;
-      this.joke.icon_url = result.icon_url;
-      this.joke.id = result.id;
-      this.joke.updated_at = result.updated_at;
-      this.joke.url = result.url;
-      this.joke.value = result.value;
+      this.joke = result;
     });
     console.log(this.joke);
   }
