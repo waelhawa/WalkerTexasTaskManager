@@ -18,18 +18,25 @@ import { ChuckJokeService } from '../services/chuck-joke.service';
 export class TaskPageComponent implements OnInit {
   @Input() task: Task;
   num: number = 0;
-  chuckGif: string ="/assets/images/Chuck Gif.gif";
-  joke: ChuckJoke = {categories: [], created_at: "", icon_url: "", id: "", updated_at: "", url: "", value: ""};
-  // = {categories: "", created_at: "", icon_url: "", id: "",
- // updated_at: "", url: "", value: ""}
+  chuckGif: string = "/assets/images/Chuck Gif.gif";
   jokeUp: boolean = false;
+  joke: ChuckJoke =
+    {
+      categories: [],
+      created_at: "",
+      icon_url: "",
+      id: "",
+      updated_at: "",
+      url: "",
+      value: ""
+    };
 
   constructor(
     private taskServ: TaskService,
     private chuckServ: ChuckJokeService,
     private route: ActivatedRoute,
     private location: Location
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.getTask();
@@ -37,39 +44,39 @@ export class TaskPageComponent implements OnInit {
     this.getChuckJoke();
   }
 
-  getTask():void{
-     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-     this.taskServ.gettasksbyid(id).subscribe(result => {
-     this.task = result;
-     console.log(this.task);
-     });
+  getTask(): void {
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    this.taskServ.gettasksbyid(id).subscribe(result => {
+      this.task = result;
+      console.log(this.task);
+    });
     // const routeParams = this.route.snapshot.paramMap;
     // let id: number = Number(routeParams.get(id));
     // this.task = this.taskServ.gettasksbyid(id);
   }
 
-  bringBandits(){
+  bringBandits() {
 
     this.num = this.task.storyPoint;
 
   }
 
 
-  goBack(): void{
+  goBack(): void {
     this.location.back();
   }
 
-  save(){
-      this.taskServ.upDateTask(this.task.taskId, this.task).subscribe()
-      //this.goBack();
+  save() {
+    this.taskServ.upDateTask(this.task.taskId, this.task).subscribe()
+    //this.goBack();
   }
 
-  completeTask(): void{
+  completeTask(): void {
     this.task.isCompleted = true;
     this.save();
   }
 
-  getChuckJoke(){
+  getChuckJoke() {
     this.chuckServ.getRandomJoke().subscribe(result => {
       console.log(result);
       this.joke.categories = result.categories;
@@ -81,13 +88,13 @@ export class TaskPageComponent implements OnInit {
       this.joke.value = result.value;
     });
     console.log(this.joke);
-   }
+  }
 
-  kickBandit(): number{
+  kickBandit(): number {
     this.jokeUp = true;
     if (this.task.scoreKeep < this.task.storyPoint) {
-    this.task.scoreKeep += 1;
-    return this.task.scoreKeep;
+      this.task.scoreKeep += 1;
+      return this.task.scoreKeep;
     }
     else {
       this.completeTask();
@@ -96,12 +103,12 @@ export class TaskPageComponent implements OnInit {
 
   }
 
-  undoKick(){
+  undoKick() {
     this.task.scoreKeep -= 1;
     //return this.scoreKeep;
   }
 
-  closeJoke():boolean{
+  closeJoke(): boolean {
     this.jokeUp == false;
     return this.jokeUp;
   }
