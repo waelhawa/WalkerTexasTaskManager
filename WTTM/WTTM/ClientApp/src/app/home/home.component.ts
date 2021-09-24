@@ -30,13 +30,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentUser();
+    
   }
 
 
   getCurrentUser() {
     this.userServ.getCurrentUser().subscribe(
       result => {
-        console.log(result);
         this.user = result;
 
       }

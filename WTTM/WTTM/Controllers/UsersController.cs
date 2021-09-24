@@ -46,25 +46,18 @@ namespace WTTM.Controllers
         }
 
         [Authorize]
-        [AllowAnonymous]
         [HttpGet("getcurrentuser")]
-        //public async Task<AspNetUsers> GetCurrentUser()
-        public async Task<IActionResult> GetCurrentUser()
+        public async Task<AspNetUsers> GetCurrentUser()
         {
             if (User.FindFirst(ClaimTypes.NameIdentifier) != null)
             {
-
             string currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //string something = HttpContext.TraceIdentifier;
-            //string something = "3475ae69-eede-42b1-841e-53dfe3cac633";
-            //var something = data.SubjectId;
-            //var user = await userManager.GetUserAsync(HttpContext.User);
             var user = await GetUsersById(currentUser);
-            return Ok(user);
+            return user;
             }
             else
             {
-                return Ok(null);
+                return null;
             }
         }
 
