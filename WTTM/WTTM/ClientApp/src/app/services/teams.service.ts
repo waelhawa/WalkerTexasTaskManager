@@ -31,6 +31,7 @@ export class TeamsService {
   //Create
   createNewTeam(teams: Teams)
   {
+    teams.teamPoints = 0;
     return this.http.post<Teams>(`${this.apiUri}/createnewteam`,{"teamName": teams.teamName, "teamPoints": teams.teamPoints});
   }
   
