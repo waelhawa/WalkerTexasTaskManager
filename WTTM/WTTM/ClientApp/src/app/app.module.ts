@@ -19,6 +19,7 @@ import { TaskComponent } from './task/task.component';
 import { SprintComponent } from './sprint/sprint.component';
 import { SprintDetailsComponent } from './sprint-details/sprint-details.component';
 import { SprintPageComponent } from './sprint-page/sprint-page.component';
+import { NewTeamPageComponent } from './new-team-page/new-team-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SprintPageComponent } from './sprint-page/sprint-page.component';
     TaskComponent,
     SprintComponent,
     SprintDetailsComponent,
-    SprintPageComponent
+    SprintPageComponent,
+    NewTeamPageComponent
   ],
   imports: [
     RouterModule,
@@ -50,6 +52,8 @@ import { SprintPageComponent } from './sprint-page/sprint-page.component';
        { path: 'backlog', component: BacklogComponent },
        { path: 'new-task-page', component: NewTaskPageComponent },
        { path: 'task-page/:id', component: TaskPageComponent},
+       { path: 'new-team-page', component: NewTeamPageComponent },
+
 
        //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
      ])

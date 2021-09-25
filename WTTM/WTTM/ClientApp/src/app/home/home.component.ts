@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   joke: string = "";
   allUsers: Users[] = [];
   user: Users;
-  loggedIn: boolean = true;
+  loggedIn: boolean = false;
   teams: Teams [];
   // something: string = "3475ae69-eede-42b1-841e-53dfe3cac633";
 
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  chageTeam(form: NgForm){
+  changeTeam(form: NgForm){
     this.user.teamId = form.form.value.teamId;
     this.userServ.updateUser(this.user.id, this.user).subscribe();
   }
