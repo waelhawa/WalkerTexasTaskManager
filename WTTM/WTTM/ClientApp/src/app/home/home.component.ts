@@ -13,6 +13,7 @@ import { identity } from 'rxjs';
 import { Users } from '../models/Users';
 import { Teams } from '../models/Teams';
 import { TeamsService } from '../services/teams.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -66,6 +67,11 @@ export class HomeComponent implements OnInit {
         this.teams = response;
       }
     )
+  }
+
+  chageTeam(form: NgForm){
+    this.user.teamId = form.form.value.teamId;
+    this.userServ.updateUser(this.user.id, this.user).subscribe();
   }
 
 }
