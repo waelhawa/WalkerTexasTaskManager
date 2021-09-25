@@ -10,7 +10,7 @@ export class SprintService {
   apiUri: string = "";
 
   constructor(private http:HttpClient, @Inject('Base_URL') baseUri: string) {
-    this.apiUri = `${baseUri}/api/sprints`;
+    this.apiUri = `${baseUri}api/sprints`;
    }
 
    //Read

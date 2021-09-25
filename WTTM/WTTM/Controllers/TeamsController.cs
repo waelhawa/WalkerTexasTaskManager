@@ -17,8 +17,8 @@ namespace WTTM.Controllers
         WTTM_DBContext _context = new WTTM_DBContext();
 
         #region Create
-        [HttpPost("createnewteam")]
-        public async Task<ActionResult<Teams>> CreateTeams(Teams teams)
+        [HttpPost("createteam")]
+        public async Task<ActionResult<Teams>> CreateTeam(Teams teams)
         {
             _context.Teams.Add(teams);
             await _context.SaveChangesAsync();

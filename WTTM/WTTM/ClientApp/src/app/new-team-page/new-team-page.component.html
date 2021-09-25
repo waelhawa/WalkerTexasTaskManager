@@ -1,1 +1,4 @@
-<p>new-team-page works!</p>
+<form #newTeamForm="ngForm" (ngSubmit)="onSubmit(newTeamForm)">
+    <input id="teamName" type="text" [(ngModel)]="team.teamName" name="teamName">
+    <button type="submit">Add New Team</button>
+</form>

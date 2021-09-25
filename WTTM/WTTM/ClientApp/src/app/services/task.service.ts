@@ -47,7 +47,6 @@ export class TaskService {
   //Create createTasks
   createTask(task: Task)
   { 
-    console.log(task);
     return this.http.post<Task>(`${this.apiUri}/createtask`, {"dateCreated": new Date(), "shortDesc": task.shortDesc, "fullDesc": task.fullDesc, "storyPoint": task.storyPoint, "isCompleted": false, "taskStatus": task.taskStatus, "dateCompleted": new Date(), "scoreKeep": task.scoreKeep});
   }
 

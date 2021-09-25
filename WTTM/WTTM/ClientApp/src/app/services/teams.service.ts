@@ -13,7 +13,7 @@ export class TeamsService {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUri:string) 
   { 
-    this.apiUri = `${baseUri}/api/teams`;
+    this.apiUri = `${baseUri}api/teams`;
 
     
   }
@@ -29,10 +29,9 @@ export class TeamsService {
   }
 
   //Create
-  createNewTeam(teams: Teams)
+  createTeam(teams: Teams)
   {
-    teams.teamPoints = 0;
-    return this.http.post<Teams>(`${this.apiUri}/createnewteam`,{"teamName": teams.teamName, "teamPoints": teams.teamPoints});
+    return this.http.post<Teams>(`${this.apiUri}/createteam`, {"teamName": teams.teamName, "teamPoints": 0});
   }
   
   //Delete
