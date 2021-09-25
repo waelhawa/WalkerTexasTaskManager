@@ -14,7 +14,7 @@ import { UsersService } from '../services/users.service';
   templateUrl: './sprint.component.html',
   styleUrls: ['./sprint.component.css'],
   providers: [SprintService]
-  
+
 })
 export class SprintComponent implements OnInit {
 
@@ -30,7 +30,7 @@ export class SprintComponent implements OnInit {
 
 
    this.getSprints();
-   
+
   }
 
   getSprints(){

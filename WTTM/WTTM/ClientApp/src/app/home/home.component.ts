@@ -24,13 +24,14 @@ export class HomeComponent implements OnInit {
   joke: string = "";
   allUsers: Users[] = [];
   user: Users;
+  loggedIn: boolean = true;
   // something: string = "3475ae69-eede-42b1-841e-53dfe3cac633";
 
   constructor(private taskServ: TaskService, private userServ: UsersService, private authorizeService: AuthorizeService) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
-    
+
   }
 
 

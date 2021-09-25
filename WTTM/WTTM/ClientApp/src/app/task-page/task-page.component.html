@@ -14,18 +14,20 @@
     <p>{{ task.storyPoint }}</p>
   </div>
   <div class="workWrapper">
-      <div class="banditSqaure">
-        <button (click)="kickBandit()" id="banditBtn"><img src="/assets/images/64 bit bandit.png"></button>
-      </div>
-      <div class="kickSquare">
-        <div class="scoreKeep">
-          <h4>Score</h4>
-          <p>{{ task.scoreKeep }}/{{ task.storyPoint }}</p>
+    <div class="scoreKeep">
+      <h4>Score</h4>
+      <p>{{ task.scoreKeep }}/{{ task.storyPoint }}</p>
+    </div>
+    <div class="imageRow">
+        <div class="banditSqaure">
+          <button (click)="kickBandit()" id="banditBtn"><img src="/assets/images/64 bit bandit.png"></button>
         </div>
-        <div class="workChuck">
-          <img [src]="chuckGif">
+        <div class="kickSquare">
+          <div class="workChuck">
+            <img id="chuck" [src]="chuckGif">
+          </div>
         </div>
-      </div>
+    </div>
   </div>
 </ng-template>
 
