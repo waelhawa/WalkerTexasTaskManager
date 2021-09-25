@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  chageTeam(form: NgForm){
+  changeTeam(form: NgForm){
     this.user.teamId = form.form.value.teamId;
     this.userServ.updateUser(this.user.id, this.user).subscribe();
   }

@@ -5,7 +5,7 @@
   <div class="titleHeader">
     <h1>Walker Texas Task Manager</h1>
     <div id="teamSelect">
-      <ng-form #changeTeamForm (ngSubmit)="changeTeam(changeTeamForm)">
+      <ng-form #changeTeamForm="ngForm" (ngSubmit)="changeTeam(changeTeamForm)">
         <label>Select Team</label>
         <select *ngFor="let team of teams" [(ngModel)]="team.teamId" name="teamId">
           <option value="team.teamId">
