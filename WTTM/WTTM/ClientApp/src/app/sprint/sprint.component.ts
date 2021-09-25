@@ -27,8 +27,7 @@ export class SprintComponent implements OnInit {
   constructor( private sprintServe: SprintService, private taskserv: TaskService, private teamServ:TeamsService, private userServ: UsersService) { }
 
   ngOnInit(): void {
-
-
+    
    this.getSprints();
    
   }
