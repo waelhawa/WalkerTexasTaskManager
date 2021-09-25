@@ -1,0 +1,49 @@
+.sprintWrapper{
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  border: 2px solid rgb(255, 187, 0);;
+  padding: 8px;
+  height: 60px;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  background-color: snow;
+  align-items: center;
+}
+
+.sprintWrapper:hover{
+  transform: scale(1.01);
+}
+
+
+
+.sprintAttribute{
+  align-items: center;
+  width: 100%;
+
+}
+
+.sprintAttribute p{
+  font-size: 18px;
+  color: black;
+  margin-bottom: 0;
+
+}
+
+button{
+  border-radius: 10px;
+  border: 2px solid rgb(255, 187, 0);
+  background-color:rgb(112, 102, 95);
+  color:snow;
+  margin-right: 12px;
+  align-items: center;
+}
+
+button:hover{
+  transform: scale(1.06);
+}
+
+a{
+  color: darkcyan;
+}

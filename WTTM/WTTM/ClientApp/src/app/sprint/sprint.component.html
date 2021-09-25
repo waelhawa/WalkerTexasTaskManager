@@ -1,4 +1,16 @@
-<<<<<<< HEAD
-<div *ngFor = "let sprint of allSprints">{{ sprint.sprintId }}</div>
-=======
->>>>>>> f4745cd153f89da5432b2edca95932c2710c3fa2
+<div class="sprintWrapper">
+  <button routerLink="/sprint-page/{{sprint.sprintId}}">Open</button>
+  <div class ="sprintAttribute">
+    <p>Sprint-{{sprint.sprintId}}</p>
+  </div>
+  <div class ="sprintAttribute">
+    <p>Team: {{sprint.dateCreated}}</p>
+  </div>
+ <div class ="sprintAttribute">
+    <p>Status: {{sprint.sprintStatus}}</p>
+  </div>
+  <div class ="sprintAttribute">
+    <p>Points: {{sprint.totalStoryPoint}}</p>
+  </div>
+</div>
+
