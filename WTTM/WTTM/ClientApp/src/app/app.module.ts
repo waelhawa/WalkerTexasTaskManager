@@ -17,6 +17,8 @@ import { TaskPageComponent } from './task-page/task-page.component';
 import { BacklogComponent } from './backlog/backlog.component';
 import { TaskComponent } from './task/task.component';
 import { SprintComponent } from './sprint/sprint.component';
+import { SprintDetailsComponent } from './sprint-details/sprint-details.component';
+import { SprintPageComponent } from './sprint-page/sprint-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { SprintComponent } from './sprint/sprint.component';
     TaskPageComponent,
     BacklogComponent,
     TaskComponent,
-    SprintComponent
+    SprintComponent,
+    SprintDetailsComponent,
+    SprintPageComponent
   ],
   imports: [
     RouterModule,
@@ -41,6 +45,8 @@ import { SprintComponent } from './sprint/sprint.component';
 
      RouterModule.forRoot([
        { path: '', component: HomeComponent, pathMatch: 'full' },
+       { path: 'sprint-page/:id', component: SprintPageComponent},
+       { path: 'sprint-details', component: SprintDetailsComponent},
        { path: 'backlog', component: BacklogComponent },
        { path: 'new-task-page', component: NewTaskPageComponent },
        { path: 'task-page/:id', component: TaskPageComponent},

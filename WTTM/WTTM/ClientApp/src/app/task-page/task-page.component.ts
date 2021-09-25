@@ -41,7 +41,7 @@ export class TaskPageComponent implements OnInit {
   ngOnInit(): void {
     this.getTask();
     //this.bringBandits();
-    this.getChuckJoke();
+    //this.getChuckJoke();
   }
 
   getTask(): void {
@@ -86,6 +86,7 @@ export class TaskPageComponent implements OnInit {
   }
 
   kickBandit(): number {
+    this.getChuckJoke();
     this.jokeUp = true;
     if (this.task.scoreKeep < this.task.storyPoint) {
       this.task.scoreKeep += 1;
@@ -104,7 +105,8 @@ export class TaskPageComponent implements OnInit {
   }
 
   closeJoke(): boolean {
-    this.jokeUp == false;
+    this.jokeUp = false;
+    console.log(this.jokeUp);
     return this.jokeUp;
   }
 

@@ -1,36 +1,51 @@
-<h1>Walker Texas Task Manager</h1>
-<div class="articleWrapper">
-  <div class="chuckNone">
-    <img [src]="chuckGif">
-  </div>
-  <p>Here you can find the tasks currently assigned to you.
-    Use this page as a launch pad for productivity. Click on any of the tasks below to
-    start knocking out blocks of time to measure your prodcutivity. With Chuck Norris's help
-    you can apprehend the gaggle of time-bandits in the way of your tasks' completion. You can do
-    this. Just remember <b> In the beginning there was nothing ...then Chuck Norris roundhouse kicked
-    the dark empty void and told it to get a job.</b>
-  </p>
+<ng-template #noLog>
 
+<<<<<<< HEAD
 </div>
 <h4> {{user.userName}} Your Tasks</h4>
 <div class="taskListWrapper">
   <div *ngIf="empty; else present" class="empty">
     <div class="emptyMessage">
+=======
+</ng-template>
 
-      <h4>You're either really good, or mighty lazy.</h4>
-      <h4>You don't have any tasks assigned to you.</h4>
-
-      <p>You ought to have another look at your goals for the year.
-        However small they may be, you should add some tasks to track your progess and visualize your
-        plans for the future.</p>
-
-      <a href="/new-task-page">Add new task</a>
-  </div>
-  <ng-template #present>
-    <div class="taskWrapper">
-      <div *ngFor="let task of yourTasks">
-        <app-task [task] = "task"></app-task>
+<div *ngIf="loggedIn; else noLog">
+    <h1>Walker Texas Task Manager</h1>
+    <div class="articleWrapper">
+      <div class="chuckNone">
+        <img [src]="chuckGif">
       </div>
+      <p>Here you can find the tasks currently assigned to you.
+        Use this page as a launch pad for productivity. Click on any of the tasks below to
+        start knocking out blocks of time to measure your prodcutivity. With Chuck Norris's help
+        you can apprehend the gaggle of time-bandits in the way of your tasks' completion. You can do
+        this. Just remember <b> In the beginning there was nothing ...then Chuck Norris roundhouse kicked
+        the dark empty void and told it to get a job.</b>
+      </p>
+
     </div>
-  </ng-template>
+    <h4>Your Tasks</h4>
+    <div class="taskListWrapper">
+      <div *ngIf="empty; else present" class="empty">
+        <div class="emptyMessage">
+>>>>>>> f4745cd153f89da5432b2edca95932c2710c3fa2
+
+          <h4>You're either really good, or mighty lazy.</h4>
+          <h4>You don't have any tasks assigned to you.</h4>
+
+          <p>You ought to have another look at your goals for the year.
+            However small they may be, you should add some tasks to track your progess and visualize your
+            plans for the future.</p>
+
+          <a href="/new-task-page">Add new task</a>
+        </div>
+      </div>
+      <ng-template #present>
+        <div class="taskWrapper">
+          <div *ngFor="let task of yourTasks">
+            <app-task [task] = "task"></app-task>
+          </div>
+        </div>
+      </ng-template>
+    </div>
 </div>
