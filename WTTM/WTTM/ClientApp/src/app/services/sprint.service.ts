@@ -23,7 +23,7 @@ export class SprintService {
    }
 
    getSprintsByTeamId(id: number){
-    return this.http.get<Sprints>(`/${this.apiUri}/getsprintsbyteamid/${id}`);
+    return this.http.get<Sprints[]>(`/${this.apiUri}/getsprintsbyteamid/${id}`);
    }
 
    getIncompletedSprints(){

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Sprints } from '../models/Sprints';
+import { Task } from '../models/Task';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-sprint-page',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SprintPageComponent implements OnInit {
 
-  constructor() { }
+  @Input() sprint: Sprints;
+  tasksInSprint: Task [];
+
+  constructor(private taskServ: TaskService) { }
 
   ngOnInit() {
+    this.getTasksBySprintId(this.sprint.sprintId);
+  }
+
+  getTasksBySprintId(id: number){
+    this.taskServ.getTasksBySprintId(id).subscribe(
+      result => {
+        this.tasksInSprint = result;
+      }
+    )
   }
 
 }

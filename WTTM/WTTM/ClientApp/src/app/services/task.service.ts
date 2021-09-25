@@ -28,6 +28,11 @@ export class TaskService {
     return this.http.get<Task[]>(`${this.apiUri}/gettasksbyuserid/${id}`)
   }
 
+  getTasksBySprintId(id: number)
+  {
+    return this.http.get<Task[]>(`${this.apiUri}/gettasksbysprintid/${id}`)
+  }
+
   getUnassignedTasks()
   {
 
