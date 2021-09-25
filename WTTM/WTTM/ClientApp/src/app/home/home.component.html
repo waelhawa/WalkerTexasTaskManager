@@ -1,12 +1,5 @@
 <ng-template #noLog>
 
-<<<<<<< HEAD
-</div>
-<h4> {{user.userName}} Your Tasks</h4>
-<div class="taskListWrapper">
-  <div *ngIf="empty; else present" class="empty">
-    <div class="emptyMessage">
-=======
 </ng-template>
 
 <div *ngIf="loggedIn; else noLog">
@@ -28,7 +21,6 @@
     <div class="taskListWrapper">
       <div *ngIf="empty; else present" class="empty">
         <div class="emptyMessage">
->>>>>>> f4745cd153f89da5432b2edca95932c2710c3fa2
 
           <h4>You're either really good, or mighty lazy.</h4>
           <h4>You don't have any tasks assigned to you.</h4>
