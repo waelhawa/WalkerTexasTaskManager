@@ -25,21 +25,7 @@ export class SprintDetailsComponent implements OnInit {
   constructor(private userServ: UsersService, private sprintServ: SprintService, private teamServ: TeamsService) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    this.getSprintsByTeamId(this.user.teamId);
-    alert
-  }
-
-  getSprintsByTeamId(id: number){
-      this.sprintServ.getSprintsByTeamId(id).subscribe(
-        result => {
-          this.sprintsByTeams = result ;
-          console.log(result);
-        }
-      );
-=======
     this.getCurrentUser();
->>>>>>> bae0772949a47e985aa0ead9410445105d8af3bf
   }
 
   
