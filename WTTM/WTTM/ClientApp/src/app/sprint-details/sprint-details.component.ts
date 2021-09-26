@@ -22,7 +22,7 @@ export class SprintDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSprintsByTeamId(this.user.teamId);
-
+    alert
   }
 
   getSprintsByTeamId(id: number){

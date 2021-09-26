@@ -1,16 +1,25 @@
 <ng-template #noLog>
-  <form #pickTeamForm="ngForm" (ngSubmit)="changeTeam(pickTeamForm)">
-    <label>Select Team</label>
-    <select name = "teamId" (ngModel)="teams">
-      <option *ngFor="let team of teams" [(ngValue)]="team.teamId">
-        {{team.teamName}}
-      </option>
-    </select>
-    <button type="submit">Change Team</button>
-  </form>
-  <button routerLink="/new-team-page/">
-    Create New Team
-  </button>
+  <h1>Walker Texas Task Manager</h1>
+  <div class="bigWrapper">
+    <div class="formWrapper">
+    <p id="teamInstr">Please select a team before moving on to your work.</p>
+    <form #pickTeamForm="ngForm" (ngSubmit)="changeTeam(pickTeamForm)">
+      <label>Select Team</label>
+      <select name = "teamId" (ngModel)="teams">
+        <option *ngFor="let team of teams" [(ngValue)]="team.teamId">
+          {{team.teamName}}
+        </option>
+      </select>
+      <button type="submit">Confirm Team</button>
+      <button routerLink="/new-team-page/">
+        Create New Team
+      </button>
+    </form>
+  </div>
+    <div class="articleWrapper">
+      <img id="teamChuck" [src]="chuckGif">
+    </div>
+</div>
 </ng-template>
 
 

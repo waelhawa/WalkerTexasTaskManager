@@ -19,14 +19,14 @@ export class NewTeamPageComponent implements OnInit {
   ngOnInit() {
 
   }
-  
+
   onSubmit(form: NgForm) {
     this.exists = false;
     this.team.teamName = form.form.value.teamName;
     console.log(this.team);
-    this.teamsServ.getTeams().subscribe(result => 
+    this.teamsServ.getTeams().subscribe(result =>
       {
-      result.forEach(element => 
+      result.forEach(element =>
         {
         if ((element.teamName.toLowerCase() == this.team.teamName.toLowerCase()) || (this.team.teamName == "") || (this.team.teamName == null))
         {

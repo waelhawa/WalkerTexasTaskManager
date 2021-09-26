@@ -1,4 +1,8 @@
-<form #newTeamForm="ngForm" (ngSubmit)="onSubmit(newTeamForm)">
-    <input id="teamName" type="text" [(ngModel)]="team.teamName" name="teamName">
-    <button type="submit">Add New Team</button>
-</form>
+<h1>Walker Texas Task Manager</h1>
+<div id="teamForm">
+  <form #newTeamForm="ngForm" (ngSubmit)="onSubmit(newTeamForm)">
+    <p>enter your team name here</p>
+      <input id="teamName" type="text" [(ngModel)]="team.teamName" name="teamName">
+      <button type="submit">Add New Team</button>
+  </form>
+</div>

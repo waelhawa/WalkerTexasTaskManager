@@ -29,6 +29,19 @@
   justify-content: space-evenly;
 }
 
+button{
+  border-radius: 10px;
+  border: 2px solid rgb(255, 187, 0);
+  background-color:rgb(112, 102, 95);
+  color:snow;
+  margin-right: 12px;
+  align-items: center;
+}
+
+button:hover{
+  transform: scale(1.06);
+}
+
 #banditBtn{
   border: none;
   background: none;
