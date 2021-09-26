@@ -12,6 +12,9 @@ export class SprintPageComponent implements OnInit {
 
   @Input() sprint: Sprints;
   tasksInSprint: Task [];
+  empty:boolean = false;
+  chuckGif: string ="/assets/images/Chuck Gif.gif";
+
 
   constructor(private taskServ: TaskService) { }
 

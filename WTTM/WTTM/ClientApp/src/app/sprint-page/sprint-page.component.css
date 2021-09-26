@@ -1,0 +1,40 @@
+.sprintWrapper{
+  border-radius: 10px;
+  border: 4px solid rgb(255, 187, 0);
+  background-color:rgb(112, 102, 95);
+  color:snow;
+  padding: 18px;
+}
+
+.empty{
+  display: inline-flex;
+  margin-top: 30px;
+}
+
+.emptyMessage{
+  margin-top: 40px;
+
+
+}
+
+.emptyMessage a{
+  color:rgb(255, 187, 0);
+  font-size: 20px;
+}
+
+h1{
+  margin-bottom: 35px;
+}
+
+p{
+  margin-top: 12px;
+  font-size: 20px;
+  padding: 50px
+}
+
+
+.chuckNone{
+  width: 30%;
+  height: auto;
+
+}
