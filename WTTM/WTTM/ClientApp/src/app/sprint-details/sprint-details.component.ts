@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Sprints } from '../models/Sprints';
+import { Teams } from '../models/Teams';
 import { Users } from '../models/Users';
 import { SprintService } from '../services/sprint.service';
+import { TeamsService } from '../services/teams.service';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -13,27 +15,20 @@ import { UsersService } from '../services/users.service';
 export class SprintDetailsComponent implements OnInit {
 
   sprintsByTeams: Sprints [] = [];
-  teamId: number;
+  team: Teams;
   user: Users;
+  sprint: Sprints;
   empty:boolean = false;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
 
 
-  constructor(private userServ: UsersService, private sprintServ: SprintService ) { }
+  constructor(private userServ: UsersService, private sprintServ: SprintService, private teamServ: TeamsService) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
-
   }
 
-  getSprintsByTeamId(id: number){
-      this.sprintServ.getSprintsByTeamId(id).subscribe(
-        result => {
-          this.sprintsByTeams = result ;
-          console.log(result);
-        }
-      );
-  }
+  
   
   getCurrentUser() {
     this.userServ.getCurrentUser().subscribe(result => 
@@ -44,6 +39,9 @@ export class SprintDetailsComponent implements OnInit {
           result => { 
             this.sprintsByTeams = result ;
             console.log(result);
+            this.teamServ.getTeamById(this.user.teamId).subscribe(result => {
+              this.team = result;
+            });
           }
         );
 
