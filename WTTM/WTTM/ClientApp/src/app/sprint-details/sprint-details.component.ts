@@ -31,11 +31,9 @@ export class SprintDetailsComponent implements OnInit {
   checkSprintForTeam(){
     if (this.sprint == null){
       this.empty = true;
-      alert("Empty");
     }
     else {
       this.empty = false;
-      alert("Do something");
     }
   }
 
