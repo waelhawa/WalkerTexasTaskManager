@@ -1,1 +1,24 @@
-<p>sprint-page works!</p>
+<h1>Sprint-{{sprint.sprintId}}</h1>
+
+<div class="sprintWrapper">
+  <div *ngIf="empty; else present" class="empty">
+    <div class="emptyMessage">
+      <h4>What's This?!</h4>
+      <h4>You don't have any tasks in assigned to Sprint-{{sprint.sprintId}}.</h4>
+      <p>Spend some time grooming your team's backlog. I'm sure you'll find some tasks
+        that need to be addressed soon.
+      </p>
+      <a href="/backlog">Backlog</a>
+  </div>
+    <div class="chuckNone">
+      <img [src]="chuckGif">
+    </div>
+  </div>
+  <ng-template #present>
+    <div *ngFor="let sTask of tasksInSprint; index as i">
+      <app-task [task] = "sTask"></app-task>
+
+    </div>
+  </ng-template>
+</div>
+
