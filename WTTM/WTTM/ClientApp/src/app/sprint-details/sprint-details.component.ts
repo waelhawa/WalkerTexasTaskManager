@@ -18,7 +18,7 @@ export class SprintDetailsComponent implements OnInit {
   team: Teams;
   user: Users;
   sprint: Sprints;
-  empty:boolean = false;
+  empty:boolean = true;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
 
 

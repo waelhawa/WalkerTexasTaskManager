@@ -55,7 +55,7 @@ import { NewSprintComponent } from './new-sprint/new-sprint.component';
        { path: 'new-task-page', component: NewTaskPageComponent },
        { path: 'task-page/:id', component: TaskPageComponent},
        { path: 'new-team-page', component: NewTeamPageComponent },
-       { path: '/new-sprint', component: NewSprintComponent },
+       { path: 'new-sprint', component: NewSprintComponent },
 
 
        //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
