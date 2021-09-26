@@ -14,7 +14,7 @@ export class NewSprintComponent implements OnInit {
 
   newSprint: Sprints;
   user: Users;
-  notLogged: boolean;
+  logged: boolean = false;
 
   constructor(private userServ: UsersService, private sprintServ: SprintService) { }
 
@@ -23,11 +23,13 @@ export class NewSprintComponent implements OnInit {
   }
 
   checkUser(){
-    if (this.user == null || this.user.teamId == null || this.user.teamId < 1){
-      alert("Not Showing");
+    if (this.user.teamId == null || this.user.teamId < 1)
+    {
+      this.logged = false;
     }
-    else {
-      alert("Showing");
+    else 
+    {
+      this.logged = true;
     }
   }
 
@@ -36,7 +38,9 @@ export class NewSprintComponent implements OnInit {
     this.newSprint.teamId = this.user.teamId;
     this.newSprint.dateCreated = new Date();
     this.newSprint.dateCompleted = new Date();
-    this.sprintServ.createSprint(this.newSprint).subscribe();
+    this.sprintServ.createSprint(this.newSprint).subscribe( x => {
+      window.location.href ='../sprint-details';
+    });
   }
 
   getCurrentUser(){
