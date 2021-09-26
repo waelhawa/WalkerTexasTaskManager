@@ -20,6 +20,7 @@ import { SprintComponent } from './sprint/sprint.component';
 import { SprintDetailsComponent } from './sprint-details/sprint-details.component';
 import { SprintPageComponent } from './sprint-page/sprint-page.component';
 import { NewTeamPageComponent } from './new-team-page/new-team-page.component';
+import { NewSprintComponent } from './new-sprint/new-sprint.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NewTeamPageComponent } from './new-team-page/new-team-page.component';
     SprintComponent,
     SprintDetailsComponent,
     SprintPageComponent,
-    NewTeamPageComponent
+    NewTeamPageComponent,
+    NewSprintComponent
   ],
   imports: [
     RouterModule,
