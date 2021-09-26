@@ -8,6 +8,15 @@
       <button (click)="goBack()">Go Back</button>
       <button (click)="undoKick()">Undo Point</button>
     </div>
+    <form #assignSprint="ngForm" (ngSubmit)="assignToSprint(assignSprint)">
+      <label>Select Team</label>
+      <select name = "sprintId" (ngModel)="task">
+        <option *ngFor="let sprint of sprints" [(ngValue)]="sprint.sprintId">
+          {{sprint.sprintId}}
+        </option>
+      </select>
+      <button type="submit">Assign to Sprint</button>
+    </form>
 </div>
   <div class="description">
     <p>{{ task.fullDesc }}</p>
