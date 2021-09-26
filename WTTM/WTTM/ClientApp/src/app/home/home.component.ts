@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
     console.log(form.form.value);
     console.log(form.form.value.teamId);
     console.log(this.user);
-    //this.userServ.updateUser(this.user.id, this.user).subscribe();
+    this.userServ.updateUser(this.user.id, this.user).subscribe();
   }
 
 }

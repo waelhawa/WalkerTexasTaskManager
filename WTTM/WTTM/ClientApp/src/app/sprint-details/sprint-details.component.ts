@@ -8,6 +8,7 @@ import { UsersService } from '../services/users.service';
   selector: 'app-sprint-details',
   templateUrl: './sprint-details.component.html',
   styleUrls: ['./sprint-details.component.css'],
+  providers: [SprintService]
 })
 export class SprintDetailsComponent implements OnInit {
 
@@ -18,23 +19,24 @@ export class SprintDetailsComponent implements OnInit {
   constructor(private userServ: UsersService, private sprintServ: SprintService ) { }
 
   ngOnInit(): void {
-    this.getSprintsByTeamId(this.user.teamId);
+    this.getCurrentUser();
 
   }
 
   getSprintsByTeamId(id: number){
-      this.sprintServ.getSprintsByTeamId(id).subscribe(
-        result => { 
-          this.sprintsByTeams = result ;
-          console.log(result);
-        }
-      );
   }
-
+  
   getCurrentUser() {
-    this.userServ.getCurrentUser().subscribe(
-      result => {
+    this.userServ.getCurrentUser().subscribe(result => 
+      {
         this.user = result;
+        console.log(this.user);
+        this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(
+          result => { 
+            this.sprintsByTeams = result ;
+            console.log(result);
+          }
+        );
 
       }
     );
