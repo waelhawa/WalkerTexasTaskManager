@@ -19,6 +19,7 @@ export class SprintDetailsComponent implements OnInit {
   user: Users;
   sprint: Sprints;
   empty:boolean = true;
+  logged: boolean = false;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
 
 
@@ -37,15 +38,15 @@ export class SprintDetailsComponent implements OnInit {
     }
   }
 
-  
-  
+
+
   getCurrentUser() {
-    this.userServ.getCurrentUser().subscribe(result => 
+    this.userServ.getCurrentUser().subscribe(result =>
       {
         this.user = result;
         console.log(this.user);
         this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(
-          result => { 
+          result => {
             this.sprintsByTeams = result ;
             console.log(result);
             this.teamServ.getTeamById(this.user.teamId).subscribe(result => {
