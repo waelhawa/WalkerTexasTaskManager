@@ -1,25 +1,27 @@
 <h1>{{team.teamName}}'s Sprints</h1>
 
-<div class="sprintWrapper">
-  <div *ngIf="empty; else present" class="empty">
-    <div class="emptyMessage">
-      <h4>What's This?!</h4>
-      <h4>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</h4>
-      <p>Spend some time grooming your team's backlog. I'm sure you'll find some tasks
-        that need to be addressed soon.
-      </p>
-      <button routerLink="/new-sprint/">
-        New Sprint
-      </button>
-  </div>
-    <div class="chuckNone">
-      <img [src]="chuckGif">
-    </div>
-  </div>
-  <ng-template #present>
-    <div *ngFor="let sprint of sprintsByTeams; index as i">
-      <app-sprint [sprint] = "sprint"></app-sprint>
-    </div>
-  </ng-template>
-</div>
 
+<div *ngIf="logged"; else notLogged>
+  <div class="sprintWrapper">
+    <div *ngIf="empty; else present" class="empty">
+      <div class="emptyMessage">
+        <h4>What's This?!</h4>
+        <h4>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</h4>
+        <p>Spend some time grooming your team's backlog. I'm sure you'll find some tasks
+          that need to be addressed soon.
+        </p>
+        <button routerLink="/new-sprint/">
+          New Sprint
+        </button>
+    </div>
+      <div class="chuckNone">
+        <img [src]="chuckGif">
+      </div>
+    </div>
+    <ng-template #present>
+      <div *ngFor="let sprint of sprintsByTeams; index as i">
+        <app-sprint [sprint] = "sprint"></app-sprint>
+      </div>
+    </ng-template>
+  </div>
+</div>
