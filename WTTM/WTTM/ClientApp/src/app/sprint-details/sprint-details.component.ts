@@ -14,6 +14,9 @@ export class SprintDetailsComponent implements OnInit {
   sprintsByTeams: Sprints [] = [];
   teamId: number;
   user: Users;
+  empty:boolean = false;
+  chuckGif: string ="/assets/images/Chuck Gif.gif";
+
 
   constructor(private userServ: UsersService, private sprintServ: SprintService ) { }
 
@@ -24,7 +27,7 @@ export class SprintDetailsComponent implements OnInit {
 
   getSprintsByTeamId(id: number){
       this.sprintServ.getSprintsByTeamId(id).subscribe(
-        result => { 
+        result => {
           this.sprintsByTeams = result ;
           console.log(result);
         }

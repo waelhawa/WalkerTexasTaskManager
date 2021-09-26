@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
   changeTeam(form: NgForm){
     this.user.teamId = form.form.value.teamId;
     this.userServ.updateUser(this.user.id, this.user).subscribe();
+    console.log(this.user.teamId)
   }
 
 }

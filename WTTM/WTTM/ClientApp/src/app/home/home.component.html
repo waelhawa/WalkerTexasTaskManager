@@ -1,10 +1,9 @@
 <ng-template #noLog>
   <ng-form #pickTeamForm="ngForm" (ngSubmit)="changeTeam(pickTeamForm)">
     <label>Select Team</label>
-    <select *ngFor="let team of teams" [(ngModel)]="team.teamId" name="teamId">
-      <option value="team.teamId">
-        {{team.teamName}}
-      </option>
+    <select [(ngModel)]="user.teamId">
+      Choose Here
+      <option *ngFor="let team of teams" [value]="team.teamId">{{team.teamName}}</option>
     </select>
     <button type="submit">Change Team</button>
   </ng-form>
@@ -20,11 +19,9 @@
     <div id="teamSelect">
       <ng-form #changeTeamForm="ngForm" (ngSubmit)="changeTeam(changeTeamForm)">
         <label>Select Team</label>
-        <select *ngFor="let team of teams" [(ngModel)]="team.teamId" name="teamId">
-          <option value="team.teamId">
-            {{team.teamName}}
-          </option>
-        </select>
+    <select name="teamId">
+      <option *ngFor="let team of teams"value="team.teamId">{{team.teamName}}</option>
+    </select>
         <button type="submit">Change Team</button>
       </ng-form>
     </div>
