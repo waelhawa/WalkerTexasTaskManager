@@ -8,6 +8,9 @@ import { BanditComponent } from '../bandit/bandit.component';
 import { ChuckJoke } from '../models/ChuckJoke';
 import { Observable } from 'rxjs';
 import { ChuckJokeService } from '../services/chuck-joke.service';
+import { NgForm } from '@angular/forms';
+import { Sprints } from '../models/Sprints';
+import { SprintService } from '../services/sprint.service';
 
 @Component({
   selector: 'app-task-page',
@@ -20,7 +23,8 @@ export class TaskPageComponent implements OnInit {
   num: number = 0;
   chuckGif: string = "/assets/images/Chuck Gif.gif";
   jokeUp: boolean = false;
-  joke: ChuckJoke
+  joke: ChuckJoke;
+  sprints: Sprints[];
     // = {
     //   categories: [],
     //   created_at: "",
@@ -35,7 +39,8 @@ export class TaskPageComponent implements OnInit {
     private taskServ: TaskService,
     private chuckServ: ChuckJokeService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private sprintServ: SprintService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +53,9 @@ export class TaskPageComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.taskServ.gettasksbyid(id).subscribe(result => {
       this.task = result;
-      console.log(this.task);
+      this.sprintServ.getSprints().subscribe(result => {
+        this.sprints = result;
+      })
     });
     // const routeParams = this.route.snapshot.paramMap;
     // let id: number = Number(routeParams.get(id));
@@ -108,6 +115,11 @@ export class TaskPageComponent implements OnInit {
     this.jokeUp = false;
     console.log(this.jokeUp);
     return this.jokeUp;
+  }
+
+  assignToSprint(form: NgForm){
+    this.task.sprintId = form.form.value.sprintId;
+    this.taskServ.upDateTask(this.task.taskId, this.task).subscribe();
   }
 
 
