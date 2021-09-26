@@ -5,7 +5,8 @@
     "\\WTTM",
     "\\WTTM\\WTTM",
     "\\WTTM\\WTTM\\Controllers",
-    "\\WTTM\\WTTM\\Models"
+    "\\WTTM\\WTTM\\Models",
+    "\\WTTM\\WTTM\\wwwroot"
   ],
   "SelectedNode": "\\WTTM\\WTTM.sln",
   "PreviewInSolutionExplorer": false
