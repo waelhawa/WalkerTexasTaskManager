@@ -43,23 +43,22 @@ export class HomeComponent implements OnInit {
     this.userServ.getCurrentUser().subscribe(
       result => {
         this.user = result;
-
       }
     );
   }
 
-  getUsers() {
-    this.userServ.getUsers().subscribe(
-      response => {
-        response.forEach(element => {
-          this.allUsers.push(element)
+  // getUsers() {
+  //   this.userServ.getUsers().subscribe(
+  //     response => {
+  //       response.forEach(element => {
+  //         this.allUsers.push(element)
 
-        });;
-        console.log(response)
-      },
-      error => console.log(error)
-    );
-  }
+  //       });;
+  //       console.log(response)
+  //     },
+  //     error => console.log(error)
+  //   );
+  // }
 
   getTeams() {
     this.teamsServ.getTeams().subscribe(
@@ -71,7 +70,10 @@ export class HomeComponent implements OnInit {
 
   changeTeam(form: NgForm){
     this.user.teamId = form.form.value.teamId;
-    this.userServ.updateUser(this.user.id, this.user).subscribe();
+    console.log(form.form.value);
+    console.log(form.form.value.teamId);
+    console.log(this.user);
+    //this.userServ.updateUser(this.user.id, this.user).subscribe();
   }
 
 }
