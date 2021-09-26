@@ -32,7 +32,7 @@ export class SprintService {
 
    //Create
    createSprint(sprint: Sprints){
-    return this.http.post<Sprints>(`/${this.apiUri}/createsprint`, {"dateCreated": new Date(), "dateCompleted": new Date(), "isCompleted": false, "sprintStatus": sprint.sprintStatus, "totalStoryPoints": sprint.totalStoryPoint});
+    return this.http.post<Sprints>(`/${this.apiUri}/createsprint`, {"teamId": sprint.teamId, "dateCreated": sprint.dateCreated, "dateCompleted": sprint.dateCompleted, "isCompleted": false, "sprintStatus": sprint.sprintStatus, "totalStoryPoints": 0});
    }
 
    //Delete
