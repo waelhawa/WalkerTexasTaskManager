@@ -28,6 +28,17 @@ export class SprintDetailsComponent implements OnInit {
     this.getCurrentUser();
   }
 
+  checkSprintForTeam(){
+    if (this.sprint == null){
+      this.empty = true;
+      alert("Empty");
+    }
+    else {
+      this.empty = false;
+      alert("Do something");
+    }
+  }
+
   
   
   getCurrentUser() {
@@ -44,7 +55,7 @@ export class SprintDetailsComponent implements OnInit {
             });
           }
         );
-
+        this.checkSprintForTeam();
       }
     );
   }
