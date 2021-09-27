@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sprints } from '../models/Sprints';
 import { Teams } from '../models/Teams';
 import { Users } from '../models/Users';
+import { SprintComponent } from '../sprint/sprint.component';
 import { SprintService } from '../services/sprint.service';
 import { TeamsService } from '../services/teams.service';
 import { UsersService } from '../services/users.service';
@@ -21,6 +22,7 @@ export class SprintDetailsComponent implements OnInit {
   empty:boolean = true;
   logged: boolean = false;
   chuckGif: string ="/assets/images/Chuck Gif.gif";
+  newSprint: Sprints;
 
 
   constructor(private userServ: UsersService, private sprintServ: SprintService, private teamServ: TeamsService) { }
@@ -36,6 +38,16 @@ export class SprintDetailsComponent implements OnInit {
     else {
       this.empty = false;
     }
+  }
+
+  createSprintButton(){
+    this.newSprint.teamId = this.user.teamId;
+    this.newSprint.dateCreated = new Date();
+    this.newSprint.dateCompleted = new Date();
+    this.newSprint.sprintStatus = "New";
+    this.sprintServ.createSprint(this.newSprint).subscribe( x => {
+      window.location.href ='../sprint-details';
+    });
   }
 
   checkUser(){

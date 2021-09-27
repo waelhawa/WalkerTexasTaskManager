@@ -1,4 +1,4 @@
-<h1>{{team.teamName}}'s Sprints</h1>
+<h1><!--{{team.teamName}}'s--> Sprints</h1>
 <ng-template #notLogged>
   <h1>Sprints</h1>
   <p>You are not currently assigned to a team. Return to the home page to select your team.</p>
@@ -12,7 +12,7 @@
       <div class="emptyMessage">
         <h4>What's This?!</h4>
         <p>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</p>
-        <button routerLink="/new-sprint/">
+        <button (click)="createSprintButton()">
           New Sprint
         </button>
     </div>
