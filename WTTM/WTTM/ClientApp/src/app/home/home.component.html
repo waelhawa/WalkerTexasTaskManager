@@ -27,15 +27,15 @@
   <div class="titleHeader">
     <h1>Walker Texas Task Manager</h1>
     <div id="teamSelect">
-      <ng-form #changeTeamForm="ngForm" (ngSubmit)="changeTeam(changeTeamForm)">
+      <form #changeTeamForm="ngForm" (ngSubmit)="changeTeam(changeTeamForm)">
         <label>Select Team</label>
-        <select *ngFor="let team of teams" [(ngModel)]="team.teamId" name="teamId">
-          <option value="team.teamId">
+        <select name="teamId" (ngModel)="teams">
+          <option *ngFor="let team of teams" [(ngValue)]="team.teamId">
             {{team.teamName}}
           </option>
         </select>
         <button type="submit">Change Team</button>
-      </ng-form>
+      </form>
     </div>
   </div>
     <div class="articleWrapper">

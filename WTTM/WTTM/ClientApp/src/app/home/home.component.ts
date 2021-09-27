@@ -42,17 +42,17 @@ export class HomeComponent implements OnInit {
     this.userServ.getCurrentUser().subscribe(
       result => {
         this.user = result;
-        this.checkUser();
-        this.teamsServ.getTeams().subscribe(result => {
-          this.teams = result;
+        this.checkUser(result);
+        this.teamsServ.getTeams().subscribe(response => {
+          this.teams = response;
         });
       }
-    );
+      );
 
   }
 
-  checkUser(){
-    if (this.user.teamId == null || this.user.teamId < 1)
+  checkUser(result: Users){
+    if (result.teamId == null || result.teamId < 1)
     {
       this.logged = false;
     }
