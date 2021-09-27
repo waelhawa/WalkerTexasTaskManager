@@ -16,6 +16,7 @@ import { UsersService } from '../services/users.service';
 export class SprintDetailsComponent implements OnInit {
 
   sprintsByTeams: Sprints[] = [];
+  newSprints: Sprints[];
   team: Teams;
   user: Users;
   sprint: Sprints;
@@ -67,6 +68,13 @@ export class SprintDetailsComponent implements OnInit {
     }
   }
 
+  // descending(){
+  //   for (let i = this.sprintsByTeams.length; i = 0; i--){
+  //     this.newSprints.push(this.sprintsByTeams[i]);
+  //   }
+  //   console.log(this.newSprints)
+  // }
+
   getCurrentUser() {
     this.userServ.getCurrentUser().subscribe(result => {
       this.user = result;
@@ -84,9 +92,10 @@ export class SprintDetailsComponent implements OnInit {
           }
         }
         );
-
+        
       }
     }
     );
+    // this.descending();
   }
 }
