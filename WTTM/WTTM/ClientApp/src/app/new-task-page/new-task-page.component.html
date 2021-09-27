@@ -50,6 +50,15 @@
             <option value=12>12</option>
           </select>
       </div>
+      <div class="innerSelects">
+        <label>Sprint</label>
+        <select name="sprintId" (ngModel)="sprints">
+          <option *ngFor="let sprint of sprints" [(ngValue)]="sprint.sprintId">
+            Sprint - {{ sprint.sprintId }}
+          </option>
+        </select>
+
+      </div>
         <div class="innerSelects">
           <label>Status</label>
           <select [(ngModel)]="task.taskStatus" name="taskStatus">
