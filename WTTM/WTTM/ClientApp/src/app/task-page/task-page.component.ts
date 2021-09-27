@@ -11,6 +11,9 @@ import { ChuckJokeService } from '../services/chuck-joke.service';
 import { NgForm } from '@angular/forms';
 import { Sprints } from '../models/Sprints';
 import { SprintService } from '../services/sprint.service';
+import { User } from 'oidc-client';
+import { Users } from '../models/Users';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-task-page',
@@ -25,6 +28,7 @@ export class TaskPageComponent implements OnInit {
   jokeUp: boolean = false;
   joke: ChuckJoke;
   sprints: Sprints[];
+  user: Users;
     // = {
     //   categories: [],
     //   created_at: "",
@@ -40,26 +44,25 @@ export class TaskPageComponent implements OnInit {
     private chuckServ: ChuckJokeService,
     private route: ActivatedRoute,
     private location: Location,
-    private sprintServ: SprintService
+    private sprintServ: SprintService,
+    private userServ: UsersService
   ) { }
 
   ngOnInit(): void {
-    this.getTask();
-    //this.bringBandits();
-    //this.getChuckJoke();
+    this.getInfo();
   }
 
-  getTask(): void {
+  getInfo(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.taskServ.gettasksbyid(id).subscribe(result => {
       this.task = result;
-      this.sprintServ.getSprints().subscribe(result => {
-        this.sprints = result;
+      this.userServ.getCurrentUser().subscribe(result => {
+        this.user = result;
+        this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(result => {
+          this.sprints = result;
+      })
       })
     });
-    // const routeParams = this.route.snapshot.paramMap;
-    // let id: number = Number(routeParams.get(id));
-    // this.task = this.taskServ.gettasksbyid(id);
   }
 
   bringBandits() {
@@ -75,7 +78,6 @@ export class TaskPageComponent implements OnInit {
 
   save() {
     this.taskServ.upDateTask(this.task.taskId, this.task).subscribe()
-    //this.goBack();
   }
 
   completeTask(): void {
