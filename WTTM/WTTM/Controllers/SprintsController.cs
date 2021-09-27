@@ -55,7 +55,7 @@ namespace WTTM.Controllers
         }
 
         [HttpGet("getsprintsbyteamid/{id}")]
-        public async Task<ActionResult<List<Sprints>>> GetSprintsByTeamId(int id)
+        public async Task<List<Sprints>> GetSprintsByTeamId(int id)
         {
             var sprints = await _context.Sprints.ToListAsync();
             List<Sprints> teamSprints = new List<Sprints>();
@@ -68,9 +68,9 @@ namespace WTTM.Controllers
                 }
             }
 
-            if (teamSprints == null)
+            if (teamSprints == null || teamSprints.Count == 0)
             {
-                return NoContent();
+                return null;
             }
             else
             {

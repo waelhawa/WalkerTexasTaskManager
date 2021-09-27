@@ -1,4 +1,4 @@
-<h1><!--{{team.teamName}}'s--> Sprints</h1>
+<!-- <h1>{{ team.teamName }}'s Sprints</h1> -->
 <ng-template #notLogged>
   <h1>Sprints</h1>
   <p>You are not currently assigned to a team. Return to the home page to select your team.</p>
@@ -7,7 +7,7 @@
 
 <div *ngIf="logged; else notLogged">
   <div class="sprintWrapper">
-    <h1>Sprints</h1>
+    <!-- <h1>{{ team.teamName }}'s Sprints</h1> -->
     <div *ngIf="empty; else present" class="empty">
       <div class="emptyMessage">
         <h4>What's This?!</h4>
@@ -21,6 +21,10 @@
       </div>
     </div>
     <ng-template #present>
+      <h1>{{ team.teamName }}'s Sprints</h1>
+      <button (click)="createSprintButton()">
+        New Sprint
+      </button>
       <div *ngFor="let sprint of sprintsByTeams; index as i">
         <app-sprint [sprint] = "sprint"></app-sprint>
       </div>

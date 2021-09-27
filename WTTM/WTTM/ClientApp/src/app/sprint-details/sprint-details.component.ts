@@ -15,14 +15,23 @@ import { UsersService } from '../services/users.service';
 })
 export class SprintDetailsComponent implements OnInit {
 
-  sprintsByTeams: Sprints [] = [];
+  sprintsByTeams: Sprints[] = [];
   team: Teams;
   user: Users;
   sprint: Sprints;
-  empty:boolean = true;
+  empty: boolean = true;
   logged: boolean = false;
-  chuckGif: string ="/assets/images/Chuck Gif.gif";
-  newSprint: Sprints;
+  chuckGif: string = "/assets/images/Chuck Gif.gif";
+  newSprint: Sprints = 
+  {
+    sprintId:0,
+    teamId:0,
+    dateCreated: new Date(),
+    dateCompleted: new Date(),
+    isCompleted: false,
+    sprintStatus:"",
+    totalStoryPoint:0
+  };
 
 
   constructor(private userServ: UsersService, private sprintServ: SprintService, private teamServ: TeamsService) { }
@@ -31,8 +40,8 @@ export class SprintDetailsComponent implements OnInit {
     this.getCurrentUser();
   }
 
-  checkSprintForTeam(){
-    if (this.sprint == null){
+  checkSprintForTeam() {
+    if (this.sprintsByTeams == null) {
       this.empty = true;
     }
     else {
@@ -40,45 +49,44 @@ export class SprintDetailsComponent implements OnInit {
     }
   }
 
-  createSprintButton(){
+  createSprintButton() {
     this.newSprint.teamId = this.user.teamId;
     this.newSprint.dateCreated = new Date();
     this.newSprint.dateCompleted = new Date();
     this.newSprint.sprintStatus = "New";
-    this.sprintServ.createSprint(this.newSprint).subscribe( x => {
-      window.location.href ='../sprint-details';
-    });
+    this.sprintServ.createSprint(this.newSprint).subscribe();
+    window.location.reload();
   }
 
-  checkUser(){
-    if (this.user.teamId == null || this.user.teamId < 1)
-    {
+  checkUser() {
+    if (this.user.teamId == null || this.user.teamId < 1) {
       this.logged = false;
     }
-    else
-    {
+    else {
       this.logged = true;
     }
   }
 
   getCurrentUser() {
-    this.userServ.getCurrentUser().subscribe(result =>
-      {
-        this.user = result;
-        this.checkUser();
-        console.log(this.user);
-        this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(
-          result => {
-            this.sprintsByTeams = result ;
-            console.log(result);
-            this.teamServ.getTeamById(this.user.teamId).subscribe(result => {
-              this.team = result;
+    this.userServ.getCurrentUser().subscribe(result => {
+      this.user = result;
+      this.checkUser();
+      console.log(this.user);
+      if (this.logged) {
+        this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(response => {
+          this.sprintsByTeams = response;
+          this.checkSprintForTeam();
+          console.log(response);
+          if(!this.empty){
+            this.teamServ.getTeamById(this.user.teamId).subscribe(result2 => {
+              this.team = result2;
             });
           }
+        }
         );
-        this.checkSprintForTeam();
 
       }
+    }
     );
   }
 }

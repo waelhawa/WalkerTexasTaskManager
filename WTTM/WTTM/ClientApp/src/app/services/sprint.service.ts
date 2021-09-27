@@ -15,34 +15,34 @@ export class SprintService {
 
    //Read
    getSprints() {
-      return this.http.get<Sprints[]>(`/${this.apiUri}/getsprints`);
+      return this.http.get<Sprints[]>(`${this.apiUri}/getsprints`);
    }
 
    getSprintsById(id: number){
-     return this.http.get<Sprints>(`/${this.apiUri}/getsprintsbyid/${id}`);
+     return this.http.get<Sprints>(`${this.apiUri}/getsprintsbyid/${id}`);
    }
 
    getSprintsByTeamId(id: number){
-    return this.http.get<Sprints[]>(`/${this.apiUri}/getsprintsbyteamid/${id}`);
+    return this.http.get<Sprints[]>(`${this.apiUri}/getsprintsbyteamid/${id}`);
    }
 
    getIncompletedSprints(){
-    return this.http.get<Sprints[]>(`/${this.apiUri}/getincompletedsprints`);
+    return this.http.get<Sprints[]>(`${this.apiUri}/getincompletedsprints`);
    }
 
    //Create
    createSprint(sprint: Sprints){
-    return this.http.post<Sprints>(`/${this.apiUri}/createsprint`, {"teamId": sprint.teamId, "dateCreated": sprint.dateCreated, "dateCompleted": sprint.dateCompleted, "isCompleted": false, "sprintStatus": sprint.sprintStatus, "totalStoryPoints": 0});
+    return this.http.post<Sprints>(`${this.apiUri}/createsprint`, {"teamId": sprint.teamId, "dateCreated": sprint.dateCreated, "dateCompleted": sprint.dateCompleted, "isCompleted": false, "sprintStatus": sprint.sprintStatus, "totalStoryPoints": 0});
    }
 
    //Delete
    deleteSprint(id: number){
-    return this.http.delete(`/${this.apiUri}/deletesprint/${id}`);
+    return this.http.delete(`${this.apiUri}/deletesprint/${id}`);
    }
 
    //Update
    updateSprint(id: number, sprint: Sprints){
-    return this.http.put<Sprints>(`/${this.apiUri}/updatesprint/${id}`, sprint);
+    return this.http.put<Sprints>(`${this.apiUri}/updatesprint/${id}`, sprint);
    }
 
 }

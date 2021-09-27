@@ -18,11 +18,15 @@ import { UsersService } from '../services/users.service';
 export class SprintComponent implements OnInit {
   @Input() sprint: Sprints;
 
-  constructor( ) { }
+  constructor(private sprintServ: SprintService ) { }
 
   ngOnInit(): void {
 
   }
 
+deleteSprint(id: number){
+  this.sprintServ.deleteSprint(id).subscribe();
+  window.location.reload();
+}
 
 }
