@@ -38,12 +38,22 @@ export class SprintDetailsComponent implements OnInit {
     }
   }
 
-
+  checkUser(){
+    if (this.user.teamId == null || this.user.teamId < 1)
+    {
+      this.logged = false;
+    }
+    else
+    {
+      this.logged = true;
+    }
+  }
 
   getCurrentUser() {
     this.userServ.getCurrentUser().subscribe(result =>
       {
         this.user = result;
+        this.checkUser();
         console.log(this.user);
         this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(
           result => {
@@ -55,6 +65,7 @@ export class SprintDetailsComponent implements OnInit {
           }
         );
         this.checkSprintForTeam();
+
       }
     );
   }

@@ -1,3 +1,49 @@
+
+
+ .empty{
+  display: inline-flex;
+  margin-top: 30px;
+}
+
+.emptyMessage{
+  margin-top: 40px;
+
+
+}
+
+.emptyMessage a{
+  color:rgb(255, 187, 0);
+  font-size: 20px;
+}
+
 h1{
+  margin-bottom: 35px;
   color: rgba(90, 90, 90, 0.952)
- }
+}
+
+p{
+  margin-top: 12px;
+  font-size: 20px;
+  padding: 50px
+}
+
+button{
+  border-radius: 10px;
+  border: 2px solid rgb(255, 187, 0);
+  background-color:rgb(112, 102, 95);
+  color:snow;
+  margin-right: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+button:hover{
+  transform: scale(1.06);
+}
+
+
+.chuckNone{
+  width: 30%;
+  height: auto;
+
+}

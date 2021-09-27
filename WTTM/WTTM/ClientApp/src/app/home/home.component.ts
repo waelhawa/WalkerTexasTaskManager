@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   joke: string = "";
   allUsers: Users[] = [];
   user: Users;
-  loggedIn: boolean = false;
+  logged: boolean = false;
   teams: Teams [];
   // something: string = "3475ae69-eede-42b1-841e-53dfe3cac633";
 
@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentUser();
-    this.getTeams();
   }
 
 
@@ -43,30 +42,27 @@ export class HomeComponent implements OnInit {
     this.userServ.getCurrentUser().subscribe(
       result => {
         this.user = result;
+        this.checkUser();
+        this.teamsServ.getTeams().subscribe(result => {
+          this.teams = result;
+        });
       }
     );
+
   }
 
-  // getUsers() {
-  //   this.userServ.getUsers().subscribe(
-  //     response => {
-  //       response.forEach(element => {
-  //         this.allUsers.push(element)
-
-  //       });;
-  //       console.log(response)
-  //     },
-  //     error => console.log(error)
-  //   );
-  // }
-
-  getTeams() {
-    this.teamsServ.getTeams().subscribe(
-      response => {
-        this.teams = response;
-      }
-    )
+  checkUser(){
+    if (this.user.teamId == null || this.user.teamId < 1)
+    {
+      this.logged = false;
+    }
+    else
+    {
+      this.logged = true;
+    }
   }
+
+
 
   changeTeam(form: NgForm){
     this.user.teamId = form.form.value.teamId;

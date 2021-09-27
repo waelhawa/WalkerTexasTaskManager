@@ -1,15 +1,17 @@
 <h1>{{team.teamName}}'s Sprints</h1>
+<ng-template #notLogged>
+  <h1>Sprints</h1>
+  <p>You are not currently assigned to a team. Return to the home page to select your team.</p>
+  <button routerLink="/home/">Home</button>
+</ng-template>
 
-
-<div *ngIf="logged"; else notLogged>
+<div *ngIf="logged; else notLogged">
   <div class="sprintWrapper">
+    <h1>Sprints</h1>
     <div *ngIf="empty; else present" class="empty">
       <div class="emptyMessage">
         <h4>What's This?!</h4>
-        <h4>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</h4>
-        <p>Spend some time grooming your team's backlog. I'm sure you'll find some tasks
-          that need to be addressed soon.
-        </p>
+        <p>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</p>
         <button routerLink="/new-sprint/">
           New Sprint
         </button>
