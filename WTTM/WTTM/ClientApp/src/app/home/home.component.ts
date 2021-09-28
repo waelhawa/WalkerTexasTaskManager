@@ -32,12 +32,15 @@ export class HomeComponent implements OnInit {
   logged: boolean = false;
   partOfTeam: boolean = false;
   teams: Teams [];
+  uTeamName: string = "";
   // something: string = "3475ae69-eede-42b1-841e-53dfe3cac633";
 
   constructor(private taskServ: TaskService, private userServ: UsersService, private teamsServ: TeamsService, private authorizeService: AuthorizeService) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
+
+
   }
 
 
@@ -55,6 +58,7 @@ export class HomeComponent implements OnInit {
               this.empty = false;
             }
             this.sifter(result3);
+            this.displayTeamName(result, result2);
           });
         });
       }
@@ -78,9 +82,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  displayTeamName(){
+  displayTeamName(user: Users, teams: Teams[]){
     if (this.partOfTeam){
+      teams.forEach(element => {
+        if(this.user.teamId == element.teamId){
+          this.uTeamName = element.teamName;
+        }
 
+      });
     }
   }
 

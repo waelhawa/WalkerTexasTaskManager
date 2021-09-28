@@ -1,5 +1,6 @@
 <ng-template #noLog>
   <h1>Walker Texas Task Manager</h1>
+
   <div class="bigWrapper">
     <div class="formWrapper">
     <p id="teamInstr">Please select your team before moving on to your work.</p>
@@ -26,6 +27,7 @@
 <div *ngIf="logged; else noLog">
   <div class="titleHeader">
     <h1>Walker Texas Task Manager</h1>
+    <h4>Team: {{uTeamName}}</h4>
     <div id="teamSelect">
       <form #changeTeamForm="ngForm" (ngSubmit)="changeTeam(changeTeamForm)">
         <label>Select Team</label>
@@ -68,8 +70,17 @@
       </div>
       <ng-template #present>
         <div class="taskWrapper">
-          <div *ngFor="let task of yourTasks">
-            <app-task [task] = "task"></app-task>
+          <div class="uncompletedWrapper">
+            <h4>Active Tasks</h4>
+            <div *ngFor="let uTask of unCompletedTasks">
+              <app-task [task] = "uTask"></app-task>
+            </div>
+          </div>
+          <div class="completedWrapper">
+            <h4>Completed Tasks</h4>
+            <div *ngFor="let cTask of completedTasks">
+              <app-task [task] = "cTask"></app-task>
+            </div>
           </div>
         </div>
       </ng-template>
