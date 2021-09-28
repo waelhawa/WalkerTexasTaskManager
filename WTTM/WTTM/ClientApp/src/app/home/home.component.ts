@@ -23,6 +23,8 @@ import { NgForm } from '@angular/forms';
 export class HomeComponent implements OnInit {
   chuckGif: string = "/assets/images/Chuck Gif.gif";
   yourTasks: Task[] = [];
+  completedTasks: Task [] = [];
+  unCompletedTasks: Task [] = [];
   empty: boolean = true;
   joke: string = "";
   allUsers: Users[] = [];
@@ -45,17 +47,40 @@ export class HomeComponent implements OnInit {
         this.user = result;
         this.checkUser(result);
         this.checkTeam(result);
-        this.teamsServ.getTeams().subscribe(response => {
-          this.teams = response;
+        this.teamsServ.getTeams().subscribe(result2 => {
+          this.teams = result2;
+          this.taskServ.getTasksByUserId(this.user.id).subscribe(result3 => {
+            this.yourTasks = result3;
+            if (result3 != null){
+              this.empty = false;
+            }
+            this.sifter(result3);
+          });
         });
       }
       );
 
   }
 
+  sifter(tasks: Task[]){
+    if(tasks != null)
+    {
+      tasks.forEach(element => {
+        if (element.isCompleted){
+          this.completedTasks.push(element);
+        }
+        else {
+          this.unCompletedTasks.push(element);
+        }
+      });
+      console.log(this.completedTasks);
+      console.log(this.unCompletedTasks);
+    }
+  }
+
   displayTeamName(){
     if (this.partOfTeam){
-      
+
     }
   }
 
