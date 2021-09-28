@@ -13,7 +13,7 @@ using WTTM.Models;
 
 namespace WTTM.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -51,9 +51,9 @@ namespace WTTM.Controllers
         {
             if (User.FindFirst(ClaimTypes.NameIdentifier) != null)
             {
-            string currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await GetUsersById(currentUser);
-            return user;
+                string currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var user = await GetUsersById(currentUser);
+                return user;
             }
             else
             {
@@ -64,7 +64,7 @@ namespace WTTM.Controllers
         [Authorize]
         [HttpGet("getusersbyid/{id}")]
         //public async Task<ActionResult<AspNetUsers>> GetUsersById(string id)
-        public async Task<AspNetUsers> GetUsersById(string id) 
+        public async Task<AspNetUsers> GetUsersById(string id)
         {
             var user = await _context.AspNetUsers.FindAsync(id);
             if (user == null)

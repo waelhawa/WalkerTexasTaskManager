@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { get } from 'http';
 import { Sprints } from '../models/Sprints';
 import { Task } from '../models/Task';
 import { Teams } from '../models/Teams';

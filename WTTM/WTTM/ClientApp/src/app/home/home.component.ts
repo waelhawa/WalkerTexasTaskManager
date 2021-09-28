@@ -19,6 +19,7 @@ import { NgForm } from '@angular/forms';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  providers:[UsersService]
 })
 export class HomeComponent implements OnInit {
   chuckGif: string = "/assets/images/Chuck Gif.gif";
@@ -32,38 +33,37 @@ export class HomeComponent implements OnInit {
   logged: boolean = false;
   partOfTeam: boolean = false;
   teams: Teams [];
-  uTeamName: string = "";
+  uTeamName: string;
   // something: string = "3475ae69-eede-42b1-841e-53dfe3cac633";
 
   constructor(private taskServ: TaskService, private userServ: UsersService, private teamsServ: TeamsService, private authorizeService: AuthorizeService) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
-
-
   }
 
 
   getCurrentUser() {
-    this.userServ.getCurrentUser().subscribe(
-      result => {
+    this.userServ.getCurrentUser().subscribe(result => 
+      {
         this.user = result;
-        this.checkUser(result);
-        this.checkTeam(result);
-        this.teamsServ.getTeams().subscribe(result2 => {
-          this.teams = result2;
-          this.taskServ.getTasksByUserId(this.user.id).subscribe(result3 => {
-            this.yourTasks = result3;
-            if (result3 != null){
-              this.empty = false;
-            }
-            this.sifter(result3);
-            this.displayTeamName(result, result2);
+        console.log(result);
+        this.teamsServ.getTeams().subscribe(result2 => 
+          {
+            this.teams = result2;
+            this.taskServ.getTasksByUserId(result.id).subscribe(result3 => 
+              {
+                this.yourTasks = result3;
+                if (result3 != null){
+                  this.empty = false;
+                }
+                this.checkUser(result);
+                this.checkTeam(result);
+                this.sifter(result3);
+              });
+            });
           });
-        });
-      }
-      );
-
+          
   }
 
   sifter(tasks: Task[]){
@@ -77,33 +77,41 @@ export class HomeComponent implements OnInit {
           this.unCompletedTasks.push(element);
         }
       });
-      console.log(this.completedTasks);
-      console.log(this.unCompletedTasks);
     }
   }
 
-  displayTeamName(user: Users, teams: Teams[]){
-    if (this.partOfTeam){
-      teams.forEach(element => {
-        if(this.user.teamId == element.teamId){
-          this.uTeamName = element.teamName;
-        }
+  // displayTeamName(user: Users, teams: Teams[]){
+  //   console.log(user.teamId)
+  //   if (user.teamId != null){
+  //     teams.forEach(element => {
+  //       if(user.teamId == element.teamId){
+  //         this.uTeamName = element.teamName;
+  //         console.log(element.teamName);
+  //         console.log(this.uTeamName);
+  //       }
 
+  //     });
+  //   }
+  //   else {
+  //     alert("error")
+  //   }
+  // }
+
+  checkTeam(result: Users){
+    if (result.teamId == null){
+      this.partOfTeam = false;
+      this.uTeamName = "Not part of team yet!";
+    }
+    else {
+      this.partOfTeam = true;
+      this.teamsServ.getTeamById(result.teamId).subscribe(response => {
+        this.uTeamName = response.teamName.toString();
       });
     }
   }
 
-  checkTeam(result: Users){
-    if (this.user.teamId = null){
-      this.partOfTeam = false;
-    }
-    else {
-      this.partOfTeam = true;
-    }
-  }
-
   checkUser(result: Users){
-    if (result.teamId == null || result.teamId < 1)
+    if (result == null)
     {
       this.logged = false;
     }
@@ -117,10 +125,11 @@ export class HomeComponent implements OnInit {
 
   changeTeam(form: NgForm){
     this.user.teamId = form.form.value.teamId;
-    console.log(form.form.value);
-    console.log(form.form.value.teamId);
-    console.log(this.user);
     this.userServ.updateUser(this.user.id, this.user).subscribe();
+    this.teamsServ.getTeamById(this.user.teamId).subscribe(result => {
+      this.uTeamName = result.teamName;
+    });
+    window.location.reload();
   }
 
 }

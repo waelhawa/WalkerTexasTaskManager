@@ -23,8 +23,9 @@ export class TeamsService {
     return this.http.get<Teams[]>(`${this.apiUri}/getteams`);
   }
 
-  getTeamById(id:number)
+  getTeamById(id: number)
   {
+    console.log(id);
     return this.http.get<Teams>(`${this.apiUri}/getteamsbyid/${id}`);
   }
 
@@ -35,7 +36,7 @@ export class TeamsService {
   }
   
   //Delete
-  deleteTeam(id:number)
+  deleteTeam(id: number)
   {
     return this.http.delete(`${this.apiUri}/deleteteam/${id}`);
   }

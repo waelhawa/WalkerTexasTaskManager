@@ -10,9 +10,15 @@ export interface Users {
     concurrencyStamp: string;
     phoneNumber: string;
     phoneNumberConfirmed: boolean;
-    twoFactoryEnabled: boolean;
+    twoFactorEnabled: boolean;
     lockoutEnd: any;
     lockoutEnabled: boolean;
     accessFailedCount: number;
     teamId: number;
+    team: any;
+    aspNetUsersClaims: any[];
+    aspNetUserLogins: any[];
+    aspNetUserRoles: any[];
+    aspNetUserTokens:any[];
+    tasks: any[];
 }
