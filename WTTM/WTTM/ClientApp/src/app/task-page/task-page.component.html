@@ -2,11 +2,15 @@
 <ng-template #jokeDown>
   <div class="topDisplay">
     <h1>TASK - {{ task.taskId }}: </h1>
+    <h3>Claimed by {{ this.userName }}</h3>
     <p>{{task.shortDesc }}</p>
     <div class="saveButtons">
       <button (click)="save()">Save</button>
       <button (click)="goBack()">Go Back</button>
       <button (click)="undoKick()">Undo Point</button>
+      <button (click)="claimTask()">Claim Task</button>
+      <button (click)="unclaimTask()">Unclaim Task</button>
+      <button (click)="completeTask()">Complete Task</button>
     </div>
     <form #assignSprint="ngForm" (ngSubmit)="assignToSprint(assignSprint)">
       <label>Select Team</label>

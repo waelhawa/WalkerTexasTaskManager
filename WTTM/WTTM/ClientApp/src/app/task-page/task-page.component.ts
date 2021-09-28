@@ -29,6 +29,7 @@ export class TaskPageComponent implements OnInit {
   joke: ChuckJoke;
   sprints: Sprints[];
   user: Users;
+  userName: string;
     // = {
     //   categories: [],
     //   created_at: "",
@@ -56,10 +57,16 @@ export class TaskPageComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.taskServ.gettasksbyid(id).subscribe(result => {
       this.task = result;
-      this.userServ.getCurrentUser().subscribe(result => {
-        this.user = result;
-        this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(result => {
-          this.sprints = result;
+      this.userServ.getCurrentUser().subscribe(result2 => {
+        this.user = result2;
+        if (result.userId != null){
+          this.userName = result2.userName;
+        }
+        else {
+          this.userName = "None";
+        }
+        this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(result3 => {
+          this.sprints = result3;
       })
       })
     });
@@ -82,7 +89,21 @@ export class TaskPageComponent implements OnInit {
 
   completeTask(): void {
     this.task.isCompleted = true;
+    this.task.taskStatus = "Completed";
     this.task.dateCompleted = new Date();
+    this.save();
+    window.location.href=`../sprint-page/${this.task.sprintId}`;
+  }
+
+  claimTask(){
+    this.task.userId = this.user.id;
+    this.userName = this.user.userName;
+    this.save();
+  }
+
+  unclaimTask(){
+    this.task.userId = null;
+    this.userName = "None"
     this.save();
   }
 
@@ -97,14 +118,8 @@ export class TaskPageComponent implements OnInit {
   kickBandit(): number {
     this.getChuckJoke();
     this.jokeUp = true;
-    if (this.task.scoreKeep < this.task.storyPoint) {
-      this.task.scoreKeep += 1;
-      return this.task.scoreKeep;
-    }
-    else {
-      this.completeTask();
-      return this.task.scoreKeep;
-    }
+    this.task.scoreKeep += 1;
+    return this.task.scoreKeep;
 
   }
 
