@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
 
   displayTeamName(){
     if (this.partOfTeam){
-
+      
     }
   }
 
