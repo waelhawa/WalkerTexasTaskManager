@@ -53,6 +53,12 @@ export class HomeComponent implements OnInit {
 
   }
 
+  displayTeamName(){
+    if (this.partOfTeam){
+      
+    }
+  }
+
   checkTeam(result: Users){
     if (this.user.teamId = null){
       this.partOfTeam = false;
