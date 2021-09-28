@@ -6,9 +6,38 @@ h1{
   align-items: baseline;
 }
 
+.assignWrapper{
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 45px;
+}
+
+.selectAssign{
+  display: inline-flex;
+  margin-bottom: 12px;
+}
+
+.selectAssign form{
+  margin-left: 20px;
+
+}
+
+.selectAssign form button{
+  margin-left: 8px;
+}
+
+.selectAssign form select{
+  margin-left: 5px;
+  border-radius: 6px;
+}
+
 .saveButtons{
   display: inline-flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 50px;
+
 }
 
 .saveButtons button{
@@ -20,16 +49,52 @@ h1{
   align-items: center;
   width: 120px;
   height: 50px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .saveButtons button:hover{
   transform: scale(1.06);
 }
 
+#desc{
+  border: 2px solid rgb(112, 102, 95);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+#howTo{
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 50px;
+  font-size: 18px;
+}
+
+.scoreKeep{
+  margin-top: 25px;
+
+}
+
+.scoreKeep p{
+  font-size: 32px;
+}
+
+#sPoint{
+  font-size: 32px;
+  color:rgb(255, 187, 0)
+}
+
+#sKeep{
+  font-size: 64px;
+  color:rgb(112, 102, 95);
+}
+
 .imageRow{
   display: inline-flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 button{
@@ -59,5 +124,18 @@ button:hover{
 }
 
 #chuck{
-  transform: scale(.8);
+  scale:(.9);
+}
+
+.jokeWrapper{
+  margin-top: 35px;
+}
+
+#joke{
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
 }

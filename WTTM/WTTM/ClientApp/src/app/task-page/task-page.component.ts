@@ -139,6 +139,11 @@ export class TaskPageComponent implements OnInit {
     this.taskServ.upDateTask(this.task.taskId, this.task).subscribe();
   }
 
+  assignTaskStatus(form: NgForm){
+    this.task.taskStatus = form.form.value.taskStatus;
+    this.taskServ.upDateTask(this.task.taskId, this.task).subscribe();
+  }
+
 
 
 
