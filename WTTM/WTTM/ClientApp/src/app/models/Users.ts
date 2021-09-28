@@ -15,10 +15,4 @@ export interface Users {
     lockoutEnabled: boolean;
     accessFailedCount: number;
     teamId: number;
-    team: any;
-    aspNetUsersClaims: any[];
-    aspNetUserLogins: any[];
-    aspNetUserRoles: any[];
-    aspNetUserTokens:any[];
-    tasks: any[];
 }
