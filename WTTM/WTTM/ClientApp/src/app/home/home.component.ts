@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   allUsers: Users[] = [];
   user: Users;
   logged: boolean = false;
+  partOfTeam: boolean = false;
   teams: Teams [];
   // something: string = "3475ae69-eede-42b1-841e-53dfe3cac633";
 
@@ -43,12 +44,22 @@ export class HomeComponent implements OnInit {
       result => {
         this.user = result;
         this.checkUser(result);
+        this.checkTeam(result);
         this.teamsServ.getTeams().subscribe(response => {
           this.teams = response;
         });
       }
       );
 
+  }
+
+  checkTeam(result: Users){
+    if (this.user.teamId = null){
+      this.partOfTeam = false;
+    }
+    else {
+      this.partOfTeam = true;
+    }
   }
 
   checkUser(result: Users){
