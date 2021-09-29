@@ -125,8 +125,10 @@ export class TaskPageComponent implements OnInit {
   }
 
   undoKick() {
+    if (this.task.scoreKeep > 0){
     this.task.scoreKeep -= 1;
     this.save();
+    }
     //return this.scoreKeep;
   }
 

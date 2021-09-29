@@ -32,6 +32,8 @@ export class NewTaskPageComponent implements OnInit {
   onSubmit(form: NgForm){
     this.task = form.form.value;
     console.log(this.task);
+    this.task.scoreKeep = 0;
+    this.task.storyPoint = 0;
     this.taskServ.createTask(this.task).subscribe();
     alert("Task Created Successfully.");
     window.location.href='/';
