@@ -92,7 +92,13 @@ export class TaskPageComponent implements OnInit {
     this.task.taskStatus = "Completed";
     this.task.dateCompleted = new Date();
     this.save();
-    window.location.href=`../sprint-page/${this.task.sprintId}`;
+    if (this.task.sprintId != null){
+      window.location.href=`../sprint-page/${this.task.sprintId}`;
+
+    }
+    else {
+      window.location.href=`../backlog`;
+    }
   }
 
   claimTask(){
