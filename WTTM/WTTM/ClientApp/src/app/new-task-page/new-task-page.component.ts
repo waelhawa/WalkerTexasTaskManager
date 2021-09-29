@@ -20,6 +20,7 @@ export class NewTaskPageComponent implements OnInit {
   pipe: DatePipe = new DatePipe('en-US');
   user: Users;
   sprints: Sprints [];
+  logged: boolean = false;
 
   constructor(private taskServ: TaskService, private sprintServ: SprintService, private userServ: UsersService) { }
 
@@ -33,9 +34,19 @@ export class NewTaskPageComponent implements OnInit {
     this.taskServ.createTask(this.task).subscribe();
   }
 
+  checkUser() {
+    if (this.user == null) {
+      this.logged = false;
+    }
+    else {
+      this.logged = true;
+    }
+  }
+
   getInfo(){
     this.userServ.getCurrentUser().subscribe(result => {
       this.user = result;
+      this.checkUser();
       this.sprintServ.getSprintsByTeamId(result.teamId).subscribe(response => {
         this.sprints = response;
         console.log(response);

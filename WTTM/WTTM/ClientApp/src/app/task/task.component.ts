@@ -15,11 +15,16 @@ export class TaskComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private taskServ: TaskService) { }
   
 
   ngOnInit(): void {
         
+    }
+
+    deleteTask(id: number) {
+      this.taskServ.deleteTasks(id).subscribe();
+      window.location.reload();
     }
 
   //get a list of unassigned tasks withing the sprint

@@ -13,5 +13,8 @@
   <div class ="taskAttribute">
     <p><span class="highlight">Points:</span> {{task.scoreKeep}}/{{task.storyPoint}}</p>
   </div>
+  <button (click)="deleteTask(task.taskId)">
+    Delete
+  </button>
 </div>
 
