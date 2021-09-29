@@ -1,79 +1,93 @@
 <h1>Create New Task</h1>
 
-<div class="topArticle">
-  <div class="articleTxt">
-    <ul>
-      <li>With a task you can track your productivity and progress toward a specific goal.
-      </li>
-      <li> Write a description of the work and preparation you'll need to perform in order to complete the task.
-      </li>
-      <li>
-        Designate the task status, consider whether this task will need to wait on outside information or
-      if its already been started.
-      </li>
-      <li>
-        Assign a number of points the task will need. Read below to see
-        how points work.
-      </li>
-      <li>
-        After you submit your new task, you'll be able to find it in your team's backlog.
-      </li>
-    </ul>
+<ng-template #noLog>
+  <div class="noLog">
+    <div class="noLogtxt">
+      <h3>You are not currently logged in.</h3>
+      <p>Please login or register <a [routerLink]='["/authentication/login"]'>here</a> before you continue</p>
+    </div>
+    <div class="noLogImg">
+      <img id="teamChuck" [src]="chuckGif">
+    </div>
   </div>
-  <div class="banditPic">
-    <img [src]="bandit">
-  </div>
-</div>
+</ng-template>
 
-<div class="form">
-  <form #newTaskForm="ngForm" (ngSubmit)="onSubmit(newTaskForm)">
-    <div class="topForm">
-      <div class="shDesc">
-        <label>Short Description</label>
-        <input id="shortDesc" type="text" [(ngModel)]="task.shortDesc" name="shortDesc">
+<div *ngIf="logged; else noLog">
+    <div class="topArticle">
+      <div class="articleTxt">
+        <ul>
+          <li>With a task you can track your productivity and progress toward a specific goal.
+          </li>
+          <li> Write a description of the work and preparation you'll need to perform in order to complete the task.
+          </li>
+          <li>
+            Designate the task status, consider whether this task will need to wait on outside information or
+          if its already been started.
+          </li>
+          <li>
+            Assign a number of points the task will need. Read below to see
+            how points work.
+          </li>
+          <li>
+            After you submit your new task, you'll be able to find it in your team's backlog.
+          </li>
+        </ul>
       </div>
-      <div class="selects">
-        <div class="innerSelects">
-          <label>Points</label>
-          <select [(ngModel)]="task.storyPoint" name="storyPoint" >
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-            <option value=6>6</option>
-            <option value=7>7</option>
-            <option value=8>8</option>
-            <option value=9>9</option>
-            <option value=10>10</option>
-            <option value=11>11</option>
-            <option value=12>12</option>
-          </select>
-      </div>
-      <div class="innerSelects">
-        <label>Sprint</label>
-        <select name="sprintId" (ngModel)="sprints">
-          <option *ngFor="let sprint of sprints" [(ngValue)]="sprint.sprintId">
-            Sprint - {{ sprint.sprintId }}
-          </option>
-        </select>
-
-      </div>
-        <div class="innerSelects">
-          <label>Status</label>
-          <select [(ngModel)]="task.taskStatus" name="taskStatus">
-            <option value="new">New</option>
-            <option value="in progress">In Progess</option>
-            <option value="pending">Pending</option>
-            <!-- <option value="completed">Completed</option> -->
-          </select>
-       </div>
+      <div class="banditPic">
+        <img [src]="bandit">
       </div>
     </div>
-    <div class="fDesc">
-      <label>Full Description</label>
-      <textarea id="fullDesc" clrTextarea [(ngModel)]="task.fullDesc" name="fullDesc"></textarea>
+
+    <div class="form">
+      <form #newTaskForm="ngForm" (ngSubmit)="onSubmit(newTaskForm)">
+        <div class="topForm">
+          <div class="shDesc">
+            <label>Short Description</label>
+            <input id="shortDesc" type="text" [(ngModel)]="task.shortDesc" name="shortDesc">
+          </div>
+          <div class="selects">
+            <div class="innerSelects">
+              <label>Points</label>
+              <select [(ngModel)]="task.storyPoint" name="storyPoint" >
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+                <option value=11>11</option>
+                <option value=12>12</option>
+              </select>
+          </div>
+          <div class="innerSelects">
+            <label>Sprint</label>
+            <select name="sprintId" (ngModel)="sprints">
+              <option *ngFor="let sprint of sprints" [(ngValue)]="sprint.sprintId">
+                Sprint - {{ sprint.sprintId }}
+              </option>
+            </select>
+
+          </div>
+            <div class="innerSelects">
+              <label>Status</label>
+              <select [(ngModel)]="task.taskStatus" name="taskStatus">
+                <option value="new">New</option>
+                <option value="in progress">In Progess</option>
+                <option value="pending">Pending</option>
+                <!-- <option value="completed">Completed</option> -->
+              </select>
+          </div>
+          </div>
+        </div>
+        <div class="fDesc">
+          <label>Full Description</label>
+          <textarea id="fullDesc" clrTextarea [(ngModel)]="task.fullDesc" name="fullDesc"></textarea>
+        </div>
+        <button type="submit">submit</button>
+      </form>
     </div>
-    <button type="submit">submit</button>
-  </form>
-</div>
+ </div>

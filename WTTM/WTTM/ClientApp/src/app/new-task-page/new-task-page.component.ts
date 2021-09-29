@@ -21,6 +21,7 @@ export class NewTaskPageComponent implements OnInit {
   user: Users;
   sprints: Sprints [];
   logged: boolean = false;
+  chuckGif: string = "/assets/images/Chuck Gif.gif";
 
   constructor(private taskServ: TaskService, private sprintServ: SprintService, private userServ: UsersService) { }
 

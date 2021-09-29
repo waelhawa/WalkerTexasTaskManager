@@ -119,3 +119,21 @@ button{
 button:hover{
   transform: scale(1.06);
 }
+
+.noLog{
+  display: inline-flex;
+}
+
+.noLogtxt p{
+  width: 80%;
+  border: 2px solid rgb(112, 102, 95);
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+.noLogtxt a{
+  color:rgb(255, 187, 0);
+}
