@@ -119,12 +119,14 @@ export class TaskPageComponent implements OnInit {
     this.getChuckJoke();
     this.jokeUp = true;
     this.task.scoreKeep += 1;
+    this.save();
     return this.task.scoreKeep;
 
   }
 
   undoKick() {
     this.task.scoreKeep -= 1;
+    this.save();
     //return this.scoreKeep;
   }
 
