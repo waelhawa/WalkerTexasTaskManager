@@ -37,7 +37,7 @@ export class NewTeamPageComponent implements OnInit {
         this.team.teamName = this.team.teamName.substring(0,1).toUpperCase() + this.team.teamName.substring(1, this.team.teamName.length).toLowerCase();
         this.teamsServ.createTeam(this.team).subscribe();
         alert("Team Added successfully")
-        window.location.href = '../home';
+        window.location.href = '/';
       }
       else {
         alert(this.message);
