@@ -1,3 +1,40 @@
+.title{
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title button{
+  border-radius: 10px;
+  border: 2px solid rgb(255, 187, 0);
+  background-color:rgb(112, 102, 95);
+  color:snow;
+  margin-right: 12px;
+  align-items: center;
+  font-size: 18px;
+}
+
+.selectAssign{
+  display: inline-flex;
+  margin-bottom: 12px;
+}
+
+.selectAssign form{
+  margin-left: 20px;
+
+}
+
+.selectAssign form button{
+  margin-left: 8px;
+}
+
+.selectAssign form select{
+  margin-left: 5px;
+  border-radius: 6px;
+}
+
+
 .sprintWrapper{
   border-radius: 10px;
   border: 4px solid rgb(255, 187, 0);

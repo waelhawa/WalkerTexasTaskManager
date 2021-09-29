@@ -24,10 +24,11 @@
   </ng-template>
 
   <div *ngIf="partOfTeam; else noTeam">
-    <h1>Sprints</h1>
-    <div class="sprintWrapper">
+
+    <div>
       <!-- <h1>{{ team.teamName }}'s Sprints</h1> -->
       <div *ngIf="empty; else present" class="empty">
+        <h1>Sprints</h1>
         <div class="emptyMessage">
           <h4>What's This?!</h4>
           <p>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</p>
@@ -44,8 +45,10 @@
         <button (click)="createSprintButton()">
           New Sprint
         </button>
-        <div *ngFor="let sprint of sprintsByTeams; index as i">
-          <app-sprint [sprint] = "sprint"></app-sprint>
+        <div class="sprintWrapper">
+          <div *ngFor="let sprint of sprintsByTeams; index as i" >
+            <app-sprint [sprint] = "sprint"></app-sprint>
+          </div>
         </div>
       </ng-template>
     </div>

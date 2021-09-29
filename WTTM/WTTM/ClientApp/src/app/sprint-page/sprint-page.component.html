@@ -1,5 +1,20 @@
-<h1>Sprint-{{sprint.sprintId}}</h1>
-
+<div class="title">
+  <h1>Sprint-{{sprint.sprintId}}</h1>
+  <div class="selectAssign">
+    <h5>Status: {{sprint.sprintStatus}}</h5>
+    <form #assignStatus="ngForm" (ngSubmit)="save()">
+      <label>Select Status</label>
+      <select name = "taskStaus" [(ngModel)]="sprint.sprintStatus">
+        <option value="New">New</option>
+        <option value="Current">Current</option>
+        <option value="Pending">Pending</option>
+        <option value="Delayed">Delayed</option>
+        <option value="Complete">Complete</option>
+      </select>
+      <button type="submit">Update Status</button>
+    </form>
+  </div>
+</div>
 <div class="sprintWrapper">
   <div *ngIf="empty; else present" class="empty">
     <div class="emptyMessage">
