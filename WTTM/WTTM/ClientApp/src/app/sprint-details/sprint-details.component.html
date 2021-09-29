@@ -1,33 +1,53 @@
-<!-- <h1>{{ team.teamName }}'s Sprints</h1> -->
-<ng-template #notLogged>
+
+<ng-template #noLog>
   <h1>Sprints</h1>
-  <p>You are not currently assigned to a team. Return to the home page to select your team.</p>
-  <button routerLink="/home/">Home</button>
+  <div class="noLog">
+    <div class="noLogtxt">
+      <h3>You are not currently logged in.</h3>
+      <p>Please login or register <a [routerLink]='["/authentication/login"]'>here</a> before you continue</p>
+    </div>
+    <div class="noLogImg">
+      <img id="teamChuck" [src]="chuckGif">
+    </div>
+  </div>
 </ng-template>
 
-<div *ngIf="logged; else notLogged">
-  <div class="sprintWrapper">
-    <!-- <h1>{{ team.teamName }}'s Sprints</h1> -->
-    <div *ngIf="empty; else present" class="empty">
-      <div class="emptyMessage">
-        <h4>What's This?!</h4>
-        <p>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</p>
+
+
+
+<div *ngIf="logged; else noLog">
+
+  <ng-template #noTeam>
+    <h1>Sprints</h1>
+    <p>You are not currently assigned to a team. Return to the home page to select your team.</p>
+    <button routerLink="/home/">Home</button>
+  </ng-template>
+
+  <div *ngIf="partOfTeam; else noTeam">
+    <h1>Sprints</h1>
+    <div class="sprintWrapper">
+      <!-- <h1>{{ team.teamName }}'s Sprints</h1> -->
+      <div *ngIf="empty; else present" class="empty">
+        <div class="emptyMessage">
+          <h4>What's This?!</h4>
+          <p>Your team doesn't have any sprints on record. Sadle up and start your first sprint by creating one here:</p>
+          <button (click)="createSprintButton()">
+            New Sprint
+          </button>
+      </div>
+        <div class="chuckNone">
+          <img [src]="chuckGif">
+        </div>
+      </div>
+      <ng-template #present>
+        <h1>{{ team.teamName }}'s Sprints</h1>
         <button (click)="createSprintButton()">
           New Sprint
         </button>
+        <div *ngFor="let sprint of sprintsByTeams; index as i">
+          <app-sprint [sprint] = "sprint"></app-sprint>
+        </div>
+      </ng-template>
     </div>
-      <div class="chuckNone">
-        <img [src]="chuckGif">
-      </div>
-    </div>
-    <ng-template #present>
-      <h1>{{ team.teamName }}'s Sprints</h1>
-      <button (click)="createSprintButton()">
-        New Sprint
-      </button>
-      <div *ngFor="let sprint of sprintsByTeams; index as i">
-        <app-sprint [sprint] = "sprint"></app-sprint>
-      </div>
-    </ng-template>
   </div>
 </div>

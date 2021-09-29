@@ -1,88 +1,104 @@
 <ng-template #noLog>
   <h1>Walker Texas Task Manager</h1>
-  <h4>Team: {{ uTeamName }}</h4>
-  <div class="bigWrapper">
-    <div class="formWrapper">
-    <p id="teamInstr">Please select your team before moving on to your work.</p>
-    <form #pickTeamForm="ngForm" (ngSubmit)="changeTeam(pickTeamForm)">
-      <label>Select Team</label>
-      <select name = "teamId" (ngModel)="teams">
-        <option *ngFor="let team of teams" [(ngValue)]="team.teamId">
-          {{team.teamName}}
-        </option>
-      </select>
-      <button type="submit">Confirm Team</button>
-      <button routerLink="/new-team-page/">
-        Create New Team
-      </button>
-    </form>
-  </div>
-    <div class="articleWrapper">
+  <div class="noLog">
+    <div class="noLogtxt">
+      <h3>You are not currently logged in.</h3>
+      <p>Please login or register <a [routerLink]='["/authentication/login"]'>here</a> before you continue</p>
+    </div>
+    <div class="noLogImg">
       <img id="teamChuck" [src]="chuckGif">
     </div>
-</div>
+  </div>
 </ng-template>
 
 
 <div *ngIf="logged; else noLog">
-  <div class="titleHeader">
-    <h1>Walker Texas Task Manager</h1>
-    <h4>Team: {{ uTeamName }}</h4>
-    <div id="teamSelect">
-      <form #changeTeamForm="ngForm" (ngSubmit)="changeTeam(changeTeamForm)">
-        <label>Select Team</label>
-        <select name="teamId" (ngModel)="teams">
-          <option *ngFor="let team of teams" [(ngValue)]="team.teamId">
-            {{team.teamName}}
-          </option>
-        </select>
-        <button type="submit">Change Team</button>
-      </form>
+    <ng-template #noTeam>
+      <h1>Walker Texas Task Manager</h1>
+      <h4>Team: {{ uTeamName }}</h4>
+      <div class="bigWrapper">
+        <div class="formWrapper">
+        <p id="teamInstr">Please select your team before moving on to your work.</p>
+        <form #pickTeamForm="ngForm" (ngSubmit)="changeTeam(pickTeamForm)">
+          <label>Select Team</label>
+          <select name = "teamId" (ngModel)="teams">
+            <option *ngFor="let team of teams" [(ngValue)]="team.teamId">
+              {{team.teamName}}
+            </option>
+          </select>
+          <button type="submit">Confirm Team</button>
+          <button routerLink="/new-team-page/">
+            Create New Team
+          </button>
+        </form>
+      </div>
+        <div class="articleWrapper">
+          <img id="teamChuck" [src]="chuckGif">
+        </div>
+    </div>
+    </ng-template>
+
+
+    <div *ngIf="partOfTeam; else noTeam">
+      <div class="titleHeader">
+        <h1>Walker Texas Task Manager</h1>
+        <h4>Team: {{ uTeamName }}</h4>
+        <div id="teamSelect">
+          <form #changeTeamForm="ngForm" (ngSubmit)="changeTeam(changeTeamForm)">
+            <label>Select Team</label>
+            <select name="teamId" (ngModel)="teams">
+              <option *ngFor="let team of teams" [(ngValue)]="team.teamId">
+                {{team.teamName}}
+              </option>
+            </select>
+            <button type="submit">Change Team</button>
+          </form>
+        </div>
+      </div>
+        <div class="articleWrapper">
+          <div class="chuckNone">
+            <img [src]="chuckGif">
+          </div>
+          <p>Here you can find the tasks currently assigned to you.
+            Use this page as a launch pad for productivity. Click on any of the tasks below to
+            start knocking out blocks of time to measure your prodcutivity. With Chuck Norris's help
+            you can apprehend the gaggle of time-bandits in the way of your tasks' completion. You can do
+            this. Just remember <b> In the beginning there was nothing ...then Chuck Norris roundhouse kicked
+            the dark empty void and told it to get a job.</b>
+          </p>
+
+        </div>
+        <h4>Your Tasks</h4>
+        <div class="taskListWrapper">
+          <div *ngIf="empty; else present" class="empty">
+            <div class="emptyMessage">
+
+              <h4>You're either really good, or mighty lazy.</h4>
+              <h4>You don't have any tasks assigned to you.</h4>
+
+              <p>You ought to have another look at your goals for the year.
+                However small they may be, you should add some tasks to track your progess and visualize your
+                plans for the future.</p>
+
+              <a href="/new-task-page">Add new task</a>
+            </div>
+          </div>
+          <ng-template #present>
+            <div class="taskWrapper">
+              <div class="uncompletedWrapper">
+                <h4>Active Tasks</h4>
+                <div *ngFor="let uTask of unCompletedTasks">
+                  <app-task [task] = "uTask"></app-task>
+                </div>
+              </div>
+              <div class="completedWrapper">
+                <h4>Completed Tasks</h4>
+                <div *ngFor="let cTask of completedTasks">
+                  <app-task [task] = "cTask"></app-task>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
     </div>
   </div>
-    <div class="articleWrapper">
-      <div class="chuckNone">
-        <img [src]="chuckGif">
-      </div>
-      <p>Here you can find the tasks currently assigned to you.
-        Use this page as a launch pad for productivity. Click on any of the tasks below to
-        start knocking out blocks of time to measure your prodcutivity. With Chuck Norris's help
-        you can apprehend the gaggle of time-bandits in the way of your tasks' completion. You can do
-        this. Just remember <b> In the beginning there was nothing ...then Chuck Norris roundhouse kicked
-        the dark empty void and told it to get a job.</b>
-      </p>
-
-    </div>
-    <h4>Your Tasks</h4>
-    <div class="taskListWrapper">
-      <div *ngIf="empty; else present" class="empty">
-        <div class="emptyMessage">
-
-          <h4>You're either really good, or mighty lazy.</h4>
-          <h4>You don't have any tasks assigned to you.</h4>
-
-          <p>You ought to have another look at your goals for the year.
-            However small they may be, you should add some tasks to track your progess and visualize your
-            plans for the future.</p>
-
-          <a href="/new-task-page">Add new task</a>
-        </div>
-      </div>
-      <ng-template #present>
-        <div class="taskWrapper">
-          <div class="uncompletedWrapper">
-            <h4>Active Tasks</h4>
-            <div *ngFor="let uTask of unCompletedTasks">
-              <app-task [task] = "uTask"></app-task>
-            </div>
-          </div>
-          <div class="completedWrapper">
-            <h4>Completed Tasks</h4>
-            <div *ngFor="let cTask of completedTasks">
-              <app-task [task] = "cTask"></app-task>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-    </div>
-</div>

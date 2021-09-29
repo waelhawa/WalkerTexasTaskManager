@@ -1,24 +1,39 @@
 <h1>Backlog</h1>
 
-<div class="backlogWrapper">
-  <div *ngIf="empty; else present" class="empty">
-    <div class="emptyMessage">
-      <h4>Mighty fine work partner!</h4>
-      <h4>You don't have any tasks in your backlog.</h4>
-      <p>You ought to have another look at your goals for the year.
-        However small they may be, you should add some tasks to track your progess and visualize your
-        plans for the future.
-      </p>
-      <a href="/new-task-page">Add new task</a>
-  </div>
-    <div class="chuckNone">
-      <img [src]="chuckGif">
+<ng-template #noLog>
+  <div class="noLog">
+    <div class="noLogtxt">
+      <h3>You are not currently logged in.</h3>
+      <p>Please login or register <a [routerLink]='["/authentication/login"]'>here</a> before you continue</p>
+    </div>
+    <div class="noLogImg">
+      <img id="teamChuck" [src]="chuckGif">
     </div>
   </div>
-  <ng-template #present>
-    <div *ngFor="let uTask of allUATasks; index as i">
-      <app-task [task] = "uTask"></app-task>
+</ng-template>
 
+
+<div *ngIf="logged; else noLog">
+    <div class="backlogWrapper">
+      <div *ngIf="empty; else present" class="empty">
+        <div class="emptyMessage">
+          <h4>Mighty fine work partner!</h4>
+          <h4>You don't have any tasks in your backlog.</h4>
+          <p>You ought to have another look at your goals for the year.
+            However small they may be, you should add some tasks to track your progess and visualize your
+            plans for the future.
+          </p>
+          <a href="/new-task-page">Add new task</a>
+      </div>
+        <div class="chuckNone">
+          <img [src]="chuckGif">
+        </div>
+      </div>
+      <ng-template #present>
+        <div *ngFor="let uTask of allUATasks; index as i">
+          <app-task [task] = "uTask"></app-task>
+
+        </div>
+      </ng-template>
     </div>
-  </ng-template>
-</div>
+  </div>
