@@ -41,7 +41,7 @@
 </div>
   <div class="description">
     <p>Task Description</p>
-    <p id="desc">{{ task.fullDesc }}</p>
+    <textarea [(ngModel)]="task.fullDesc" placeholder="{{task.fullDesc}}" id="desc"></textarea>
   </div>
   <div class="workWrapper">
     <p id="howTo">Keep score against this task bandit by clicking it after every 30 minutes of solid work
