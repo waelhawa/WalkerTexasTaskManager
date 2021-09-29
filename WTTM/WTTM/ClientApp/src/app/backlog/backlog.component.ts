@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/Task';
+import { Users } from '../models/Users';
 import { TaskService } from '../services/task.service';
+import { UsersService } from '../services/users.service';
 import { TaskComponent } from '../task/task.component';
 
 @Component({
@@ -15,20 +17,35 @@ export class BacklogComponent implements OnInit {
   chuckGif: string ="/assets/images/Chuck Gif.gif";
   allUATasks: Task[] = [];
   allTasks: Task[]=[];
+  logged: boolean = false;
+  user: Users;
 
 
 
 
-  constructor(private taskServ: TaskService) { }
+  constructor(private taskServ: TaskService, private userServ: UsersService) { }
 
   ngOnInit(): void {
     this.getAllUnassignedTasks();
 
   }
 
+  checkUser() {
+    if (this.user == null) {
+      this.logged = false;
+    }
+    else {
+      this.logged = true;
+    }
+  }
+
 
 
   getAllUnassignedTasks(){
+    this.userServ.getCurrentUser().subscribe(result => {
+      this.user = result;
+      this.checkUser();
+    });
     this.taskServ.getUnassignedTasks().subscribe(
       result => this.allUATasks = result
       //console.log(this.allUATasks)

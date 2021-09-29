@@ -22,6 +22,7 @@ export class SprintDetailsComponent implements OnInit {
   sprint: Sprints;
   empty: boolean = true;
   logged: boolean = false;
+  partOfTeam: boolean = false;
   chuckGif: string = "/assets/images/Chuck Gif.gif";
   newSprint: Sprints = 
   {
@@ -59,8 +60,17 @@ export class SprintDetailsComponent implements OnInit {
     window.location.reload();
   }
 
-  checkUser() {
+  checkTeam() {
     if (this.user.teamId == null || this.user.teamId < 1) {
+      this.partOfTeam = false;
+    }
+    else {
+      this.partOfTeam = true;
+    }
+  }
+
+  checkUser() {
+    if (this.user == null) {
       this.logged = false;
     }
     else {
@@ -79,6 +89,7 @@ export class SprintDetailsComponent implements OnInit {
     this.userServ.getCurrentUser().subscribe(result => {
       this.user = result;
       this.checkUser();
+      this.checkTeam();
       console.log(this.user);
       if (this.logged) {
         this.sprintServ.getSprintsByTeamId(this.user.teamId).subscribe(response => {
