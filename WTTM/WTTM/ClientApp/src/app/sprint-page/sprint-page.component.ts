@@ -26,6 +26,10 @@ export class SprintPageComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.getTasksBySprintId(this.id);
   }
+
+  save(){
+    this.sprintServ.updateSprint(this.sprint.sprintId, this.sprint).subscribe();
+  }
   
   getTasksBySprintId(id: number){
     this.taskServ.getTasksBySprintId(id).subscribe(
