@@ -33,6 +33,7 @@ export class NewTaskPageComponent implements OnInit {
     this.task = form.form.value;
     console.log(this.task);
     this.taskServ.createTask(this.task).subscribe();
+    window.location.href='../home';
   }
 
   checkUser() {
